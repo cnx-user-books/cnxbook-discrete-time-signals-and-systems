@@ -1,0 +1,522 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Discrete Fourier Transform Properties</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57675</md:content-id>
+  <md:title>Discrete Fourier Transform Properties</md:title>
+  <md:abstract/>
+  <md:uuid>457d1580-1d5b-40aa-bdb9-01fca8b5d67c</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">Recall, for discrete-time finite length signals, the definition of the DFT and the inverse DFT (given here in its normalized form):</para><list id="idm294603832576" list-type="bulleted">
+      <item>DFT: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:mfrac><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:msqrt><m:mi>N</m:mi></m:msqrt></m:mfrac></m:mrow><m:annotation encoding="math/tex">X[k] = \sum_{n=0}^{N-1} x[n]\,  \frac{e^{-j \frac{2\pi}{N}kn}}{\sqrt N}</m:annotation></m:semantics></m:math></item>
+      <item>Inverse DFT: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:mfrac><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:msqrt><m:mi>N</m:mi></m:msqrt></m:mfrac></m:mrow><m:annotation encoding="math/tex">x[n] = \sum_{k=0}^{N-1} X[k] \, \frac{e^{j \frac{2\pi}{N}kn}}{\sqrt N}</m:annotation></m:semantics></m:math></item>
+    </list>
+    <para id="idm294601803840">Recall also its much more commonly used un-normalized form:</para>
+    <list id="idm294601803520" list-type="bulleted">
+      <item>DFT: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">X[k] = \sum_{n=0}^{N-1} x[n]\, e^{-j \frac{2\pi}{N}kn}</m:annotation></m:semantics></m:math></item>
+      <item>Inverse DFT: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">x[n] = \frac{1}{N}\sum_{k=0}^{N-1} X[k] \, e^{j \frac{2\pi}{N}kn}</m:annotation></m:semantics></m:math></item>
+    </list>
+    <para id="idm294601771408">A signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and its DFT <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]</m:annotation></m:semantics></m:math> (recall there is a one-to-one correspondence) are referred to as a <emphasis>DFT pair</emphasis>. The DFT has a variety of properties, which we will now consider.</para>
+    <section id="idm294601764224">
+      <title>The DFT and Its Inverse Are Periodic</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601763664">The DFT is defined for finite-length (length <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>) signals; so, for <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> runs from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">N-1</m:annotation></m:semantics></m:math>, as does <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math>. But let's see what happens when we consider a value of <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> outside this range in the DFT formula, say <m:math><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k+lN]</m:annotation></m:semantics></m:math>, where <m:math><m:semantics><m:mi>l</m:mi><m:annotation encoding="math/tex">l</m:annotation></m:semantics></m:math> is some nonzero integer:</para><para id="idm294601744976"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mo stretchy="false">(</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>l</m:mi><m:mi>N</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>⋅</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+X[k+l N] &amp;=~ \sum_{n=0}^{N-1} x[n]\,e^{-j \frac{2\pi}{N}(k+l N)n}\\
+&amp;=\sum_{n=0}^{N-1} x[n]\, e^{-j \frac{2\pi}{N}kn} e^{-j \frac{2\pi}{N}l N n}\\
+&amp;=\sum_{n=0}^{N-1} x[n]\, e^{-j \frac{2\pi}{N}kn}\cdot 1\\
+&amp;=\sum_{n=0}^{N-1} x[n]\, e^{-j \frac{2\pi}{N}kn}\\
+&amp;= X[k]
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm294601672048">As <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k+lN]=X[k]</m:annotation></m:semantics></m:math>, the DFT is periodic:</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601665136"><media id="idm294601664336" alt="">
+          <image mime-type="" src="../../media/Xperiodic1.png"/>
+<image mime-type="application/postscript" src="../../media/Xperiodic1.eps" for="pdf"/>
+        </media>
+        
+      <caption>The DFT <m:math><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]</m:annotation></m:semantics></m:math> of any <m:math><m:mrow><m:mi>N</m:mi></m:mrow></m:math>-length signal is periodic, with period <m:math><m:mrow><m:mi>N</m:mi></m:mrow></m:math>.</caption></figure><para id="idm294601662592">By the same token, the inverse DFT is also periodic:</para>
+      <para id="idm294601662272"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mtext> </m:mtext><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>l</m:mi><m:mi>N</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>⋅</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+x[n+l N] &amp;=~ \frac{1}{N}\sum_{k=0}^{N-1} X[k]\,e^{j \frac{2\pi}{N}k(n+lN)}\\
+&amp;=\sum_{k=0}^{N-1} X[k]\, e^{j \frac{2\pi}{N}kn} e^{j \frac{2\pi}{N}klN}\\
+&amp;=\sum_{k=0}^{N-1} X[k]\, e^{j \frac{2\pi}{N}kn}\cdot 1\\
+&amp;=\sum_{k=0}^{N-1} X[k]\, e^{j \frac{2\pi}{N}kn}\\
+&amp;= x[n]
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm294601590320">Again this is to be expected because the complex harmonic sinusoids of the inverse DFT sum are periodic. This also further illustrates the fact that any finite-length signal can be understood as a single period of a corresponding periodic signal.</para></section>
+    <section id="idm294601589936">
+      <title>DFT Frequency Ranges</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601589424">A complex harmonic sinuoid <m:math><m:semantics><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:annotation encoding="math/tex">e^{j(\frac{2\pi}{N}k)n}</m:annotation></m:semantics></m:math> has, by definition, a frequency of <m:math><m:semantics><m:mrow><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi></m:mrow><m:annotation encoding="math/tex">\frac{2\pi}{N}k</m:annotation></m:semantics></m:math>, which may label as <m:math><m:semantics><m:msub><m:mi>ω</m:mi><m:mi>k</m:mi></m:msub><m:annotation encoding="math/tex">\omega_k</m:annotation></m:semantics></m:math>. In the DFT of a signal of length <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, the variable <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> ranges from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">N-1</m:annotation></m:semantics></m:math>, values that correspond to frequencies from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to (just about) <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>:</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601566672"><media id="idm294601565904" alt="">
+          <image mime-type="" src="../../media/Xrange1.png"/>
+<image mime-type="application/postscript" src="../../media/Xrange1.eps" for="pdf"/>
+        </media>
+        
+      <caption>For an <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>16</m:mn></m:mrow><m:annotation encoding="math/tex">N=16</m:annotation></m:semantics></m:math> length signal, one way to express the range of
+frequencies is for <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> to run from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">N-1</m:annotation></m:semantics></m:math>, which corresponds to frequencies
+between <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm294601552832">However, as we saw above, since the DFT is periodic, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">N-1</m:annotation></m:semantics></m:math> is not the only range of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> we may use to express the DFT. Since <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo>−</m:mo><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]=X[k-N]</m:annotation></m:semantics></m:math>, we may let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> run from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">-\frac{N}{2}</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">\frac{N}{2}-1</m:annotation></m:semantics></m:math> (for even <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, that is; for odd <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> it would be <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mfrac><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">-\frac{N-1}{2}</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mfrac><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac><m:annotation encoding="math/tex">\frac{N-1}{2}</m:annotation></m:semantics></m:math>):</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601523536"><media id="idm294601522768" alt="">
+          <image mime-type="" src="../../media/Xrange2.png"/>
+<image mime-type="application/postscript" src="../../media/Xrange2.eps" for="pdf"/>
+        </media>
+        
+      <caption>For an <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>16</m:mn></m:mrow><m:annotation encoding="math/tex">N=16</m:annotation></m:semantics></m:math> length signal, another way to express the range of frequencies is for <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> to run from <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">-\frac{N}{2}</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">\frac{N}{2}-1</m:annotation></m:semantics></m:math>, which corresponds to frequencies between <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mi>π</m:mi><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math>.</caption></figure></section>
+    <section id="idm294601507344">
+      <title>Shifts in Time and Frequency</title>
+      <para id="idm294601506800">Let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]</m:annotation></m:semantics></m:math> be a DFT pair (i.e., <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]</m:annotation></m:semantics></m:math> is the DFT of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>). A circular shift in time on <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> will produce a phase shift on <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X[k]</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm294601487392"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>m</m:mi></m:mrow></m:msup><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[(n-m)_N] ~\stackrel{\textrm{DFT}}{\longleftrightarrow}~ e^{-j\frac{2\pi}{N}km} X[k]</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm294601469584">To prove this relationship, we first note that for the circular shift <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">(n-m)_N</m:annotation></m:semantics></m:math>, there is some integer <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>l</m:mi><m:annotation encoding="math/tex">l</m:annotation></m:semantics></m:math> such that<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi></m:mrow><m:annotation encoding="math/tex">(n-m)_N=n-m+lN</m:annotation></m:semantics></m:math>. We will use that fact for a change of variables in our proof:</para>
+      <para id="idm294601456368"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Let </m:mtext></m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo>−</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>r</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>m</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>l</m:mi><m:mi>N</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>m</m:mi></m:mrow></m:msup><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>r</m:mi></m:mrow></m:msup><m:mo>⋅</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>m</m:mi></m:mrow></m:msup><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+\textrm{DFT}\{x[(n-m)_N]\}&amp;=\sum_{n=0}^{N-1} x[(n-m)_N]\,  e^{-j \frac{2\pi}{N}kn}\\
+&amp;\textrm{Let }r=(n-m)_N=n-m+lN\\
+&amp;=\sum_{r=0}^{N-1} x[r]\,e^{-j \frac{2\pi}{N}k (r+m-lN)}\\
+&amp;=\sum_{r=0}^{N-1} x[r]\,e^{-j \frac{2\pi}{N}kr}e^{-j \frac{2\pi}{N}m}e^{-j \frac{2\pi}{N}lN}\\
+&amp;=e^{-j \frac{2\pi}{N}m}\sum_{r=0}^{N-1} x[r]\,e^{-j \frac{2\pi}{N}kr}\cdot 1\\
+&amp;=e^{-j\frac{2\pi}{N}km} X[k]
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm294601354416"> As you might expect from the symmetrical similarities between the DFT and inverse DFT, a comparable relationship exists in the other direction as well. A circular shift in the frequency domain of a signal results in the modulation of the signal in the time domain:</para>
+      <para id="idm294601353088"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>l</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>k</m:mi><m:mo>−</m:mo><m:mi>l</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">e^{j\frac{2\pi}{N}l n} \, x[n] ~\stackrel{\textrm{DFT}}{\longleftrightarrow}~  X[(k-l)_N]</m:annotation></m:semantics></m:math>. The proof of this property follows the same approach as that of the first.</para>
+    </section>
+    <section id="idm294601335312">
+      <title>The DFT is Linear</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601334768">As the DFT of a signal is essentially a weighted sum, it follows naturally that the DFT operation is linear. So if we have two arbitrary signals <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math> (with DFTs <m:math><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X_1[k]</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X_2[k]</m:annotation></m:semantics></m:math>) and arbitrary constants <m:math><m:semantics><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_1</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_2</m:annotation></m:semantics></m:math>, then the DFT of <m:math><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">\alpha_1 x_1[n]+\alpha_2 x_2[n]</m:annotation></m:semantics></m:math> is simply <m:math><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">\alpha_1 X_1[k]+\alpha_2 X_2[k]</m:annotation></m:semantics></m:math>:</para><para id="idm294601295168"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mspace linebreak="newline"/><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n] ~\stackrel{\textrm{DFT}}{\longleftrightarrow}~ X_1[k], ~~
+x_2[n] ~\stackrel{\textrm{DFT}}{\longleftrightarrow}~ X_2[k]\\
+\alpha_1 x_1[n] + \alpha_2 x[2] ~\stackrel{\textrm{DFT}}{\longleftrightarrow}~ \alpha_1 X_1[k] + \alpha_2 X_2[k]</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm294601250880"> The proof is straightforward:</para>
+      <para id="idm294601250592">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>DFT</m:mtext>
+                  </m:mrow>
+                  <m:mo fence="false" stretchy="false">{</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo fence="false" stretchy="false">}</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mn>1</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:msub>
+                    <m:mi>α</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:annotation encoding="math/tex">\begin{align*}
+\textrm{DFT}\{\alpha_1 x_1[n] + \alpha_2 x_2[n]\}&amp;=\sum_{n=0}^{N-1} (\alpha_1 x_1[n] + \alpha_2 x[2])  e^{-j \frac{2\pi}{N}kn}\\
+&amp;=(\alpha_1\sum_{n=0}^{N-1} x_1[n]e^{-j \frac{2\pi}{N}kn}) + (\alpha_2\sum_{n=0}^{N-1}x_2[n] e^{-j \frac{2\pi}{N}kn})\\
+&amp;=\alpha_1 X_1[k] + \alpha_2 X_2[k]
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm294601175824">
+      <title>The Convolution/Multiplication Time/Frequency Relationship</title>
+      <para id="idm294601175312">We now reach perhaps the most significant DFT property, the relationship between convolution and multiplication in time and frequency. Suppose we have two discrete-time finite length signals <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math>, whose DFTs are <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X_1[k]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">X_2[k]</m:annotation></m:semantics></m:math>. Let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> be the circular convolution <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>⊛</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x_1[n]\circledast x_2[n]</m:annotation></m:semantics></m:math>. Then the DFT of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> is equivalent to the product of the DFTs of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math>: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>Y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">Y[k]=X_1[k]X_2[k]</m:annotation></m:semantics></m:math>. Or, to express this relationship in DFT pair notation, we have:</para>
+      <para id="idm294601125968">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>⊛</m:mo>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mrow class="MJX-TeXAtom-REL">
+                <m:mover>
+                  <m:mrow class="MJX-TeXAtom-OP">
+                    <m:mo stretchy="false">⟷</m:mo>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mtext>DFT</m:mtext>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mover>
+              </m:mrow>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x_1[n]\circledast x_2[n] \stackrel{\textrm{DFT}}{\longleftrightarrow} X_1[k]X_2[k]</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm294601109296">The proof of this relationship will use the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo>=</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi></m:mrow><m:annotation encoding="math/tex">r=(n-m)_N=n-m+lN</m:annotation></m:semantics></m:math> change of variable we used earlier:</para>
+      <para id="idm294601101120"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>DFT</m:mtext></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>⊛</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mspace width="mediummathspace"/><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo>+</m:mo><m:mi>l</m:mi><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>r</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>m</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>l</m:mi><m:mi>N</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>m</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>r</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+\textrm{DFT}\{x_1[n]\circledast x_2[n]\}&amp;=~ \sum_{n=0}^{N-1} \left(  \sum_{m=0}^{N-1} \: x_1[(n-m)_N] \, x_2[m]  \right) e^{-j\frac{2\pi}{N}k n} \\
+&amp;= \sum_{m=0}^{N-1} x_2[m] \left( \sum_{n=0}^{N-1} x_1[(n-m)_N] e^{-j\frac{2\pi}{N}k n} \right)\\
+&amp;=\sum_{m=0}^{N-1} x_2[m] \left( \sum_{r=0}^{N-1} x_1[r] e^{-j\frac{2\pi}{N}k (r+m+lN)} \right) \\
+&amp;=\sum_{m=0}^{N-1} x_2[m] \left( \sum_{r=0}^{N-1} x_1[r] e^{-j\frac{2\pi}{N}kr}e^{-j\frac{2\pi}{N}k m}e^{-j\frac{2\pi}{N}klN} \right) \\
+&amp;=  \left( \sum_{m=0}^{N-1} x_2[m] e^{-j\frac{2\pi}{N}km} \right) \left( \sum_{r=0}^{N-1} x_1[r] e^{-j\frac{2\pi}{N}kr} \right)\\
+&amp;=X_1[k]X_2[k]
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294601176400">So we see that convolution in two signals' time corresponds to their multiplication in frequency. It is certainly an interesting relationship, but it is also very practical: <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> multiplications in the frequency domain are obviously fewer than the <m:math><m:semantics><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup><m:annotation encoding="math/tex">N^2</m:annotation></m:semantics></m:math> multiplications required to compute for an <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>-length signal. Of course, this requires first that the DFT of the two signals be computed (and then the inverse DFT of the product), but we will see there are ways to compute that efficiently. What it all means is that a system's output (which is found via convolution) can be computed efficiently by way of multiplication in the frequency domain.</para></section>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm294600940608"><title>DFT Symmetry Properties</title><para id="idm294600940064">As the DFT is a weighted sum of complex signals (complex harmonic sinusoids), it follows that the DFT of signals is, in general, complex-valued.</para>
+      <figure id="idm294600939648" orient="vertical"><subfigure id="idm294600938880">
+          <media id="idm294600938752" alt="">
+            <image mime-type="" src="../../media/x105.png"/>
+<image mime-type="application/postscript" src="../../media/x105.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm294600937536">
+          <media id="idm294600937408" alt="">
+            <image mime-type="" src="../../media/XR.png"/>
+<image mime-type="application/postscript" src="../../media/XR.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm294600936192">
+          <media id="idm294600936064" alt="">
+            <image mime-type="" src="../../media/XI.png"/>
+<image mime-type="application/postscript" src="../../media/XI.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        
+      <caption>A real-valued finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, with the real and imaginary parts of its DFT.</caption></figure><para id="idm294600930672">Perhaps you have noticed, in the figures above, that there is a certain symmetry for these (real-valued) signals' DFTs. For the real part of the DFT, you see that <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">{\rm Re~}[X[k]]={\rm Re~}[X[N-k]]</m:annotation></m:semantics></m:math>, and that <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">{\rm Im~}[X[k]]=-{\rm Im~}[X[N-k]]</m:annotation></m:semantics></m:math>. Recalling that the DFT is periodic, if we consider frequencies from <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">-\frac{N}{2}</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:annotation encoding="math/tex">\frac{N}{2}</m:annotation></m:semantics></m:math>, then we have <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">{\rm Re~}[X[k]]={\rm Re~}[X[-k]]</m:annotation></m:semantics></m:math>, and that <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">{\rm Im~}[X[k]]=-{\rm Im~}[X[-k]]</m:annotation></m:semantics></m:math>. Or, in words: the real part of the DFT is even, and the imaginary part is odd.</para><figure id="idm294600779984" orient="vertical"><subfigure id="idm294600779216">
+          <media id="idm294600779088" alt="">
+            <image mime-type="" src="../../media/x105.png"/>
+<image mime-type="application/postscript" src="../../media/x105.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm294600777872">
+          <media id="idm294600777744" alt="">
+            <image mime-type="" src="../../media/XRS.png"/>
+<image mime-type="application/postscript" src="../../media/XRS.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm294600776528">
+          <media id="idm294600776400" alt="">
+            <image mime-type="" src="../../media/XIS.png"/>
+<image mime-type="application/postscript" src="../../media/XIS.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        
+      <caption>For real-valued signals such as <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> here, the real part of their DFTs are even and the odd part is odd, which is more readily seen when they are plotted with <m:math><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> ranging from <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">-\frac{N}{2}</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mfrac><m:mi>N</m:mi><m:mn>2</m:mn></m:mfrac><m:annotation encoding="math/tex">\frac{N}{2}</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm294600764496">This symmetry was not a coincidence for the DFT of that particular <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>; because the complex harmonic sinusoid signals that make up the DFT sum formula are conjugate symmetric (the real part is even, the imaginary part is odd), the DFTs of all purely real signals will also be conjugate symmetric. The converse is true for purely imaginary signals; their DFTs will be symmetric such that the real part is odd and the imaginary part is even. If, in addition to being purely real or purely imaginary, the signal itself is also even or odd, that will further limit the characteristics of its DFT. Note that if a signal is complex-valued, its DFT will not--in general--exhibit any such symmetries.</para><table id="eip-157" summary="DFT Symmetry Table">
+<tgroup cols="6"><tbody>
+  <row>
+    <entry><m:math><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi mathvariant="normal">∠</m:mi><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">[</m:mo><m:mi>k</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>real</entry>
+    <entry>conjugate symmetric:<newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>real and even</entry>
+    <entry>real and even</entry>
+    <entry>even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+  <row>
+    <entry>real and odd</entry>
+    <entry>imaginary and odd</entry>
+    <entry>zero</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                      <m:mrow>
+                        <m:mo>±</m:mo>
+                        <m:mfrac>
+                          <m:mi>π</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                      </m:mrow>
+                  </m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary</entry>
+    <entry>conjugate odd symmetric <newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>k</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">]</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>imaginary and even</entry>
+    <entry>imaginary and even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry><m:math><m:mrow><m:mo>±</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary and odd</entry>
+    <entry>real and odd</entry>
+    <entry>odd</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+</tbody>
+</tgroup>
+</table></section></content>
+</document>

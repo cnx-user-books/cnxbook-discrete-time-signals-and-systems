@@ -1,0 +1,1122 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Inner Products and Orthogonality</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57618</md:content-id>
+  <md:title>Inner Products and Orthogonality</md:title>
+  <md:abstract/>
+  <md:uuid>ae07056c-3869-4fa5-bba4-c68910470847</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">
+In discrete-time signal processing, understanding signals as vectors within a vector space allows us to use tools of analysis and linear algebra to examine signal properties. One of the properties we may want to consider is the similarity of (or difference between) two vectors. A mathematical tool that provides insight into this is the <term><emphasis>inner product</emphasis></term>.</para>
+    <section id="idm55343954432">
+      <title>Transposing Vectors</title>
+      <para id="idm55343953888">One of the ways to express the inner product of two vectors is through matrix multiplication. To explain that, we must first introduce the concept of transposing vectors. In order to multiply two matrices (a vector is simply a matrix in which one of the dimensions is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>), the column dimension of the first must match the row dimension of the second. To make those match for two vectors with the same dimensions, we must <term>transpose</term> one of them. To take the transpose of a matrix, simply turn the rows into columns: the first row will become the first column in the transposed matrix; the second row, the second column, and so on. Here is how that looks for a vector. An <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>-row, single column vector transposed becomes a <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math> row, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>-column vector:
+</para>
+      <para id="idm55343946720"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>⋮</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow><m:mi>T</m:mi></m:msup><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mo>⋯</m:mo></m:mtd><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\begin{bmatrix}x[0] \\ x[1] \\ \vdots \\ x[N-1] \end{bmatrix}^T = \begin{bmatrix}x[0] &amp; x[1] &amp; \cdots &amp; x[N-1] \end{bmatrix}</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-672">Now, when it comes to complex-valued vectors, we can take a transpose in the same way, but for the purposes of finding an inner product we actually need to take the conjugate, or Hermitian, transpose, which involves taking the transpose and then the complex conjugate of each entry:</para><para id="idm55343919680">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msup>
+                <m:mrow>
+                  <m:mo>[</m:mo>
+                  <m:mtable rowspacing="4pt" columnspacing="1em">
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mn>0</m:mn>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mo>⋮</m:mo>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mi>x</m:mi>
+                        <m:mo stretchy="false">[</m:mo>
+                        <m:mi>N</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mn>1</m:mn>
+                        <m:mo stretchy="false">]</m:mo>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mo>]</m:mo>
+                </m:mrow>
+                <m:mi>H</m:mi>
+              </m:msup>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mtable rowspacing="4pt" columnspacing="1em">
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mn>0</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo>∗</m:mo>
+                      </m:msup>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo>∗</m:mo>
+                      </m:msup>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mo>⋯</m:mo>
+                    </m:mtd>
+                    <m:mtd>
+                      <m:mi>x</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:msup>
+                        <m:mo stretchy="false">]</m:mo>
+                        <m:mo>∗</m:mo>
+                      </m:msup>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+                <m:mo>]</m:mo>
+              </m:mrow>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{bmatrix}x[0] \\ x[1] \\ \vdots \\ x[N-1] \end{bmatrix}^H =\begin{bmatrix}x[0]^* &amp; x[1]^* &amp; \cdots &amp; x[N-1]^* \end{bmatrix}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm55343891520">Of course, for real valued vectors, the regular transpose and Hermitian transpose are identical.</para>
+    </section>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm55343891152"><title>The Inner Product</title><para id="idm55343890608">The <emphasis>inner product</emphasis> of two complex (or real) valued vectors is defined as:</para>
+      <para id="idm55343889888">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mo fence="false" stretchy="false">⟨</m:mo>
+              <m:mi>x</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>y</m:mi>
+              <m:mo fence="false" stretchy="false">⟩</m:mo>
+              <m:mo>=</m:mo>
+              <m:msup>
+                <m:mi>y</m:mi>
+                <m:mi>H</m:mi>
+              </m:msup>
+              <m:mi>x</m:mi>
+              <m:mo>=</m:mo>
+              <m:munderover>
+                <m:mo>∑</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>N</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mrow>
+              </m:munderover>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mspace width="thinmathspace"/>
+              <m:mi>y</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:msup>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mo>∗</m:mo>
+              </m:msup>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\langle x, y \rangle = y^H x = \sum_{n=0}^{N-1} x[n] \, y[n]^*</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm55343873776">So the inner product operation takes two vectors as inputs and produces a single number. It turns out that the number it produces is related to the <emphasis>angle</emphasis> <m:math><m:semantics><m:mi>θ</m:mi><m:annotation encoding="math/tex">\theta</m:annotation></m:semantics></m:math> between the two vectors:</para><para id="idm55343871504"><m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mi>cos</m:mi>
+              <m:mo>⁡(</m:mo>
+              <m:msub>
+                <m:mi>θ</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>x</m:mi>
+                  <m:mo>,</m:mo>
+                  <m:mi>y</m:mi>
+                </m:mrow>
+              </m:msub>
+<m:mo>⁡)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">R</m:mi>
+                    <m:mi mathvariant="normal">e</m:mi>
+                    <m:mtext> </m:mtext>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo fence="false" stretchy="false">⟨</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo>,</m:mo>
+                    <m:mi>y</m:mi>
+                    <m:mo fence="false" stretchy="false">⟩</m:mo>
+                  </m:mrow>
+                </m:mrow>
+                <m:mrow>
+                  <m:mo fence="false" stretchy="false">∥</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:msub>
+                    <m:mo>∥</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                  <m:mspace width="thinmathspace"/>
+                  <m:mo>∥</m:mo>
+                  <m:mi>y</m:mi>
+                  <m:msub>
+                    <m:mo fence="false" stretchy="false">∥</m:mo>
+                    <m:mn>2</m:mn>
+                  </m:msub>
+                </m:mrow>
+              </m:mfrac>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\cos \theta_{x,y} = \frac{{\rm Re~}{\langle x, y \rangle}}{\|x\|_2 \, \|y\|_2}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para><para id="idm55343853952">This formula works for complex and real vectors, although taking the real part of the inner product is redundant for real-valued ones.</para>
+      <para id="eip-630">For two- (or three-) dimensional vectors, this angle is exactly what you would expect it to be. Let 
+</para>
+      <para id="idm55343852944">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:mi>x</m:mi>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mtable rowspacing="4pt" columnspacing="1em">
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>1</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>2</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+                <m:mo>]</m:mo>
+              </m:mrow>
+              <m:mo>,</m:mo>
+              <m:mtext> </m:mtext>
+              <m:mi>y</m:mi>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mo>[</m:mo>
+                <m:mtable rowspacing="4pt" columnspacing="1em">
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>3</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mtd>
+                      <m:mn>2</m:mn>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+                <m:mo>]</m:mo>
+              </m:mrow>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x=\begin{bmatrix}1 \\ 2 \end{bmatrix}, ~y=\begin{bmatrix}3 \\ 2 \end{bmatrix}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm55343840672">We have
+<m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:msubsup><m:mo>∥</m:mo><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:msup><m:mn>1</m:mn><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mn>2</m:mn><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>5</m:mn><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:mo>∥</m:mo><m:mi>y</m:mi><m:msubsup><m:mo>∥</m:mo><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:msup><m:mn>3</m:mn><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mn>2</m:mn><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>13</m:mn></m:mrow><m:annotation encoding="math/tex">\|x\|_2^2 = 1^2 + 2^2 = 5~,~\|y\|_2^2 = 3^2 + 2^2 = 13</m:annotation></m:semantics></m:math> ,and <m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>7</m:mn></m:mrow><m:annotation encoding="math/tex">\langle x, y \rangle=(1)(3)+(2)(2)=7</m:annotation></m:semantics></m:math>.
+The angle between them is <m:math><m:semantics><m:mrow><m:mi>arccos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>7</m:mn><m:msqrt><m:mo stretchy="false">(</m:mo><m:mn>5</m:mn><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>13</m:mn><m:mo stretchy="false">)</m:mo></m:msqrt></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>≈</m:mo><m:mn>0.519</m:mn><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">r</m:mi><m:mi mathvariant="normal">a</m:mi><m:mi mathvariant="normal">d</m:mi></m:mrow><m:mo>≈</m:mo><m:msup><m:mn>29.7</m:mn><m:mo>∘</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">\arccos\left(\frac{7}{\sqrt{(5)(13)}}\right) \approx 0.519~{\rm rad} \approx 29.7^\circ</m:annotation></m:semantics></m:math>. If you plot the vectors out in the Cartesian plane, you will indeed see an angle between them of about <m:math><m:semantics><m:mn>30</m:mn><m:annotation encoding="math/tex">30</m:annotation></m:semantics></m:math> degrees.</para>
+      <para id="eip-751">For higher dimensional signals the result of the inner product--how it relates to the angle between signals--may not seem as intuitive, but the information it provides is still just as useful, and of course it is computed in the same was as with shorter vectors. Consider the signals below:</para>
+      <figure id="idm55343798112" orient="vertical"><subfigure id="idm55343797344">
+          <media id="idm55343797184" alt="">
+            <image mime-type="" src="../../media/sigFun10.png"/>
+<image mime-type="application/postscript" src="../../media/sigFun10.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm55343795968">
+          <media id="idm55343795840" alt="">
+            <image mime-type="" src="../../media/sigFun11.png"/>
+<image mime-type="application/postscript" src="../../media/sigFun11.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      </figure><para id="idm55343793968">
+The inner product of these two signals, computed according to the formula above, is <m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msup><m:mi>y</m:mi><m:mi>T</m:mi></m:msup><m:mi>x</m:mi><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mn>5.995</m:mn></m:mrow><m:annotation encoding="math/tex">\langle x, y \rangle ~=~ y^T x ~=~  5.995</m:annotation></m:semantics></m:math>, which corresponds to an angle of <m:math><m:semantics><m:mrow><m:msub><m:mi>θ</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:msub><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msup><m:mn>64.9</m:mn><m:mo>∘</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">\theta_{x,y} ~=~ 64.9^\circ</m:annotation></m:semantics></m:math>.</para>
+    </section><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm55343778944"><title>Inner product: Limiting Cases</title><para id="idm55343778400">Recall that the inner product is defined as a sum (<m:math><m:semantics><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:msup><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">\sum_{n=0}^{N-1} x[n] \, y[n]^*</m:annotation></m:semantics></m:math>), which can also be expressed as a vector product (<m:math><m:semantics><m:mrow><m:msup><m:mi>y</m:mi><m:mi>H</m:mi></m:msup><m:mi>x</m:mi></m:mrow><m:annotation encoding="math/tex">y^H x</m:annotation></m:semantics></m:math>). Let's look at a couple of interesting values that sum could take.</para>
+      <para id="eip-270">The dot product of two signals could be rather large. If the signals are identical, it is simply the norm of the signal, squared: </para>
+      <para id="idm55343763776"><m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>x</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:msup><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo></m:msup><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mo>∥</m:mo><m:mi>x</m:mi><m:msubsup><m:mo fence="false" stretchy="false">∥</m:mo><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup></m:mrow><m:annotation encoding="math/tex">\langle x, x \rangle = \sum_{n=0}^{N-1} x[n] \, x[n]^* = \sum_{n=0}^{N-1} |x[n]|^2 = \|x\|_2^2</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-363">On the other hand, it is also possible for the dot product sum to be <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>. Consider the two signals below:</para>
+      <figure id="idm55343734096" orient="vertical"><subfigure id="idm55343733328">
+          <media id="idm55343733200" alt="">
+            <image mime-type="" src="../../media/orthog1a.png"/>
+<image mime-type="application/postscript" src="../../media/orthog1a.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm55343731984">
+          <media id="idm55343731856" alt="">
+            <image mime-type="" src="../../media/orthog1b.png"/>
+<image mime-type="application/postscript" src="../../media/orthog1b.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The inner product of these two signals is <m:math><m:mrow><m:mn>0</m:mn></m:mrow></m:math>.</caption></figure><para id="idm55343729728">
+The inner product of those two signals is obviously <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> because each point-wise product is also <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>. But it is possible, of course, for products in the sum to be nonzero and still have the total add up to <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>:</para>
+      <figure id="idm55343724944" orient="vertical"><subfigure id="idm55343724176">
+          <media id="idm55343724048" alt="">
+            <image mime-type="" src="../../media/orthog2a.png"/>
+<image mime-type="application/postscript" src="../../media/orthog2a.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm55343722832">
+          <media id="idm55343722704" alt="">
+            <image mime-type="" src="../../media/orthog2b.png"/>
+<image mime-type="application/postscript" src="../../media/orthog2b.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>Despite overlapping nonzero entries in the time domain, the inner product of these two particular signals is also <m:math><m:mrow><m:mn>0</m:mn></m:mrow></m:math>.</caption></figure><para id="idm55343720576">
+Whenever the inner product of two signals is <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>, it is defined that those signals are <term><emphasis>orthogonal</emphasis>.</term> </para>
+    </section><section id="idm55343718064">
+      <title>Orthogonality of Harmonic Sinusoids</title>
+      <para id="idm55343717552">Recall the special class of discrete-time finite length signals called harmonic sinusoids: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>s</m:mi><m:mi>k</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>N</m:mi></m:mfrac><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>k</m:mi><m:mo>,</m:mo><m:mi>N</m:mi><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">Z</m:mi></m:mrow><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>n</m:mi><m:mo>≤</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>k</m:mi><m:mo>≤</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">s_k[n] = e^{j \frac{2 \pi}{N} kn}, ~~~ n,k,N\in\mathbb{Z}, ~~ 0\leq n \leq N-1, ~~ 0\leq k \leq N-1</m:annotation></m:semantics></m:math></para>
+      <para id="idm55343695312">It is a very interesting property that any two of these sinusoids having different frequencies (i.e., <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>k</m:mi><m:mo>≠</m:mo><m:mi>l</m:mi></m:mrow><m:annotation encoding="math/tex">k\neq l</m:annotation></m:semantics></m:math>) are orthogonal:</para>
+      <para id="idm55343692592">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mo fence="false" stretchy="false">⟨</m:mo>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>l</m:mi>
+                  </m:msub>
+                  <m:mo fence="false" stretchy="false">⟩</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:msubsup>
+                    <m:mi>s</m:mi>
+                    <m:mi>l</m:mi>
+                    <m:mo>∗</m:mo>
+                  </m:msubsup>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>l</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msup>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>∗</m:mo>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>k</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mspace width="mediummathspace"/>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo>−</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>l</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mi>l</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mtext> </m:mtext>
+                  <m:mtext> </m:mtext>
+                  <m:mtext> </m:mtext>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>let </m:mtext>
+                  </m:mrow>
+                  <m:mi>r</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mi>k</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:mi>l</m:mi>
+                  <m:mo>∈</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="double-struck">Z</m:mi>
+                  </m:mrow>
+                  <m:mo>,</m:mo>
+                  <m:mi>r</m:mi>
+                  <m:mo>≠</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>r</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>a</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                  <m:mtext> </m:mtext>
+                  <m:mtext> </m:mtext>
+                  <m:mtext> </m:mtext>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>with </m:mtext>
+                  </m:mrow>
+                  <m:mtext> </m:mtext>
+                  <m:mi>a</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>r</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>,</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>and recall </m:mtext>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mi>a</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:msup>
+                        <m:mi>a</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:mi>a</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>j</m:mi>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                              <m:mi>π</m:mi>
+                              <m:mi>r</m:mi>
+                              <m:mi>N</m:mi>
+                            </m:mrow>
+                            <m:mi>N</m:mi>
+                          </m:mfrac>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>−</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>j</m:mi>
+                          <m:mfrac>
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                              <m:mi>π</m:mi>
+                              <m:mi>r</m:mi>
+                            </m:mrow>
+                            <m:mi>N</m:mi>
+                          </m:mfrac>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mtext> </m:mtext>
+                  <m:mo>=</m:mo>
+                  <m:mtext> </m:mtext>
+                  <m:mn>0</m:mn>
+                  <m:mtext> </m:mtext>
+                  <m:mtext> </m:mtext>
+                  <m:mi>✓</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:annotation encoding="math/tex">\begin{align*}
+\langle s_k | s_l \rangle &amp;= \sum_{n=0}^{N-1} s_k[n] s_l^*[n]\\
+&amp;= \sum_{n=0}^{N-1} e^{j \frac{2 \pi}{N}kn}  (e^{j \frac{2 \pi }{N}l n})^*\\
+&amp;= \sum_{n=0}^{N-1} e^{j \frac{2 \pi }{N}k n} \: e^{-j \frac{2 \pi }{N}l n} \\
+&amp;= \sum_{n=0}^{N-1} e^{j \frac{2 \pi}{N} (k-l) n} ~~~ \textrm{let }r=k-l \in \mathbb{Z}, r\neq 0 \\
+&amp;= \sum_{n=0}^{N-1} e^{j \frac{2 \pi}{N} r n}\\
+&amp;=\sum_{n=0}^{N-1} a^n ~~~ \textrm{with }~a=e^{j \frac{2 \pi}{N} r},\textrm{and recall }\sum_{n=0}^{N-1} a^n = \frac{1-a^N}{1-a} \\
+  &amp;= \frac{ 1- e^{j \frac{2 \pi r N }{N}} }{1-e^{j \frac{2 \pi r}{N}} } ~=~ 0 ~~\checkmark
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm55343567248">If two of these sinusoids have the same frequency, then their inner product is simply <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>:
+</para>
+      <para id="idm55343564688">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mo fence="false" stretchy="false">⟨</m:mo>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo>,</m:mo>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo fence="false" stretchy="false">⟩</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mo>∥</m:mo>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:msubsup>
+                    <m:mo fence="false" stretchy="false">∥</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mn>2</m:mn>
+                  </m:msubsup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>s</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:msup>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo stretchy="false">|</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                          <m:mi>k</m:mi>
+                        </m:mrow>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mi>n</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msup>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>N</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:mn>1</m:mn>
+                  <m:mtext> </m:mtext>
+                  <m:mo>=</m:mo>
+                  <m:mtext> </m:mtext>
+                  <m:mi>N</m:mi>
+                  <m:mi>✓</m:mi>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:annotation encoding="math/tex">\begin{align*}
+\langle s_k, s_k\rangle&amp;=\|s_k \|_2^2\\
+&amp;= \sum_{n=0}^{N-1} |s_k[n]|^2 \\
+&amp;= \sum_{n=0}^{N-1} |e^{j \frac{2 \pi k}{N} n}|^2\\
+&amp;=\sum_{n=0}^{N-1} 1 ~=~ N\checkmark
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-504">So the inner product of two harmonic sinusoids is zero if their frequencies are different, and <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> if they are the same. In order to make the latter number <m:math><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>, instead of <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, they are sometimes normalized:</para><para id="idm55343513136">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mover>
+                    <m:mi>s</m:mi>
+                    <m:mo stretchy="false">~</m:mo>
+                  </m:mover>
+                </m:mrow>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>=</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:msqrt>
+                  <m:mi>N</m:mi>
+                </m:msqrt>
+              </m:mfrac>
+              <m:mspace width="thinmathspace"/>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                    <m:mi>N</m:mi>
+                  </m:mfrac>
+                  <m:mi>k</m:mi>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>,</m:mo>
+              <m:mtext> </m:mtext>
+              <m:mtext> </m:mtext>
+              <m:mtext> </m:mtext>
+              <m:mi>n</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>,</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>∈</m:mo>
+              <m:mi>Z</m:mi>
+              <m:mo>,</m:mo>
+              <m:mtext> </m:mtext>
+              <m:mtext> </m:mtext>
+              <m:mn>0</m:mn>
+              <m:mo>≤</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>≤</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>−</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>,</m:mo>
+              <m:mtext> </m:mtext>
+              <m:mtext> </m:mtext>
+              <m:mn>0</m:mn>
+              <m:mo>≤</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>≤</m:mo>
+              <m:mi>N</m:mi>
+              <m:mo>−</m:mo>
+              <m:mn>1</m:mn>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\tilde{s}_k[n] = \frac{1}{\sqrt{N}}\, e^{j \frac{2 \pi }{N} kn},
+~~~ n,k,N\in Z, ~~ 0\leq n \leq N-1, ~~ 0\leq k \leq N-1</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para></section>
+      <section id="idm55343488272">
+        <title>Matrix Multiplication and Inner Products</title>
+        <para id="idm55343487712">Let's take look at the formula for the matrix multiplication <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>X</m:mi><m:mi>a</m:mi></m:mrow><m:annotation encoding="math/tex">y=Xa</m:annotation></m:semantics></m:math>. For notation, we will represent the value on the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>th row and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math>th column of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>X</m:mi><m:annotation encoding="math/tex">X</m:annotation></m:semantics></m:math> as <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_m[n]</m:annotation></m:semantics></m:math>. The matrix multiplication looks like this:</para>
+        <para id="idm55343476432">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>y</m:mi>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>X</m:mi>
+                    <m:mi>a</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mtable rowspacing="4pt" columnspacing="1em">
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mi>y</m:mi>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mtable rowspacing="4pt" columnspacing="1em">
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                          <m:mtd/>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mn>0</m:mn>
+                            </m:msub>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mn>1</m:mn>
+                            </m:msub>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mo>⋯</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>x</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mi>M</m:mi>
+                                <m:mo>−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:msub>
+                            <m:mo stretchy="false">[</m:mo>
+                            <m:mi>n</m:mi>
+                            <m:mo stretchy="false">]</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                          <m:mtd/>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mo>[</m:mo>
+                      <m:mtable rowspacing="4pt" columnspacing="1em">
+                        <m:mtr>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>α</m:mi>
+                              <m:mn>0</m:mn>
+                            </m:msub>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>α</m:mi>
+                              <m:mn>1</m:mn>
+                            </m:msub>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:mo>⋮</m:mo>
+                          </m:mtd>
+                        </m:mtr>
+                        <m:mtr>
+                          <m:mtd>
+                            <m:msub>
+                              <m:mi>α</m:mi>
+                              <m:mrow class="MJX-TeXAtom-ORD">
+                                <m:mi>M</m:mi>
+                                <m:mo>−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:msub>
+                          </m:mtd>
+                        </m:mtr>
+                      </m:mtable>
+                      <m:mo>]</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+              <m:annotation encoding="math/tex">\begin{align*}y&amp;=Xa\\\begin{bmatrix}\vdots \\ y[n] \\ \vdots\end{bmatrix}&amp;=\begin{bmatrix}\vdots  &amp; \vdots &amp;&amp; \vdots  \\
+x_0[n] &amp; x_1[n] &amp; \cdots &amp; x_{M-1}[n] \\
+\vdots  &amp; \vdots &amp;&amp; \vdots \end{bmatrix}\begin{bmatrix}\alpha_0 \\ \alpha_1 \\ \vdots \\ \alpha_{M-1}\end{bmatrix}\end{align*}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="idm55343430848">And the value for the multiplication is:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>α</m:mi><m:mi>m</m:mi></m:msub><m:mspace width="thinmathspace"/><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = \sum_{m=0}^{M-1} \alpha_m \, x_m[n]</m:annotation></m:semantics></m:math>. Hopefully that formula looks familiar! What it is showing is that the matrix multiplication <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mi>X</m:mi><m:mi>a</m:mi></m:mrow><m:annotation encoding="math/tex">y=Xa</m:annotation></m:semantics></m:math> is simply the inner product of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>a</m:mi><m:annotation encoding="math/tex">a</m:annotation></m:semantics></m:math> with each row of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>X</m:mi><m:annotation encoding="math/tex">X</m:annotation></m:semantics></m:math>, when <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>X</m:mi><m:annotation encoding="math/tex">X</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>a</m:mi><m:annotation encoding="math/tex">a</m:annotation></m:semantics></m:math> are real. If they are complex-valued, then the complex conjugate of one of them would have to be performed before the matrix multiplication for each value of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math> to be the inner product of the matrix row with <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>a</m:mi><m:annotation encoding="math/tex">a</m:annotation></m:semantics></m:math>.</para>
+      </section>
+      <section id="idm55343406752">
+        <title>The Cauchy Schwarz Inequality</title>
+        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm55343406208">Above we saw that the inner product of two vectors can be as small as <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>, in which case the vectors are orthogonal, or it can be large, such as when the two vectors are identical (and the inner product is simply the norm of  the vector, squared). It turns out that there is a very significant inequality that explains these two cases. It is called the <term><emphasis>Cauchy Schwarz Inequality</emphasis></term>, which states that for two vectors <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math>,
+<m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>≤</m:mo><m:mo>∥</m:mo><m:mi>x</m:mi><m:mo>∥</m:mo><m:mo>∥</m:mo><m:mi>y</m:mi><m:mo>∥</m:mo><m:mo>.</m:mo></m:mrow><m:annotation encoding="math/tex">|\langle x,y \rangle |\leq \|x\| \|y\|.</m:annotation></m:semantics></m:math>
+Now the magnitude of the inner product is always greater than or equal to <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> (being <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> if the vectors are orthogonal), so we can expand the inequality thus:
+<m:math><m:semantics><m:mrow><m:mn>0</m:mn><m:mo>≤</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>≤</m:mo><m:mo>∥</m:mo><m:mi>x</m:mi><m:mo>∥</m:mo><m:mo>∥</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">∥</m:mo></m:mrow><m:annotation encoding="math/tex">0\leq |\langle x,y \rangle |\leq \|x\| \|y\|</m:annotation></m:semantics></m:math>. If we divide the equation by <m:math><m:semantics><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo>∥</m:mo><m:mo>∥</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">∥</m:mo></m:mrow><m:annotation encoding="math/tex">\|x\| \|y\|</m:annotation></m:semantics></m:math>, then we have
+<m:math><m:semantics><m:mrow><m:mn>0</m:mn><m:mo>≤</m:mo><m:mfrac><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:mo>∥</m:mo><m:mo>∥</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">∥</m:mo></m:mrow></m:mfrac><m:mo>≤</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">0\leq \frac{|\langle x,y \rangle |}{\|x\| \|y\|}\leq 1</m:annotation></m:semantics></m:math>. This explains why we can define
+<m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mo>(⁡</m:mo><m:msub><m:mi>θ</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi></m:mrow></m:msub><m:mo>)⁡</m:mo><m:mo>=</m:mo><m:mfrac><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo fence="false" stretchy="false">⟨</m:mo><m:mi>x</m:mi><m:mo>,</m:mo><m:mi>y</m:mi><m:mo fence="false" stretchy="false">⟩</m:mo></m:mrow></m:mrow><m:mrow><m:mo fence="false" stretchy="false">∥</m:mo><m:mi>x</m:mi><m:msub><m:mo>∥</m:mo><m:mn>2</m:mn></m:msub><m:mspace width="thinmathspace"/><m:mo>∥</m:mo><m:mi>y</m:mi><m:msub><m:mo fence="false" stretchy="false">∥</m:mo><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">\cos \theta_{x,y} = \frac{{\rm Re~}{\langle x, y \rangle}}{\|x\|_2 \, \|y\|_2}</m:annotation></m:semantics></m:math>, 
+for the cosine function also has a range of <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>.
+
+</para><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-609">Now there are many different proofs of the inequality, and it is something of a mathematical pastime to appreciate their various constructions. But for signal processing purposes, we are more interested in the utility of the inequality. What it basically says is that--when the norms of two vectors are taken into consideration--their inner product ranges in value from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>. Because of this, we can see that the inner product introduces some kind of comparison between two different vectors. It is at its smallest when they are, in a sense, very different from each other, or <term>orthogonal</term>. It is at its peak when the vectors are simply scalar multiples of each other, or in other words, are very alike.</para><para id="eip-419">It turns out there are many applications in which we would like to determine how similar one signal is to another. How does a digital communication system decide whether the signal corresponding to a "<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>" was transmitted or the signal corresponding to a "<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>"? How does a radar or sonar system find targets in the signal it receives after transmitting a pulse? How does a computer vision system find faces in images? For each of these questions, the similarity/dissimilarity bounds established by the Cauchy Schwarz inequality help us to determine the answer.</para>
+      </section>
+  </content>
+</document>

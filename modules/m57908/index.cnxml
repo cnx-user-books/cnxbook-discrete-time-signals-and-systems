@@ -1,0 +1,295 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Inverse Filters and Deconvolution</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57908</md:content-id>
+  <md:title>Inverse Filters and Deconvolution</md:title>
+  <md:abstract/>
+  <md:uuid>02966e04-2314-4b5f-9852-58f310e29b78</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">We have already seen how discrete-time LTI systems can be represented mathematically in both the time domain (through the impulse response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>) and frequency domain (through either the frequency response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(\omega)</m:annotation></m:semantics></m:math> or the transfer function <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math>). But systems can be thought of not only as entities that we create to modify signals, but as real-world environments which might perform unwanted (or only temporarily wanted) changes to the signal. For example, a television or cell phone signal traveling in the air through a downtown area might reach its destination with added echoes. Or a camera lens might introduce unintentional blur on a photograph. Or a signal might be modified to help with its transmission. In each of these cases, we can represent the modifications as a system that takes an input and produces an output, and we ultimately would like to undo the changes the system made; we would like to recover the input, given the output. A system that seeks to recover this original input is called an <term><emphasis>inverse filter</emphasis></term>, and the process of inverse filtering is also known as <term><emphasis>deconvolution</emphasis></term>.</para>
+    <section id="idm125212659328">
+      <title>Inverse Filtering in the z-Domain</title>
+      <para id="idm125212658768">Suppose there is an LTI system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi></m:mrow><m:annotation encoding="math/tex">G</m:annotation></m:semantics></m:math> that takes an input signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and produces output <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>. What we would like to do is create another system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi></m:mrow><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> that takes this <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> and then, ideally, produce <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> as its output; we will call the actual output <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mover><m:mi>x</m:mi><m:mo stretchy="false">^</m:mo></m:mover></m:mrow><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">\hat{x}[n]</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-643">It might not be clear at first how to create a system that recovers <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>, especially if we consider the problem in the time domain: if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>g</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[n]\ast g[n]</m:annotation></m:semantics></m:math>, then what must <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math> be so that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>g</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]\ast y[n]=h[n]\ast (x[n]\ast g[n])=x[n]</m:annotation></m:semantics></m:math>? By the associative and commutative properties of convolution, you could say we would want <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>g</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]\ast g[n]=\delta[n]</m:annotation></m:semantics></m:math> because <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">\delta[n]\ast x[n]=x[n]</m:annotation></m:semantics></m:math>, but even then, how do you create such an impulse response?</para>
+      <para id="eip-1000">The problem is more straightforward when we consider it from the z-domain:</para>
+      <para id="idm125212586624">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mover>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">^</m:mo>
+                      </m:mover>
+                    </m:mrow>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>Y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>G</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>X</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>X</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mtext> </m:mtext>
+                    <m:mo>,</m:mo>
+                    <m:mtext> </m:mtext>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>G</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mtext> </m:mtext>
+                    <m:mi mathvariant="normal">∀</m:mi>
+                    <m:mtext> </m:mtext>
+                    <m:mi>z</m:mi>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*} \hat{X}(z)&amp;=H(z)Y(z)\\ &amp;=H(z)G(z)X(z)\\ &amp;=X(z)~,~H(z)=\frac{1}{G(z)}~\forall ~z \end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm125212553984">So if we can create <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> such that it equals <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{1}{G(z)}</m:annotation></m:semantics></m:math>, then we can recover the original input <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> by filtering the output <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> through a system whose transfer function is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math>. If the original filter <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math> is a rational function with certain poles and zeros, then the inverse filter will also be a rational function; and, since <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">H(z)=\frac{1}{G(z)}</m:annotation></m:semantics></m:math>, it follows naturally that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> will have poles at the locations of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math>'s zeros and zeros at the location of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math>'s poles:</para>
+      <para id="idm125212516944">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>G</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>z</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>N</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mi>M</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mspace width="thinmathspace"/>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mi>M</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mi>N</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo>,</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mtext> </m:mtext>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>G</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>z</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>M</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mi>N</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mspace width="thinmathspace"/>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mi>N</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mi>M</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*} G(z) &amp;= z^{N-M}\, \frac{(z-\zeta_1)(z-\zeta_2) \cdots (z-\zeta_M)}{(z-p_1)(z-p_2) \cdots (z-p_N)},\\ ~\\ H(z)=\frac{1}{G(z)}&amp;=z^{M-N}\, \frac{(z-p_1)(z-p_2) \cdots (z-p_N)}{(z-\zeta_1)(z-\zeta_2) \cdots (z-\zeta_M)} \end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm125212452800">
+      <title>Approximate Inverse Filters</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm125212452288">As remarkable as this simple inverse filtering solution is, there is a huge proviso to it: the <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> must be a stable system. If it is also to be causal (which is of practical importance), that means that all of its poles must lie within the unit circle. As its pole locations are simply the zero locations of <m:math><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math>, this means that <m:math><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math> is invertible if all of its <emphasis effect="italics">zeros</emphasis> are within the unit circle. If, on the other hand, <m:math><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math> has zeros on or outside the unit circle, then the inverse filter <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">H(z)=\frac{1}{G(z)}</m:annotation></m:semantics></m:math> cannot be counted on to recover the original input.</para><para id="eip-956">There is an intuitive reason why a <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math> with a pole on or outside the unit circle could not be inverted. Suppose the system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi></m:mrow><m:annotation encoding="math/tex">G</m:annotation></m:semantics></m:math> has this simple input/output relationship:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>−</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[n]-x[n-1]</m:annotation></m:semantics></m:math>. Such a system is a primitive high-pass filter, with a single zero on the unit circle at <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">z=1</m:annotation></m:semantics></m:math>. What this zero does is completely eliminate the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math> (i.e., DC) frequency component of the input signal. If all we have, then, is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>, we have absolutely no way of knowing what that value was, therefore there is no <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> that could possibly recover an arbitrary <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> (of course, if it so happened that the original signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> did not have any <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math> component, then it could be recovered). Looking at it from a z-domain point of view, there would have to be a pole for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> at <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">z=1</m:annotation></m:semantics></m:math>, which is BIBO unstable (any input with a non-zero <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math> component will "blow up").</para>
+      <para id="eip-231">Even if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">G(z)</m:annotation></m:semantics></m:math> is not invertible, we can still try to recover <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> as best as we can. As we do so, we will usually want to make sure our inverse filter <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math> is BIBO stable. If it happens that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{1}{G(z)}</m:annotation></m:semantics></m:math> has poles on or outside the unit circle, we will simply move them inside the unit circle. A straightforward way of doing this is by <term>regularization</term>. We choose the smallest constant value of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>r</m:mi></m:mrow><m:annotation encoding="math/tex">r</m:annotation></m:semantics></m:math> that will make the following <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>H</m:mi><m:mi>a</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H_a(z)</m:annotation></m:semantics></m:math> BIBO stable:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>H</m:mi><m:mi>a</m:mi></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mi>G</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>r</m:mi></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">H_a(z)=\frac{1}{G(z)+r}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+  </content>
+</document>

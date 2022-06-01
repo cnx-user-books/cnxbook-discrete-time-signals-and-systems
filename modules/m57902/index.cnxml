@@ -1,0 +1,399 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>z-Transform Properties</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57902</md:content-id>
+  <md:title>z-Transform Properties</md:title>
+  <md:abstract/>
+  <md:uuid>be2b609c-e531-4fd5-8d1b-0d952acf6956</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">As with other signal transforms, the z-transform has a number of significant properties, including ways in which changes to a signal in one domain impacts its representation in another domain. To examine these properties, we will again use the notation of a z-transform "pair." If we have
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:munderover><m:mo movablelimits="false">∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">X(z)=\sum\limits_{n=-\infty}^{\infty}x[n]z^{-n}</m:annotation></m:semantics></m:math>,
+then we express the relationship between <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and its z-transform <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> as
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]\leftrightarrow X(z)</m:annotation></m:semantics></m:math>.</para>
+    <section id="idm99996490112">
+      <title>The z-Transform and the DTFT</title>
+      <para id="idm99996489568">The DTFT is a special case of the z-transform. If we have <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]\leftrightarrow X(z)</m:annotation></m:semantics></m:math> and the ROC of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> contains the unit circle, then the DTFT of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(e^{j\omega})</m:annotation></m:semantics></m:math>, is simply the z-transform <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> evaluated on the unit circle <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>z</m:mi><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">z=e^{j\omega}</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm99996464880">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mi>X</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>=</m:mo>
+              <m:mi>X</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:msub>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo stretchy="false">|</m:mo>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>z</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mi>ω</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:msub>
+            </m:mrow>
+            <m:annotation encoding="math/tex">X(e^{j\omega})=X(z)|_{z=e^{j\omega}}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm99996452208">
+      <title>The z-Transform is Linear</title>
+      <para id="idm99996451696">Given that the z-transform is simply an infinite sum, if follows then that it will be a linear operator. If we have <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]\leftrightarrow X_1(z)</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]\leftrightarrow X_2(z)</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">C</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">\alpha_1,\alpha_2\in \mathbb{C}</m:annotation></m:semantics></m:math>, then:</para>
+      <para id="idm99996431248">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo stretchy="false">↔</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>z</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\alpha_1 x_1[n]+\alpha_2 x_2[n]\leftrightarrow \alpha_1 X_1(z)+\alpha_2 X_2(z)</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm99996412896">However, the ROC of the new transform is the intersection of those of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X_1(z)</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X_2(z)</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm99996404672"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>R</m:mi><m:mi>O</m:mi><m:msub><m:mi>C</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:mi>R</m:mi><m:mi>O</m:mi><m:msub><m:mi>C</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msub><m:mo>⋂</m:mo><m:mi>R</m:mi><m:mi>O</m:mi><m:msub><m:mi>C</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow><m:annotation encoding="math/tex">ROC_{\alpha_1 X_1+\alpha_2 X_2}=ROC_{X_1}\bigcap ROC_{X_2}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996388720">
+      <title>The z-Transform and Shifts in Time</title>
+      <para id="idm99996388160">If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> are a z-transform pair, then:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow></m:msup><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n-m]\leftrightarrow z^{-m}X(z)</m:annotation></m:semantics></m:math>
+and the ROC remains the same as for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> (with the possible addition/removal of a pole at zero and/or zero at infinity):</para>
+      <para id="idm99996369392"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>r</m:mi></m:mrow></m:msup><m:mspace width="thinmathspace"/><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow></m:msup><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>r</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>r</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>r</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow></m:msup><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:mrow><m:annotation encoding="math/tex">\begin{align*}
+\sum_{n=-\infty}^{\infty} x[n-m]\,  z^{-n}&amp;= \sum_{r=-\infty}^{\infty} x[r]\,  z^{-(r+m)}\\
+&amp;=\sum_{r=-\infty}^{\infty} x[r]\,  z^{-r} \, z^{-m} \\
+&amp;=z^{-m} \sum_{r=-\infty}^{\infty} x[r]\,  z^{-r}\\
+&amp;=z^{-m} X(z)
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996310928">
+      <title>The z-Transform and Modulation</title>
+      <para id="idm99996310416">If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> are a z-transform pair, then:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msubsup><m:mi>z</m:mi><m:mn>0</m:mn><m:mi>n</m:mi></m:msubsup><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mfrac><m:mi>z</m:mi><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub></m:mfrac><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">z^n_0 x[n]\leftrightarrow X(\frac{z}{z_0})</m:annotation></m:semantics></m:math>. To determine the ROC of the new z-transform, substitute <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mi>z</m:mi><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{z}{z_0}</m:annotation></m:semantics></m:math> for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>z</m:mi></m:mrow><m:annotation encoding="math/tex">z</m:annotation></m:semantics></m:math> in the original ROC definition, and simplify. For example, if the ROC of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">|z|\gt 1</m:annotation></m:semantics></m:math>, then the new ROC will be <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mfrac><m:mi>z</m:mi><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub></m:mfrac><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&gt;</m:mo><m:mn>1</m:mn><m:mo stretchy="false">→</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>&gt;</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">|\frac{z}{z_0}|\gt 1 \rightarrow |z|\gt |z_0|</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm99996268112"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mo stretchy="false">(</m:mo><m:msubsup><m:mi>z</m:mi><m:mn>0</m:mn><m:mi>n</m:mi></m:msubsup><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>/</m:mo></m:mrow><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub><m:msup><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>z</m:mi><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub></m:mfrac><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow><m:annotation encoding="math/tex">\begin{align*}
+\sum_{n=-\infty}^{\infty} (z_0^n x[n])  z^{-n} &amp;=\sum_{n=-\infty}^{\infty} x[n](z/z_0)^{-n}\\
+&amp;=X\left(\frac{z}{z_0}\right)\end{align*}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996234576">
+      <title>The z-Transform and Complex Conjugation</title>
+      <para id="idm99996234064">If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> are a z-transform pair, then:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>x</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:msup><m:mi>X</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x^*[n] \leftrightarrow X^*(z^*)</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm99996219248"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:msup><m:mi>x</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mo>∗</m:mo></m:msup><m:msup><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>∗</m:mo></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>X</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mo>∗</m:mo></m:msup><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:mrow><m:annotation encoding="math/tex">\begin{align*}
+\sum_{n=-\infty}^{\infty} x^*[n] z^{-n}&amp;=\left(\sum_{n=-\infty}^{\infty} x[n] (z^*)^{-n}\right)^*\\
+&amp;=X^*(z^*)
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996186896">
+      <title>The z-Transform and Time Reversal</title>
+      <para id="idm99996186384">If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> are a z-transform pair, then:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[-n]\leftrightarrow X(z^{-1})</m:annotation></m:semantics></m:math>. With the ROC inverted: to find the ROC, substitute <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>z</m:mi></m:mfrac></m:mrow><m:annotation encoding="math/tex">\frac{1}{z}</m:annotation></m:semantics></m:math> for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>z</m:mi></m:mrow><m:annotation encoding="math/tex">z</m:annotation></m:semantics></m:math> in the original ROC expression and simplify:</para>
+      <para id="idm99996167776"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>n</m:mi></m:mrow></m:msup></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:msup><m:mi>z</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:mrow><m:annotation encoding="math/tex">\begin{align*}
+\sum_{n=-\infty}^{\infty} x[-n] z^{-n}&amp;=\sum_{m=-\infty}^{\infty} x[m]z^{m}\\
+&amp;=\sum_{m=-\infty}^{\infty} x[m] (z^{-1})^{-m}\\
+&amp;=X(z^{-1})
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996126720">
+      <title>The z-Transform and Convolution</title>
+      <para id="idm99996126208">If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]\leftrightarrow X(z)</m:annotation></m:semantics></m:math>, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]\leftrightarrow H(z)</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">↔</m:mo><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]\leftrightarrow Y(z)</m:annotation></m:semantics></m:math> all all z-transform pairs, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[n]\ast h[n]</m:annotation></m:semantics></m:math>, then:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">Y(z)=X(z)H(z)</m:annotation></m:semantics></m:math>,
+with the ROC of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">Y(z)</m:annotation></m:semantics></m:math> being the intersection of the ROCs of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(z)</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>z</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(z)</m:annotation></m:semantics></m:math>.</para>
+    </section>
+    <section id="idm99996083200">
+      <title>Common z-Transform Pairs</title>
+      <para id="idm99996082656">In practice, one does not typically find the z-transform for a signal through the calculation of an infinite sum, but rather refers to a table to find a transform (along with the use of the properties listed above). Below is a table of some of the most common z-transform pairs:</para>
+      <para id="idm99996082112">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="center center center" rowspacing="4pt" columnspacing="1em" rowlines="solid none" columnlines="solid solid">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi>X</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mtext>ROC</m:mtext>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>δ</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mtext>all</m:mtext>
+                    </m:mrow>
+                    <m:mtext> </m:mtext>
+                    <m:mi>z</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>−</m:mo>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mo>&gt;</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>−</m:mo>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mo>&lt;</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>−</m:mo>
+                        <m:mi>α</m:mi>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mo>&gt;</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>α</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mo>−</m:mo>
+                    <m:msup>
+                      <m:mi>α</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msup>
+                    <m:mi>u</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>−</m:mo>
+                        <m:mi>α</m:mi>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>z</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mo>&lt;</m:mo>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                    <m:mi>α</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mo stretchy="false">|</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{array}{c|c|c}
+x[n] &amp; X(z) &amp; \textrm{ROC} \\
+\hline \\
+\delta[n] &amp; 1 &amp; \textrm{all} ~z\\
+u[n] &amp; \frac{1}{1-z^{-1}} &amp; |z|\gt 1 \\
+u[-n-1] &amp; \frac{1}{1-z^{-1}} &amp; |z|\lt 1 \\
+\alpha^n u[n] &amp; \frac{1}{1-\alpha z^{-1}} &amp; |z|\gt|\alpha| \\
+-\alpha^n u[-n-1] &amp; \frac{1}{1-\alpha z^{-1}} &amp; |z|\lt|\alpha|
+\end{array}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      </section>
+  </content>
+</document>

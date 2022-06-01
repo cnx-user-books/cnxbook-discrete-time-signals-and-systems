@@ -1,0 +1,1047 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Discrete-Time Fourier Transform Properties</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57667</md:content-id>
+  <md:title>Discrete-Time Fourier Transform Properties</md:title>
+  <md:abstract/>
+  <md:uuid>dc2b62cc-439b-4895-a130-68f945d55269</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">Recall the definition of the DTFT and the inverse DTFT:</para>
+    <para id="idm82145557808"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo>−</m:mo><m:mi>π</m:mi><m:mo>≤</m:mo><m:mi>ω</m:mi><m:mo>&lt;</m:mo><m:mi>π</m:mi><m:mspace linebreak="newline"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msubsup><m:mo>∫</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:mi>π</m:mi></m:msubsup><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mspace width="thinmathspace"/><m:mfrac><m:mrow><m:mi>d</m:mi><m:mi>ω</m:mi></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mi mathvariant="normal">∞</m:mi><m:mo>&lt;</m:mo><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">X(\omega) ~=~ \sum_{n=-\infty}^{\infty} x[n]\,  e^{-j \omega n}, ~~~~~~ -\pi \leq \omega \lt \pi
+\\ x[n] ~=~ \int_{-\pi}^\pi X(\omega)\, e^{j\omega n} \, \frac{d\omega}{2\pi} , ~~~~~~ \infty\lt n\lt\infty</m:annotation></m:semantics></m:math>
+.</para>
+    <para id="idm82145518256">A signal and its corresponding DTFT is referred to as a DTFT signal pair:</para><para id="idm82145517920">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+        <m:semantics>
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mo stretchy="false">[</m:mo>
+            <m:mi>n</m:mi>
+            <m:mo stretchy="false">]</m:mo>
+            <m:mtext> </m:mtext>
+            <m:mrow class="MJX-TeXAtom-REL">
+              <m:mover>
+                <m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits">
+                  <m:mo stretchy="false">⟷</m:mo>
+                </m:mrow>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">D</m:mi>
+                    <m:mi mathvariant="normal">T</m:mi>
+                    <m:mi mathvariant="normal">F</m:mi>
+                    <m:mi mathvariant="normal">T</m:mi>
+                  </m:mrow>
+                </m:mrow>
+              </m:mover>
+            </m:mrow>
+            <m:mtext> </m:mtext>
+            <m:mi>X</m:mi>
+            <m:mo stretchy="false">(</m:mo>
+            <m:mi>ω</m:mi>
+            <m:mo stretchy="false">)</m:mo>
+          </m:mrow>
+          <m:annotation encoding="math/tex">x[n] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~ X(\omega)</m:annotation>
+        </m:semantics>
+      </m:math>
+    </para>
+    <para id="eip-570">We'll now take a look at some properties of the DTFT.</para><section id="idm82145505408">
+      <title>DTFT Periodicity</title>
+      <para id="idm82145504864">Although the DTFT of a signal is typically defined only <span>on a <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> interval, it is nevertheless straightforward to show that the DTFT is actually <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> periodic:</span></para>
+      <para id="idm82145500288"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mspace width="thinmathspace"/><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:math>.</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm82145463680"><media id="idm82145462880" alt="">
+          <image mime-type="" src="../../media/Pdsinc.png"/>
+<image mime-type="application/postscript" src="../../media/Pdsinc.eps" for="pdf"/>
+        </media>
+        
+      <caption><span>The <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> periodicity of the DTFT.</span>
+        </caption></figure></section>
+    <section id="idm82145458864">
+      <title>DTFT Frequencies</title>
+      <para id="idm82145458320">Because <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math> is essentially the inner product of a signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> with the signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\omega n}</m:annotation></m:semantics></m:math>, we can say that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math> tells us how strongly the signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\omega n}</m:annotation></m:semantics></m:math> appears in <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math>, then, is a measure of the "frequency content" of the signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. Consider the plot below of the DTFT of some signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>:
+</para>
+      <figure id="idm82145428096"><media id="idm82145427328" alt="">
+          <image mime-type="" src="../../media/dsinc.png"/>
+<image mime-type="application/postscript" src="../../media/dsinc.eps" for="pdf"/>
+        </media>
+        
+      </figure><para id="idm82145425584">
+This plot shows us that the signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> has a significant amount of low-frequency content (frequencies around <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math>), and less high-frequency content (frequencies around <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mo>±</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\omega=\pm\pi</m:annotation></m:semantics></m:math> -- remember that the DTFT is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> periodic).
+</para>
+      <para id="eip-582">As the DTFT is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> periodic, all the information in a DTFT is contained in any <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> length section. However, there are only two intervals that are typically used when representing a DFTF of a signal. The first is to use the interval of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math>, as above. In such an interval, <span>the low frequencies are at the center, with the high frequencies at the edges. The other interval</span> ranges from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>. The low frequencies are at the extremities of the plot, with the highest frequency in the center:</para>
+      <figure id="idm82145402320"><media id="idm82145401552" alt="">
+          <image mime-type="" src="../../media/dsinc1.png"/>
+<image mime-type="application/postscript" src="../../media/dsinc1.eps" for="pdf"/>
+        </media>
+        
+      </figure></section>
+    <section id="idm82145399296">
+      <title>The DTFT and Time Shifts</title>
+      <para id="idm82145398752">If a signal is shifted in time, what effect might this have on its DTFT? Supposing <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math> are a DTFT pair, we have that</para>
+      <para id="idm82145392000"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">D</m:mi><m:mi mathvariant="normal">T</m:mi><m:mi mathvariant="normal">F</m:mi><m:mi mathvariant="normal">T</m:mi></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>m</m:mi></m:mrow></m:msup><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n-m] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~ e^{-j\omega m} X(\omega)
+</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm82145376016"> So shifting a signal in time corresponds to a modulation (multiplication by a complex sinusoid) in frequency. We can use the DTFT formula to prove this relationship, by way of a change of variables <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>r</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi></m:mrow><m:annotation encoding="math/tex">r=n-m</m:annotation></m:semantics></m:math>:
+</para>
+      <para id="idm82145372432">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt 0.867em 0.3em 0.3em" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+            <m:mtr>
+              <m:mtd>
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>n</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>m</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mspace width="thinmathspace"/>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>r</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>r</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mspace width="thinmathspace"/>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>r</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>r</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>r</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mspace width="thinmathspace"/>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>r</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mspace width="thinmathspace"/>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>m</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>m</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>r</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mo>−</m:mo>
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi mathvariant="normal">∞</m:mi>
+                  </m:mrow>
+                </m:munderover>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>r</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mspace width="thinmathspace"/>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>r</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mi/>
+                <m:mo>=</m:mo>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mo>−</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mi>ω</m:mi>
+                    <m:mi>m</m:mi>
+                  </m:mrow>
+                </m:msup>
+                <m:mspace width="thinmathspace"/>
+                <m:mi>X</m:mi>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>ω</m:mi>
+                <m:mo stretchy="false">)</m:mo>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm82145309264">
+      <title>The DTFT and Time Modulation</title>
+      <para id="idm82145308720">We saw above how a shift in time corresponds to modulation in frequency. What do you suppose happens when a signal is modulated in time? If you guessed that it is shifted in frequency, you're right! If a signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> has a DTFT of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math>, then we have this DTFT pair:</para>
+      <para id="idm82145301840"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mi>n</m:mi></m:mrow></m:msup><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">D</m:mi><m:mi mathvariant="normal">T</m:mi><m:mi mathvariant="normal">F</m:mi><m:mi mathvariant="normal">T</m:mi></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo>−</m:mo><m:msub><m:mi>ω</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">e^{j\omega_0 n} \, x[n] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~  X(\omega-\omega_0) </m:annotation></m:semantics></m:math>.</para>
+      <para id="idm82145284208">Below is the proof:</para>
+      <para id="idm82145283920">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:munderover>
+                <m:mo movablelimits="false">∑</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:munderover>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:msub>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>ω</m:mi>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:munderover>
+                <m:mo movablelimits="false">∑</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>n</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mo>−</m:mo>
+                  <m:mi mathvariant="normal">∞</m:mi>
+                </m:mrow>
+                <m:mi mathvariant="normal">∞</m:mi>
+              </m:munderover>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mo>−</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mo>−</m:mo>
+                  <m:msub>
+                    <m:mi>ω</m:mi>
+                    <m:mn>0</m:mn>
+                  </m:msub>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>n</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>=</m:mo>
+              <m:mi>X</m:mi>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo>−</m:mo>
+              <m:msub>
+                <m:mi>ω</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">)</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\sum\limits_{n=\infty}^\infty e^{j\omega_0 n}x[n]e^{-j\omega n}\sum\limits_{n=-\infty}^\infty x[n]e^{-j(\omega-\omega_0) n}=X(\omega-\omega_0)</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm82145254256">
+      <title>The DTFT and Convolution</title>
+      <para id="idm82145253712">Suppose that the impulse response of an LTI system is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>, the input to the system is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, and the output is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>. Because the system is LTI, these three signals have a special relationship:</para>
+      <para id="idm82145243744"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munderover><m:mo movablelimits="false">∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mspace width="mediummathspace"/><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:math>.</para>
+      <para id="idm82145223760">The output <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> is the convolution of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> with <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>. Just as with the other DTFT properties, it turns out there is also a relationship in the frequency domain. Consider the DTFT of each of those signals; call them <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(\omega)</m:annotation></m:semantics></m:math>, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">X(\omega)</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">Y(\omega)</m:annotation></m:semantics></m:math>. The convolution of the signals <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi></m:mrow><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi></m:mrow><m:annotation encoding="math/tex">h</m:annotation></m:semantics></m:math> in time corresponds to the multiplication of their DTFTs in frequency:</para>
+      <para id="idm82145200976"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>∗</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">D</m:mi><m:mi mathvariant="normal">T</m:mi><m:mi mathvariant="normal">F</m:mi><m:mi mathvariant="normal">T</m:mi></m:mrow></m:mrow></m:mover></m:mrow><m:mi>Y</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[n]*h[n] \stackrel{\mathrm{DTFT}}{\longleftrightarrow} Y(\omega)=X(\omega)H(\omega)</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm82145180272">For the proof, we take the DTFT of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>, using a change of variables along the way:</para>
+      <para id="idm82145176752">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>Y</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>y</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo>∗</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:mi>h</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mi>m</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>n</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:munderover>
+                      <m:mi>h</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>−</m:mo>
+                      <m:mi>m</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi>j</m:mi>
+                          <m:mi>ω</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>n</m:mi>
+                          <m:mo>−</m:mo>
+                          <m:mi>m</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:msup>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mtext>Let </m:mtext>
+                    </m:mrow>
+                    <m:mi>v</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mi>m</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>v</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                          <m:mo>−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                          <m:mo>−</m:mo>
+                          <m:mi>m</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mi>h</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>v</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi>j</m:mi>
+                          <m:mi>ω</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>v</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:msup>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi>v</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>−</m:mo>
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mi mathvariant="normal">∞</m:mi>
+                        </m:mrow>
+                      </m:munderover>
+                      <m:mi>h</m:mi>
+                      <m:mo stretchy="false">[</m:mo>
+                      <m:mi>v</m:mi>
+                      <m:mo stretchy="false">]</m:mo>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow class="MJX-TeXAtom-ORD">
+                          <m:mo>−</m:mo>
+                          <m:mi>j</m:mi>
+                          <m:mi>ω</m:mi>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>v</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                        </m:mrow>
+                      </m:msup>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>H</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>m</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi mathvariant="normal">∞</m:mi>
+                      </m:mrow>
+                      <m:mi mathvariant="normal">∞</m:mi>
+                    </m:munderover>
+                    <m:mi>x</m:mi>
+                    <m:mo stretchy="false">[</m:mo>
+                    <m:mi>m</m:mi>
+                    <m:mo stretchy="false">]</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mo>−</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>ω</m:mi>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mi>X</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>ω</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+Y(\omega)&amp;=\sum_{n=-\infty}^\infty y[n]\\
+&amp;=\sum_{n=-\infty}^\infty (x[n]\ast h[n])e^{-j\omega n}\\
+&amp;=\sum_{n=-\infty}^\infty \sum_{m=-\infty}^\infty x[m] h[n-m]e^{-j\omega n}\\
+&amp;=\sum_{m=-\infty}^\infty \sum_{n=-\infty}^\infty x[m] h[n-m]e^{-j\omega m}e^{-j\omega (n-m)}\\
+&amp;=\sum_{m=-\infty}^\infty x[m]e^{-j\omega m}\left(\sum_{n=-\infty}^\infty  h[n-m] e^{-j\omega (n-m)}\right )\\
+&amp;\textrm{Let }v=n-m\\
+&amp;=\sum_{m=-\infty}^\infty x[m]e^{-j\omega m}\left(\sum_{v=-\infty-m}^{\infty-m}  h[v] e^{-j\omega (v)}\right )\\
+&amp;=\sum_{m=-\infty}^\infty x[m]e^{-j\omega m}\left(\sum_{v=-\infty}^{\infty}  h[v] e^{-j\omega (v)}\right )\\
+&amp;=\sum_{m=-\infty}^\infty x[m]e^{-j\omega m}\left(H(\omega)\right )\\
+&amp;=H(\omega)\sum_{m=-\infty}^\infty x[m]e^{-j\omega m}\\
+&amp;=X(\omega)H(\omega)
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm82145005152">This relationship is very important. It gives insight, showing us how LTI systems modify the frequencies of input signals. It is also useful, because it gives us an alternative way of finding the output of a system. We could take the DTFTs of the input and impulse response, multiply them together, and then take the inverse DTFT of the result to find the output. There are some cases where this process might be easier than finding the convolution sum.</para>
+    </section>
+    <section id="idm82145004320">
+      <title>The DTFT and Linearity</title>
+      <para id="idm82145003808">Since the DTFT is an infinite sum, it should come as no surprise that it is a linear operator. Nevertheless, it is a helpful property to know. Suppose we have the following DTFT pairs:</para>
+      <para id="idm82145003360"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">D</m:mi><m:mi mathvariant="normal">T</m:mi><m:mi mathvariant="normal">F</m:mi><m:mi mathvariant="normal">T</m:mi></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mtext> </m:mtext><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-REL"><m:mover><m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits"><m:mo stretchy="false">⟷</m:mo></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">D</m:mi><m:mi mathvariant="normal">T</m:mi><m:mi mathvariant="normal">F</m:mi><m:mi mathvariant="normal">T</m:mi></m:mrow></m:mrow></m:mover></m:mrow><m:mtext> </m:mtext><m:msub><m:mi>X</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~ X_1(\omega) ~~~~~~~~
+x_2[n] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~ X_2(\omega)</m:annotation></m:semantics></m:math>.</para>
+      <para id="idm82144974096">Then by the linearity of the DTFT we have that, for any constants <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">\alpha_1</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">\alpha_2</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm82144969104">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mi>x</m:mi>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mn>2</m:mn>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mtext> </m:mtext>
+              <m:mrow class="MJX-TeXAtom-REL">
+                <m:mover>
+                  <m:mrow class="MJX-TeXAtom-OP MJX-fixedlimits">
+                    <m:mo stretchy="false">⟷</m:mo>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi mathvariant="normal">D</m:mi>
+                      <m:mi mathvariant="normal">T</m:mi>
+                      <m:mi mathvariant="normal">F</m:mi>
+                      <m:mi mathvariant="normal">T</m:mi>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mover>
+              </m:mrow>
+              <m:mtext> </m:mtext>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>α</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:msub>
+                <m:mi>X</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">(</m:mo>
+              <m:mi>ω</m:mi>
+              <m:mo stretchy="false">)</m:mo>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\alpha_1 x_1[n] + \alpha_2 x[2] ~\stackrel{\mathrm{DTFT}}{\longleftrightarrow}~ \alpha_1 X_1(\omega)+ \alpha_2 X_2(\omega)</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+    </section>
+    <section id="idm82144945040">
+      <title>DTFT Symmetry</title>
+      <para id="idm82144944512">Looking at the plots of the DTFTs above, or perhaps of those you have computed on your own, you may notice that they are often symmetrical. It so happens that the DTFTs of real-valued signals always have a kind of symmetry, but there are other symmetry relationships as well. For example, signals that are purely imaginary and odd have DTFTs that are purely real and odd. These types of symmetry are a result of a property of the complex exponentials which build up the DTFTs. Any signal of the form <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j\omega n}</m:annotation></m:semantics></m:math> is conjugate symmetric, meaning that its real part is even and its imaginary part is odd. Additionally, for conjugate symmetric signals, their magnitude is even and their phase is odd.</para>
+      <para id="eip-249">As a result of the symmetry of the signals which compose a DTFT, the DTFTs of certain signals also have symmetries, according to the table below:</para>
+      <table xmlns:m="http://www.w3.org/1998/Math/MathML" id="eip-859" summary="DTFT Symmetry Table">
+<tgroup cols="6"><tbody>
+  <row>
+    <entry><m:math><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">R</m:mi><m:mi mathvariant="normal">e</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">I</m:mi><m:mi mathvariant="normal">m</m:mi><m:mtext> </m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow></m:mrow></m:math></entry>
+    <entry><m:math><m:mrow><m:mi mathvariant="normal">∠</m:mi><m:mtext> </m:mtext><m:mi>X</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>real</entry>
+    <entry>conjugate symmetric:<newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>real and even</entry>
+    <entry>real and even</entry>
+    <entry>even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+  <row>
+    <entry>real and odd</entry>
+    <entry>imaginary and odd</entry>
+    <entry>zero</entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                      <m:mrow>
+                        <m:mo>±</m:mo>
+                        <m:mfrac>
+                          <m:mi>π</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:mfrac>
+                      </m:mrow>
+                  </m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary</entry>
+    <entry>conjugate odd symmetric <newline/> <m:math>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>=</m:mo>
+                        <m:mo>−</m:mo>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>ω</m:mi>
+                        <m:msup>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo>∗</m:mo>
+                        </m:msup>
+                      </m:mrow>
+                  </m:math></entry>
+    <entry>odd</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry>odd</entry>
+  </row>
+  <row>
+    <entry>imaginary and even</entry>
+    <entry>imaginary and even</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry>even</entry>
+    <entry><m:math><m:mrow><m:mo>±</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></entry>
+  </row>
+  <row>
+    <entry>imaginary and odd</entry>
+    <entry>real and odd</entry>
+    <entry>odd</entry>
+    <entry>zero</entry>
+    <entry>even</entry>
+    <entry><m:math>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                      <m:mo>,</m:mo>
+                      <m:mi>π</m:mi>
+                    </m:mrow>
+                </m:math></entry>
+  </row>
+</tbody>
+
+
+
+
+
+
+
+
+
+
+</tgroup>
+</table></section>
+  </content>
+</document>

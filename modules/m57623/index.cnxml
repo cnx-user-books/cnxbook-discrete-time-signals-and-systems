@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Impulse Response and LTI System Causality</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57623</md:content-id>
+  <md:title>Impulse Response and LTI System Causality</md:title>
+  <md:abstract/>
+  <md:uuid>097fd6ed-9527-43cc-86cf-04df99fff518</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">In addition to linearity and time-invariance, there are other significant classifications of discrete-time systems. One of these is causality. A system is <term>causal</term> if its output, for any <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, depends only on inputs at or before time <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>. Causality is an important practical qualification on a system: it is not possible to implement a real-time system whose current output depends on future values! While the qualification of causality is also relevant for non-LTI systems, it has a special relationship with LTI systems. Recall that for LTI systems, the impulse response can be used to find the system's output given some input (through convolution of the input and the impulse response). Likewise, for LTI systems, the impulse response can also tell us whether or not the system is causal. </para>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm312094076288"><title>The Impulse Response and Causality</title><para id="idm312094075728">There is a straightforward relationship between an LTI system's impulse response and whether or not the system is causal: An LTI system is <emphasis>causal</emphasis> if and only if its impulse response is <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n\lt 0</m:annotation></m:semantics></m:math> (i.e., the impulse response is a causal signal). This follows naturally from the convolution sum. The system's output is defined as <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mi mathvariant="normal">∞</m:mi></m:munderover><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=\sum_{m=-\infty}^\infty h[n-m]x[m]</m:annotation></m:semantics></m:math>. Note that if and only if <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mtext> </m:mtext><m:mi mathvariant="normal">∀</m:mi><m:mtext> </m:mtext><m:mi>m</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">h[m]=0,~\forall~m\lt 0</m:annotation></m:semantics></m:math>, no <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[m]</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mi>m</m:mi><m:mo>&gt;</m:mo><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">m\gt n</m:annotation></m:semantics></m:math> contribute to the sum, which is to say that no future values of the input contribute to the output at time <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>.
+
+Below is an example of the impulse response for a causal system. Note that it is <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n\lt 0</m:annotation></m:semantics></m:math>. This also corresponds to the system matrix being lower triangular:
+</para>
+      <figure id="idm312094040704" orient="vertical"><subfigure id="idm312094040000">
+          <media id="idm312094039872" alt="">
+            <image mime-type="" src="../../media/hRA.png"/>
+<image mime-type="application/postscript" src="../../media/hRA-2a42.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm312094038352">
+          <media id="idm312094038224" alt="">
+            <image mime-type="" src="../../media/a054a9f7f3b715ddeda2103e17999aa6ea896d55" width="300" print-width="300"/>
+          </media>
+        </subfigure>
+        
+      <caption><span>An example of an impulse response for a causal system. The impulse response is zero for <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n\lt 0</m:annotation></m:semantics></m:math>.</span>
+        </caption></figure></section></content>
+</document>

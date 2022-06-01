@@ -1,0 +1,365 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>IIR Filter Design</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57915</md:content-id>
+  <md:title>IIR Filter Design</md:title>
+  <md:abstract/>
+  <md:uuid>8e1e5826-5004-4d75-8231-9e36db5682a6</md:uuid>
+</metadata>
+
+<content>
+    <section id="idm228030881008">
+      <title>Review of IIR Systems</title>
+      <para id="idm228030880464">As discrete-time LTI filters are simply discrete-time LTI systems, they can be broadly classified--like systems--as being either FIR or IIR.
+</para>
+      <figure id="filter" orient="vertical"><media id="filter-plot" alt="Image">
+          <image mime-type="image/png" src="../../media/dtlti.png" width="400"/>
+        </media>
+        
+      <caption>Implementation of a discrete-time LTI system.</caption></figure><para id="idm228030876832">
+The figure above shows the implementation of any discrete-time LTI system; the way all such systems vary are simply in their order (the size of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>N</m:mi></m:mrow><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>M</m:mi></m:mrow><m:annotation encoding="math/tex">M</m:annotation></m:semantics></m:math>) and in their coefficients. Systems are IIR if they have any non-zero <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>a</m:mi></m:mrow><m:annotation encoding="math/tex">a</m:annotation></m:semantics></m:math> coefficients. If we see how such systems are represented in z-domain,</para>
+      <para id="idm228030871424">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mrow>
+              <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+                <m:mtr>
+                  <m:mtd>
+                    <m:mi>H</m:mi>
+                    <m:mo stretchy="false">(</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo stretchy="false">)</m:mo>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>Y</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>X</m:mi>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>b</m:mi>
+                          <m:mn>0</m:mn>
+                        </m:msub>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>b</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>b</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:msub>
+                          <m:mi>b</m:mi>
+                          <m:mi>M</m:mi>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mi>M</m:mi>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+                        </m:msup>
+                        <m:mo>+</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo>+</m:mo>
+                        <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mi>N</m:mi>
+                        </m:msub>
+                        <m:msup>
+                          <m:mi>z</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mo>−</m:mo>
+                            <m:mi>N</m:mi>
+                          </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                    </m:mfrac>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd/>
+                  <m:mtd>
+                    <m:mi/>
+                    <m:mo>=</m:mo>
+                    <m:msup>
+                      <m:mi>z</m:mi>
+                      <m:mrow class="MJX-TeXAtom-ORD">
+                        <m:mi>N</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:mi>M</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mspace width="thinmathspace"/>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>ζ</m:mi>
+                          <m:mi>M</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mn>2</m:mn>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo>⋯</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi>z</m:mi>
+                        <m:mo>−</m:mo>
+                        <m:msub>
+                          <m:mi>p</m:mi>
+                          <m:mi>N</m:mi>
+                        </m:msub>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo>,</m:mo>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mrow>
+            <m:annotation encoding="math/tex">\begin{align*}
+H(z)= \frac{Y(z)}{X(z)} &amp;= \frac{b_0 + b_1 z^{-1} + b_2 z^{-2} + \cdots b_M z^{-M}}
+{1 + a_1 z^{-1} + a_2 z^{-2} + \cdots + a_N z^{-N}}\\
+&amp;= z^{N-M}\, \frac{(z-\zeta_1)(z-\zeta_2) \cdots (z-\zeta_M)}{(z-p_1)(z-p_2) \cdots (z-p_N)},
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm228030806704">
+then we can also say that IIR systems are those which have (non-zero and non-infinite) poles.</para>
+    </section>
+    <section id="idm228030806320">
+      <title>IIR Filters</title>
+      <para id="idm228030805808">In discrete-time, the design and implementation of IIR filters is largely a matter of appropriating tried and tested design elements from continuous-time filters. Signal processing obviously predates the advent of discrete-time signals and systems, and before this time efforts were made to improve the design of analog filters. Theory eventually approached a point where high-performing filters could be created through a straightforward mathematical formulation. For discrete-time purposes, these filters can be simply translated from the Laplace (continuous-time) to the z domain through the use of some kind of transformation mapping (such as the bilinear transform, where <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>s</m:mi><m:mo>=</m:mo><m:mi>c</m:mi><m:mfrac><m:mrow><m:mi>z</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:mrow><m:mi>z</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">s=c\frac{z-1}{z+1}</m:annotation></m:semantics></m:math>).  Among the various analog filter types that were invented and then eventually employed for discrete-time use, we will consider low-pass filter implementations of three of the most significant types: Butterworth, Chebyshev, and Elliptical.</para>
+</section>
+      <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm228030799520">
+        <title>Butterworth Filter</title>
+        <para id="idm228030798976">The Butterworth filter's defining characteristic is its flatness in both its pass- and stop-bands.</para>
+        <figure id="idm228030798224" orient="vertical"><subfigure id="idm228030797472">
+            <media id="idm228030797344" alt="">
+              <image mime-type="" src="../../media/Butterh.png"/>
+<image mime-type="application/postscript" src="../../media/Butterh.eps" for="pdf"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm228030796128">
+            <media id="idm228030796000" alt="">
+              <image mime-type="" src="../../media/ButterFilter.png"/>
+<image mime-type="application/postscript" src="../../media/ButterFilter.eps" for="pdf"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm228030794784">
+            <media id="idm228030794656" alt="">
+              <image mime-type="" src="../../media/ButterPZ.png"/>
+<image mime-type="application/postscript" src="../../media/ButterPZ.eps" for="pdf"/>
+            </media>
+          </subfigure>
+          
+        <caption>The impulse response, frequency response magnitude, and pole-zero plot of an order <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow><m:annotation encoding="math/tex">N=6</m:annotation></m:semantics></m:math> low-pass Butterworth filter.</caption></figure><para id="idm228030776608">
+As with the other IIR filter implementations that will be considered here, the filter above has an order of just <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow><m:annotation encoding="math/tex">N=6</m:annotation></m:semantics></m:math>: it takes merely 6 poles and 6 zeros to create this particular filter, which is 10-100 times smaller an order than that of similar FIR filters. More than other IIR filters, the Butterworth also achieves a near-uniform flatness in its pass- and stop-bands. However, this does come at a cost; compared to other IIR filters of the same order, the Butterworth's transition region (centered about <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mo>±</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">\omega=\pm\frac{\pi}{2}</m:annotation></m:semantics></m:math> above) is more gradual, meaning there is a larger range of frequencies that are not either completely passed or attenuated out.</para>
+      
+    </section>
+    <section id="idm228030769904">
+      <title>Elliptic Filter</title>
+      <para id="idm228030769376">The Elliptic filter has characteristics that are essentially the opposite of that of the Butterworth filter.</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm228030768880" orient="vertical"><subfigure id="idm228030768112">
+          <media id="idm228030767984" alt="">
+            <image mime-type="" src="../../media/Elliph.png"/>
+<image mime-type="application/postscript" src="../../media/Elliph.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030766768">
+          <media id="idm228030766640" alt="">
+            <image mime-type="" src="../../media/EllipFilter.png"/>
+<image mime-type="application/postscript" src="../../media/EllipFilter.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030765424">
+          <media id="idm228030765296" alt="">
+            <image mime-type="" src="../../media/EllipPZ.png"/>
+<image mime-type="application/postscript" src="../../media/EllipPZ.eps" for="pdf"/>
+          </media>
+        </subfigure>
+              <caption>The impulse response, frequency response magnitude, and pole-zero plot of an order <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow><m:annotation encoding="math/tex">N=6</m:annotation></m:semantics></m:math> Elliptic filter.</caption></figure><para id="idm228030747024">
+Unlike the Butterworth filter, the magnitude of the Elliptic filter's frequency response has considerable variation about its targets of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">|H(\omega)|=1</m:annotation></m:semantics></m:math> in the pass-band and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">|H(\omega)|=0</m:annotation></m:semantics></m:math> in the stop-band. However, in return for having these ripples across the response, note how it makes up for the Butterworth's main disadvantage. In contrast to the Butterworth filter's somewhat lazy slide from the pass-through region to the attenuation region, the Elliptic filter's frequency response has a very steep transition at its cutoff point; virtually all frequencies reside in either the filter's pass- or stop-band.</para>
+    </section>
+    <section id="idm228030733296">
+      <title>Chebyshev Filters</title>
+      <para id="idm228030732752">The Butterworth filter has a smooth frequency response magnitude, but a wide transition region between its pass-band and stop-band. The Elliptic filter has a very narrow transition region, but must trade-off for this with ripples across its frequency response. We might wonder if there is a filter that could be a kind of compromise between the two, not too ripply, and with a decently steep transition at the cutoff point. It just so happens that there is.
+</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm228030732032" orient="vertical"><subfigure id="idm228030731264">
+          <media id="idm228030731136" alt="">
+            <image mime-type="" src="../../media/Cheby1h.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby1h.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030729920">
+          <media id="idm228030729792" alt="">
+            <image mime-type="" src="../../media/Cheby1Filter.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby1Filter.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030728576">
+          <media id="idm228030728448" alt="">
+            <image mime-type="" src="../../media/Cheby1PZ.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby1PZ.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        
+      <caption>The impulse response, frequency response magnitude, and pole-zero plot of an order <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow><m:annotation encoding="math/tex">N=6</m:annotation></m:semantics></m:math> low-pass Chebyshev filter.</caption></figure><para id="idm228030710544">
+The Chebyshev Type-1 filter has some ripple, but note that is only in the pass-band, whereas it has a very smooth response at about <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">|H(\omega)|=0</m:annotation></m:semantics></m:math> in the stop-band. Additionally, it has a fairly steep transition between the pass- and stop-bands. There is a second type of Chebyshev filter that has the same steep transition region, while swapping which region has ripples and which one is flat:
+</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm228030703600" orient="vertical"><subfigure id="idm228030702832">
+          <media id="idm228030702704" alt="">
+            <image mime-type="" src="../../media/Cheby2h.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby2h.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030701488">
+          <media id="idm228030701360" alt="">
+            <image mime-type="" src="../../media/Cheby2Filter.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby2Filter.eps" for="pdf"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm228030700144">
+          <media id="idm228030700016" alt="">
+            <image mime-type="" src="../../media/Cheby2PZ.png"/>
+<image mime-type="application/postscript" src="../../media/Cheby2PZ.eps" for="pdf"/>
+          </media>
+        </subfigure>
+              <caption>The impulse response, frequency response magnitude, and pole-zero plot of an order <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>6</m:mn></m:mrow><m:annotation encoding="math/tex">N=6</m:annotation></m:semantics></m:math> Chebyshev Type-1 filter.</caption></figure>
+</section>
+<section id="idm228030681984">
+        <title>IIR Filters: An Evaluation</title>
+        <para id="idm228030681440">Among IIR filters, we have seen that they all have their own advantages and disadvantages. For a given filter-length, the different implementations trade-off on having either a smooth frequency response magnitude or sharp transition region (compromise between the two).
+</para>
+        <figure id="idm228030680912" orient="vertical"><media id="idm228030680160" alt="">
+            <image mime-type="" src="../../media/CompFilter.png"/>
+<image mime-type="application/postscript" src="../../media/CompFilter.eps" for="pdf"/>
+          </media>
+          
+        <caption><span>A superposition of frequency response magnitude of the four IIR filters considered: Butterworth (black), Elliptic (green), Chebyshev Type-1 (blue), and Chebyshev Type-2 (red).</span>
+          </caption></figure><para id="idm228030677984">
+As mentioned above, all of these filters also have an advantage when compared to FIR filters, for they achieve desired frequency response characteristics while being relatively small in length (thus less hardware/processing is required for their implementation). But as you might expect, they do have a couple downsides. First: unlike FIR filters, IIR filters have poles. The sensitivity of such poles is what allows the filters to have such strong effects with small filter orders, but that also means that deviations in pole locations (which might happen in a real-world setting) introduce more distortion than a similar deviation of a zero. And second, IIR filters have non-linear phase responses.
+</para>
+        <figure id="idm228030677024" orient="vertical"><media id="idm228030676256" alt="">
+            <image mime-type="" src="../../media/CompFilterAng.png"/>
+<image mime-type="application/postscript" src="../../media/CompFilterAng.eps" for="pdf"/>
+          </media>
+          
+        <caption><span>The phase of the four different IIR filter frequency responses: Butterworth (black), Elliptic (green), Chebyshev Type-1 (blue), and Chebyshev Type-2 (red).</span>
+          </caption></figure><para id="idm228030674096">
+Consider especially the pass-band of the filters above. While the Butterworth and Chebyshev Type-1 filters come closer than the others to being linear, all are definitely "curvy" (i.e., nonlinear) across the pass-band. A linear phase response is desirable because it means that all input frequencies will have the same time delay through the filter; a non-linear response means that some frequencies will be output before others.</para>
+        <para id="eip-220">Suppose we have a signal composed of two sinusoids, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mn>50</m:mn></m:mrow><m:mn>1000</m:mn></m:mfrac><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>.25</m:mn><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mn>150</m:mn></m:mrow><m:mn>1000</m:mn></m:mfrac><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]=\sin(\frac{2\pi 50}{1000}n)+.25\sin(\frac{2\pi 150}{1000}n)</m:annotation></m:semantics></m:math>, and we run this signal through the low-pass Elliptic filter shown above (in green). Both of these sinusoids are within the pass-band of the filter (as their frequencies are <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>±</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>10</m:mn></m:mfrac><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\pm\frac{1}{10}\pi</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>±</m:mo><m:mfrac><m:mn>3</m:mn><m:mn>10</m:mn></m:mfrac><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\pm\frac{3}{10}\pi</m:annotation></m:semantics></m:math>), so we would expect the output of the filter, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>, to be essentially unchanged, perhaps only a bit attenuated because of the ripple in the frequency response. However, this expectation does not take into account the phase response. Because of the phase non-linearity, the two sinusoids are shifted different amounts of time, resulting in them being out of sync when compared to the original plot:
+</para>
+        <figure id="idm228030648720" orient="vertical"><subfigure id="idm228030647952">
+            <media id="idm228030647824" alt="">
+              <image mime-type="" src="../../media/IIRsinesIn.png"/>
+<image mime-type="application/postscript" src="../../media/IIRsinesIn.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm228030646608">
+            <media id="idm228030646480" alt="">
+              <image mime-type="" src="../../media/IIRsinesOut.png"/>
+<image mime-type="application/postscript" src="../../media/IIRsinesOut.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          
+        <caption><span>The non-linear phase response of Elliptic filters is evident when comparing the above input and output.</span>
+          </caption></figure></section>
+    
+  </content>
+</document>

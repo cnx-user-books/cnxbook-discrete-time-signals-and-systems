@@ -1,0 +1,230 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Linear Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57550</md:content-id>
+  <md:title>Linear Systems</md:title>
+  <md:abstract/>
+  <md:uuid>9c7e1cfb-e9fa-46df-bb19-04c5ab29f182</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">
+Discrete-time systems are mathematical transformations that take input signals and map them to output signals. For a given input <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math>, a discrete-time system will produce a new signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math>:
+</para>
+    <figure id="systemio"><media id="systemio-plot" alt="Image">
+        <image mime-type="image/png" src="../../media/systeminout.png" width="250" print-width="250pt"/>
+      </media>
+    </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm447486207744">It turns out that it is very important to know or determine if a system has certain characteristics, and among these is the classification of linearity. A system is <term><emphasis>linear </emphasis></term> if it has two special properties: <emphasis effect="italics">scaling </emphasis>(sometimes called homogeneity) and <emphasis effect="italics">additivity</emphasis>. The first of these is satisfied if, for any arbitrary input <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math>, scaling the input by any complex valued constant value <m:math><m:semantics><m:mi>α</m:mi><m:annotation encoding="math/tex">\alpha</m:annotation></m:semantics></m:math> will result in the output being scaled by the same value. Mathematically, this scaling rule is represented as <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:mi>α</m:mi><m:mi>x</m:mi><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mi>α</m:mi><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">H\{\alpha x\}=\alpha H\{x\}</m:annotation></m:semantics></m:math>, and as a system diagram it looks like this:
+</para><figure id="scaling"><media id="scaling-plot" alt="Image">
+        <image mime-type="image/png" src="../../media/scaling.png" width="250" print-width="250pt"/>
+      </media>
+    <caption>A system that satisfies the scaling property.</caption></figure><para id="idm447486192256">
+A system has the additivity property if, for any two arbitrary inputs, the output of the sum of them is the same as the sum of their individual outputs: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo><m:mo>+</m:mo><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">H\{x_1+x_2\}=H\{x_1\}+H\{x_2\}</m:annotation></m:semantics></m:math> .
+</para>
+    <figure id="additivity"><media id="additivity-plot" alt="Image">
+        <image mime-type="image/png" src="../../media/super.png" width="450"/>
+      </media>
+    <caption>A system that satisfies the additivity property.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm447486176640">A system has both the additivity and scaling properties (and thus, by definition, is linear) if for arbitrary inputs <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">x_1</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">x_2</m:annotation></m:semantics></m:math> and arbitrary constants <m:math><m:semantics><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_1</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_2</m:annotation></m:semantics></m:math>, <m:math><m:semantics><m:mrow><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo fence="false" stretchy="false">}</m:mo></m:mrow><m:annotation encoding="math/tex">H\{\alpha_1x_1+\alpha_2x_2\}=\alpha_1H\{x_1\}+\alpha_2H\{x_2\}</m:annotation></m:semantics></m:math>. If a system lacks either of the scaling or additivity property, then it is said to be <term><emphasis>nonlinear</emphasis></term>.</para><section id="idm447486148848">
+      <title>Determining Linearity</title>
+      <para id="idm447486148304">Consider again the definition of linearity; to be linear, a system must preserve the scaling and additivity properties for any arbitrary input. Therefore, determining linearity amounts to completing a mathematical proof that assumes arbitrary inputs and scaling factors, and then shows the necessary result. Suppose <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mn>3</m:mn><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">H\{x[n]\}=3x[n]</m:annotation></m:semantics></m:math>. Here is how the additivity proof would look:</para>
+      <para id="eip-25">Let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">x_1</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">x_2</m:annotation></m:semantics></m:math> be arbitrary inputs to system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>H</m:mi><m:annotation encoding="math/tex">H</m:annotation></m:semantics></m:math> and let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_1</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">\alpha_2</m:annotation></m:semantics></m:math> be arbitrary constants.</para>
+      <para id="idm447486128976"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mn>3</m:mn><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mn>3</m:mn><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mn>3</m:mn><m:mo stretchy="false">(</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mn>3</m:mn><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>2</m:mn></m:msub><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo stretchy="false">→</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Linear</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+H\{x_1[n]\}&amp;=3x_1[n]\\
+H\{x_2[n]\}&amp;=3x_2[n]\\
+H\{\alpha_1x_1[n]+\alpha_2x_2[n]\}&amp;=3(\alpha_1x_1[n]+\alpha_2x_2[n])\\
+&amp;=3\alpha_1x_1[n]+3\alpha_2x_2[n]\\
+&amp;=\alpha_1(3x_1[n])+\alpha_2(3x_2[n])\\
+&amp;=\alpha_1H\{x_1[n]\}+\alpha_2H\{x_2[n]\}\rightarrow\textrm{Linear}
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-426">Now, to show a system is nonlinear requires a different kind of proof. Rather than having to prove both of the properties hold for any arbitrary input(s), only a single example needs to be provided for which either of the properties fail.  For example, consider the system <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">H\{x[n]\}=x[n]+1</m:annotation></m:semantics></m:math>. We can show it is nonlinear by considering just the single following case:</para>
+      <para id="idm447486034560">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>Let </m:mtext>
+                  </m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mi>H</m:mi>
+                  <m:mo fence="false" stretchy="false">{</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo fence="false" stretchy="false">}</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>But </m:mtext>
+                  </m:mrow>
+                  <m:mi>H</m:mi>
+                  <m:mo fence="false" stretchy="false">{</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo fence="false" stretchy="false">}</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mo>⋅</m:mo>
+                  <m:mn>0</m:mn>
+                  <m:mo>+</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:mn>1</m:mn>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≠</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>H</m:mi>
+                  <m:mo fence="false" stretchy="false">{</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo fence="false" stretchy="false">}</m:mo>
+                  <m:mo stretchy="false">→</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>Nonlinear</m:mtext>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:annotation encoding="math/tex">\begin{align*}
+\textrm{Let } x[n]&amp;=0\\
+H\{x[n]\}&amp;=x[n]+1\\
+&amp;=0+1\\
+&amp;=1\\
+\textrm{But } H\{2x[n]\}&amp;=2x[n]+1\\
+&amp;=2\cdot 0+1\\
+&amp;=1\\
+&amp;\neq 2 H\{x[n]\}\rightarrow \textrm{Nonlinear}
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <exercise id="grilltest">
+        <problem id="fs-id1170043802008">
+          <para id="grilltestp1">
+Good students of signals and systems must become adept at determining the linearity (or nonlinearity) of systems. Practice on the system examples below; which of them are linear?
+</para>
+          <list id="idm447485987440" list-type="bulleted">
+            <item>Identity: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = x[n]</m:annotation></m:semantics></m:math></item>
+            <item>
+Scaling: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = 2\, x[n]</m:annotation></m:semantics></m:math></item>
+            <item>
+Offset: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">y[n] = x[n]+2</m:annotation></m:semantics></m:math></item>
+            <item>Square signal: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:msup><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msup></m:mrow><m:annotation encoding="math/tex">y[n] = (x[n])^2</m:annotation></m:semantics></m:math></item>
+            <item>Shift: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mspace width="1em"/><m:mi>m</m:mi><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">Z</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">y[n] = x[n+m] \quad m\in \mathbb{Z}</m:annotation></m:semantics></m:math></item>
+            <item>
+Decimate: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = x[2n]</m:annotation></m:semantics></m:math></item>
+            <item>Square time: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = x[n^2]</m:annotation></m:semantics></m:math></item>
+            <item>Moving average (combines shift, sum, scale): <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] = \frac{1}{2}(x[n]+x[n-1])</m:annotation></m:semantics></m:math></item>
+            <item>Recursive average: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mspace width="thinmathspace"/><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] =  x[n] + \alpha\,y[n-1]</m:annotation></m:semantics></m:math></item>
+          </list>
+        </problem>
+        <solution id="fs-id1170031618352">
+          <list id="system-examples-mathans" list-type="bulleted">
+            <item>
+              <list id="idm447485915216" list-type="bulleted">
+                <item>
+Identity: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:annotation encoding="math/tex"/></m:semantics></m:math><emphasis>Linear</emphasis></item>
+                <item>Scaling: <emphasis>Linear</emphasis></item>
+                <item>Offset: <emphasis>Nonlinear</emphasis></item>
+                <item>Square signal: <emphasis>Nonlinear</emphasis></item>
+                <item>Shift:  <emphasis>Linear</emphasis></item>
+                <item>Decimate: <emphasis>Linear</emphasis></item>
+                <item>Square time: <emphasis>Linear</emphasis></item>
+                <item>Moving average: <emphasis>Linear</emphasis></item>
+                <item>Recursive average: <emphasis>Linear</emphasis></item>
+              </list>
+            </item>
+          </list>
+        </solution>
+      </exercise>
+    </section>
+    <section id="idm447485908496">
+      <title>Linear Systems and Matrix Multiplication</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm447485907936">One of the interesting characteristics of any linear system is that its input/output relationship can be expressed as a matrix multiplication (note that this is distinct from--though ultimately related to--the notion of using matrix multiplication to express one signal as a <link url="http://cnx.org/content/m57561/latest/" window="new">linear combination of others</link>). In fact, this relationship is actually an identity: any linear system can be expressed as a matrix multiplication, and matrix multiplications are linear systems. Below is how to represent any linear system mathematically, either in matrix multiplication notation,
+<m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:mspace width="thinmathspace"/><m:mi>x</m:mi></m:mrow><m:annotation encoding="math/tex">y ~=~ {\bf H}\, x</m:annotation></m:semantics></m:math>
+or, in summation notation, <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munder><m:mo>∑</m:mo><m:mi>m</m:mi></m:munder><m:mspace width="mediummathspace"/><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:munder><m:mo>∑</m:mo><m:mi>m</m:mi></m:munder><m:mspace width="mediummathspace"/><m:msub><m:mi>h</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mspace width="thinmathspace"/><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] ~=~ \sum_m \: [{\bf H}]_{n,m} \, x[m] ~=~ \sum_m \: h_{n,m} \, x[m]</m:annotation></m:semantics></m:math> (where <m:math><m:semantics><m:mrow><m:msub><m:mi>h</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub></m:mrow><m:annotation encoding="math/tex">h_{n,m} ~=~ [{\bf H}]_{n,m}</m:annotation></m:semantics></m:math> represents the row-<m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, column-<m:math><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> entry of the matrix <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math>).
+</para><para id="eip-615">This matrix multiplication can be understood in two ways. First, the multiplication means that each value in the vector <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math> is the inner product of the corresponding row of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> with the vector <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math>. Or, equivalently, the vector <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math> can be seen as a weighted sum of the columns of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math>, with the values in the vector <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math> being the weights of the corresponding columns. Below is a picture of matrix multiplication, with different colors representing different values. Try to comprehend the multiplication with both perspectives.
+</para>
+      <figure id="yhx2"><media id="yhx2-plot" alt="Image">
+          <image mime-type="image/svg+xml" src="../../media/linsys.png" width="400"/>
+        </media>
+      </figure></section>
+  </content>
+</document>

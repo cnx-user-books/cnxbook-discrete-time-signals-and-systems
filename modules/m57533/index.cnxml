@@ -1,0 +1,319 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>The Peculiarity of Discrete-Time Sinusoids</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57533</md:content-id>
+  <md:title>The Peculiarity of Discrete-Time Sinusoids</md:title>
+  <md:abstract/>
+  <md:uuid>6671e8da-3bce-4a81-99ac-ebb85ce56fd9</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">
+Compared to their continuous-time counterparts (those that take a continuous-valued independent time variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>t</m:mi><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math>), discrete-time sinusoidal signals have two unique characteristics. It is possible for them to <term><emphasis>alias</emphasis></term>, and they are not always <term><emphasis>periodic</emphasis></term>.</para>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm95609270880"><title>Aliasing of Discrete-time Sinusoids</title><para id="idm95609270320">One might think that if two different discrete-time sinusoids had different frequencies, then they would be different signals. Such is always the case with continuous-time sinusoids, but <emphasis effect="italics">not </emphasis>always for the discrete-time version. Consider two discrete-time sinuoids <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math> with different frequencies, <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\omega+2\pi</m:annotation></m:semantics></m:math>:</para><para id="idm95609256784">
+        <m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>1</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>=</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mi>n</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>ϕ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x_1[n]=e^{j(\omega n+\phi)}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm95609247808"><m:math>
+          <m:semantics>
+            <m:mrow>
+              <m:msub>
+                <m:mi>x</m:mi>
+                <m:mn>2</m:mn>
+              </m:msub>
+              <m:mo stretchy="false">[</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo stretchy="false">]</m:mo>
+              <m:mo>=</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi>j</m:mi>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mo stretchy="false">(</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>ϕ</m:mi>
+                  <m:mo stretchy="false">)</m:mo>
+                </m:mrow>
+              </m:msup>
+            </m:mrow>
+            <m:annotation encoding="math/tex">x_2[n]=e^{j((\omega+2\pi)n +\phi}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para><para id="idm95609237024">We can then simplify the expression of <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math>, using the fact that <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">e^{j2\pi}=1</m:annotation></m:semantics></m:math> to arrive at this surprising conclusion:
+<m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:msup><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]=e^{j((\omega+2\pi)n +\phi}=e^{j(\omega n+2\pi n +\phi)}=e^{j(\omega n +\phi)}e^{j2\pi n}=e^{j(\omega n +\phi)}(1)^n=e^{j(\omega n +\phi)}=x_1[n]</m:annotation></m:semantics></m:math></para>
+      <para id="idm95609187664">So <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n]</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n]</m:annotation></m:semantics></m:math> have different frequencies, yet they are identical! You can see this plotted out with <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">\omega=\frac{\pi}{6}</m:annotation></m:semantics></m:math> below:</para>
+      <figure id="idm95609176160" orient="vertical"><subfigure id="idm95609175392">
+          <media id="idm95609175232" alt="">
+            <image mime-type="" src="../../media/cosP1.png"/>
+<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm95609174016">
+          <media id="idm95609173888" alt="">
+            <image mime-type="" src="../../media/cosP1.png"/>
+<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>Here <m:math><m:semantics><m:annotation encoding="math/tex"/></m:semantics></m:math><m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">x_1[n]=\cos\left(\frac{\pi}{6}n\right)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:annotation encoding="math/tex"/></m:semantics></m:math><m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mrow><m:mn>13</m:mn><m:mi>π</m:mi></m:mrow><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">x_2[n] =\cos\left(\frac{13\pi}{6}n\right)</m:annotation></m:semantics></m:math> . While they have different frequencies, they are identical signals, for <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mrow><m:mn>13</m:mn><m:mi>π</m:mi></m:mrow><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mo stretchy="false">(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{13\pi}{6}n\right) = \cos\left((\frac{\pi}{6}+2\pi)n\right)</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm95609143424">
+This phenomenon is called <term><emphasis>aliasing</emphasis></term>. It happens when frequencies are offset by any integer multiple of <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> (you can use <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> and  <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi></m:mrow><m:annotation encoding="math/tex">\omega+2\pi k</m:annotation></m:semantics></m:math> in the example above to see for yourself). </para>
+      <para id="eip-668">So only frequencies along a continuous interval of length <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> on the real number are distinct from each other. For this reason, when we deal with discrete-time frequencies we consider only those along the interval <m:math><m:semantics><m:mrow><m:mn>0</m:mn><m:mo>≤</m:mo><m:mi>ω</m:mi><m:mo>&lt;</m:mo><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">0\leq\omega\lt2\pi</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi><m:mo>&lt;</m:mo><m:mi>ω</m:mi><m:mo>≤</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi\lt\omega\leq\pi</m:annotation></m:semantics></m:math>, as any other frequency aliases back to an identical signal with a frequency in that range. Within these ranges, frequencies close to <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> (or <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>, depending on the range used) are low frequencies--their sinusoids do not oscillate very quickly-- and frequencies close to <m:math><m:semantics><m:mi>π</m:mi><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math> (or <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi</m:annotation></m:semantics></m:math>, depending on the range) are high frequencies:</para>
+      <figure id="idm95609118880" orient="vertical"><subfigure id="idm95609118112">
+          <media id="idm95609117984" alt="">
+            <image mime-type="" src="../../media/cosLo.png"/>
+<image mime-type="application/postscript" src="../../media/cosLo.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm95609116768">
+          <media id="idm95609116640" alt="">
+            <image mime-type="" src="../../media/cosHi.png"/>
+<image mime-type="application/postscript" src="../../media/cosHi.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>Low frequencies are those <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> close to <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> rad, as in the first signal, <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>10</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{\pi}{10}n\right)</m:annotation></m:semantics></m:math>. High frequencies are those <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> close to <m:math><m:semantics><m:mi>π</m:mi><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi</m:annotation></m:semantics></m:math> rad, as in the second signal, <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mrow><m:mn>9</m:mn><m:mi>π</m:mi></m:mrow><m:mn>10</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{9 \pi}{10}n\right)</m:annotation></m:semantics></m:math>.</caption></figure></section><section id="idm95609096768">
+      <title>Periodicity of Discrete-time Sinusoids</title>
+      <para id="idm95609096208">Recall that a signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is defined to be periodic if there exists some integer <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> for which <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>,</m:mo><m:mtext> </m:mtext><m:mi mathvariant="normal">∀</m:mi><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">x[n+N]=x[n]~,~\forall n</m:annotation></m:semantics></m:math>. Continuous-time sinusoids are always periodic, but again, such is only sometimes the case for discrete-time sinusoids. Suppose we have a complex sinusoid with a frequency <span><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac></m:mrow><m:annotation encoding="math/tex">\omega=2\pi\frac{k}{N}</m:annotation></m:semantics></m:math></span>, where <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>k</m:mi><m:annotation encoding="math/tex">k</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> are integers. This just means that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> is some fraction of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>. It turns out that this signal <emphasis effect="italics">is </emphasis>periodic, with period <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>:
+</para>
+      <para id="idm95609070144"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>N</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>N</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+x[n]&amp;=e^{j(2\pi\frac{k}{N} n+ \phi)}\\
+x[n+N]&amp;=e^{j(2\pi\frac{k}{N} (n+N) + \phi)} \\
+&amp;=e^{j(2\pi\frac{k}{N} n + 2\pi\frac{k}{N} N + \phi)}\\
+&amp;=e^{j(2\pi\frac{k}{N} n + \phi)}  e^{j(2\pi\frac{k}{N} N)}\\
+&amp;=e^{j(2\pi\frac{k}{N} n + \phi)}e^{j(2\pi\frac{k}{N}N)}\\
+&amp;=e^{j(2\pi\frac{k}{N} n + \phi)}(e^{j(2\pi k)})\\
+&amp;=x[n]
+\end{align*}</m:annotation></m:semantics></m:math>. </para>
+      <para id="idm95608990496">Here is a plot of a sinusoid with frequency <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mn>3</m:mn><m:mn>16</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">2\pi\frac{3}{16}</m:annotation></m:semantics></m:math>. You will note that it has a period of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>16</m:mn></m:mrow><m:annotation encoding="math/tex">N=16</m:annotation></m:semantics></m:math>:</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm95608984656"><media id="idm95608983888" alt="">
+          <image mime-type="" src="../../media/cosPer.png"/>
+<image mime-type="application/postscript" src="../../media/cosPer.eps" for="pdf"/>
+        </media>
+        
+      <caption><m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mn>3</m:mn></m:mrow><m:mn>16</m:mn></m:mfrac><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_1[n] = \cos( \frac{2\pi 3}{16} n)</m:annotation></m:semantics></m:math> is periodic, with <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>16</m:mn></m:mrow><m:annotation encoding="math/tex">N=16</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm95608970336">
+Now, these fractions of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> are special values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> we call <emphasis>harmonic frequencies</emphasis>, for sinusoids with such frequencies are periodic.</para>
+      <para id="eip-812">In contrast, consider sinusoids whose frequencies are <emphasis effect="italics">not</emphasis> fractions of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>π</m:mi><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math>:</para>
+      <para id="idm95608963424">
+        <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+          <m:semantics>
+            <m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true">
+              <m:mtr>
+                <m:mtd>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>ϕ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo>+</m:mo>
+                  <m:mi>N</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                </m:mtd>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>N</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo>+</m:mo>
+                      <m:mi>ϕ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>N</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>ϕ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>ϕ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>N</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>=</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>+</m:mo>
+                      <m:mi>ϕ</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow class="MJX-TeXAtom-ORD">
+                      <m:mi>j</m:mi>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mi>ω</m:mi>
+                      <m:mi>N</m:mi>
+                      <m:mo stretchy="false">)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mi/>
+                  <m:mo>≠</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mo stretchy="false">[</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mo stretchy="false">]</m:mo>
+                  <m:mo>,</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mtext>unless </m:mtext>
+                  </m:mrow>
+                  <m:mi>ω</m:mi>
+                  <m:mi>N</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mi>k</m:mi>
+                  <m:mo stretchy="false">→</m:mo>
+                  <m:mi>ω</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mfrac>
+                    <m:mi>k</m:mi>
+                    <m:mi>N</m:mi>
+                  </m:mfrac>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+            <m:annotation encoding="math/tex">\begin{align*}
+x[n]&amp;=e^{j(\omega n+ \phi)}\\
+x[n+N]&amp;=e^{j(\omega (n+N) + \phi)} \\
+&amp;=e^{j(\omega n + \omega N + \phi)}\\
+&amp;=e^{j(\omega n + \phi)}  e^{j(\omega N)}\\
+&amp;=e^{j(\omega n + \phi)}e^{j(\omega N)}\\
+&amp;\neq x[n],\textrm{unless } \omega N=2\pi k \rightarrow \omega=2\pi\frac{k}{N}
+\end{align*}</m:annotation>
+          </m:semantics>
+        </m:math>
+      </para>
+      <para id="idm95608902592">
+So we see that discrete-time sinusoids are periodic if, and only if, their frequencies are fractions of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>. Consider the example of a non-periodic sinusoid below. It definitely oscillates, and at first it appears to be periodic, but look carefully and you will see that it actually is not, unlike the one from the figure above. Not only is this cosine not periodic, but aside from at respective negated indices (e.g., <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">-1</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math>, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">-2</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>2</m:mn><m:annotation encoding="math/tex">2</m:annotation></m:semantics></m:math>), it will never even take the same <emphasis effect="italics">value </emphasis>more than once!</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm95608892528"><media id="idm95608891760" alt="">
+          <image mime-type="" src="../../media/cosNotPer.png"/>
+<image mime-type="application/postscript" src="../../media/cosNotPer.eps" for="pdf"/>
+        </media>
+        
+      <caption><m:math><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1.16</m:mn><m:mspace width="thinmathspace"/><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x_2[n] = \cos(1.16 \, n)</m:annotation></m:semantics></m:math>. The frequency of <m:math><m:semantics><m:mn>1.16</m:mn><m:annotation encoding="math/tex">1.16</m:annotation></m:semantics></m:math> is not a fraction of <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math>, so this sinusoidal signal is not periodic.</caption></figure><para id="idm95608878512">
+Take note of sinusoids whose frequencies are of the form <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mfrac><m:mi>k</m:mi><m:mi>N</m:mi></m:mfrac></m:mrow><m:annotation encoding="math/tex">\omega=2\pi\frac{k}{N}</m:annotation></m:semantics></m:math>, for they will play a starring role in the Fourier analysis of periodic and finite-length discrete-time signals.</para>
+    </section>
+  </content>
+</document>

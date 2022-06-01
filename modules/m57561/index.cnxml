@@ -1,0 +1,86 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Linear Combinations of Vectors</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57561</md:content-id>
+  <md:title>Linear Combinations of Vectors</md:title>
+  <md:abstract/>
+  <md:uuid>ba6c282e-33b7-4664-9f5d-bb038a8cd21c</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">
+In the study of signals and signal processing, there is a particular mathematical operation that will show up quite a few times, that of a <term><emphasis>linear combination</emphasis></term>. Given a collection of vectors in a vector space, say <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>M</m:mi><m:annotation encoding="math/tex">M</m:annotation></m:semantics></m:math> vectors <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>…</m:mo><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>∈</m:mo><m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">C</m:mi></m:mrow><m:mi>N</m:mi></m:msup></m:mrow><m:annotation encoding="math/tex">x_0, x_1, \dots x_{M-1} \in \mathbb{C}^N</m:annotation></m:semantics></m:math>, and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>M</m:mi><m:annotation encoding="math/tex">M</m:annotation></m:semantics></m:math> scalars <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>…</m:mo><m:mo>,</m:mo><m:msub><m:mi>α</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">C</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">\alpha_0, \alpha_1, \dots, \alpha_{M-1} \in \mathbb{C}</m:annotation></m:semantics></m:math>, then the linear combination of these vectors is:</para>
+    <para id="idm101238006704"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>α</m:mi><m:mi>m</m:mi></m:msub><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">y=\alpha_0 x_0 + \alpha_1 x_1 + \dots + \alpha_{M-1} x_{M-1} = \sum_{m=0}^{M-1} \alpha_m x_m</m:annotation></m:semantics></m:math>.</para>
+    <para id="idm101237986352">The result is itself also a vector in the vector space (indeed, this is one of the requirements of what it means for something to be a vector space).</para><section id="idm101237986096">
+      <title>Linear Combination Example: A Mixing Board</title>
+      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm101237985536">A linear combination is a scaled sum of different vectors in a vector space. A real world example of a linear combination is the mixing board used in music recording studios. The board takes in a variety of different inputs and combines them--amplifying some, reducing the level of others--to create a single output of music. Mathematically, we could say <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:annotation encoding="math/tex">x_0</m:annotation></m:semantics></m:math> is drums, <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">x_1</m:annotation></m:semantics></m:math> is bass, <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">x_2</m:annotation></m:semantics></m:math> is guitar, ..., <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mn>22</m:mn></m:mrow></m:msub><m:annotation encoding="math/tex">x_{22}</m:annotation></m:semantics></m:math> is a saxophone, and <m:math><m:semantics><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mn>23</m:mn></m:mrow></m:msub><m:annotation encoding="math/tex">x_{23}</m:annotation></m:semantics></m:math> a singer, and then the mixing board creates the linear combination
+<m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>α</m:mi><m:mi>m</m:mi></m:msub><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">y = \alpha_0 x_0 + \alpha_1 x_1 + \dots + \alpha_{M-1} x_{M-1} = \sum_{m=0}^{M-1} \alpha_m x_m</m:annotation></m:semantics></m:math>.
+Changing the different <m:math><m:semantics><m:msub><m:mi>α</m:mi><m:mi>m</m:mi></m:msub><m:annotation encoding="math/tex">\alpha_m</m:annotation></m:semantics></m:math>'s would result in a different kind of sound that either emphasizes or de-emphasizes certain instruments. For example, the producer may be particularly interested in increasing the volume of the cowbell.</para><section id="idm101237950080">
+        <title>Linear Combinations as Matrix Multiplication</title>
+        <para id="idm101237949568">It is possible to express a linear combination without explicitly using sums, but rather as the product of a matrix and a vector. To do this, all of the vectors to be scaled and summed in the linear combination must first be arranged into a matrix:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>X</m:mi></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>⋯</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mi/><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mo>⋯</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mo>⋯</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>⋮</m:mo></m:mtd><m:mtd><m:mo>⋮</m:mo></m:mtd><m:mtd/><m:mtd><m:mo>⋮</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mo>⋯</m:mo></m:mtd><m:mtd><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+X &amp;= \begin{bmatrix} x_0 | x_1 | \cdots | x_{M-1} \end{bmatrix}\\
+&amp;=\begin{bmatrix}
+x_0[0] &amp;x_1[0] &amp;\cdots &amp;x_{M-1}[0] \\
+x_0[1] &amp;x_1[1] &amp;\cdots &amp;x_{M-1}[1] \\
+\vdots &amp;\vdots &amp;&amp;\vdots \\
+x_0[N-1] &amp;x_1[N-1] &amp;\cdots &amp;x_{M-1}[N-1] \end{bmatrix}
+\end{align*}</m:annotation></m:semantics></m:math></para>
+        <para id="idm101237886576">
+Then the scaling factors for each vector are stacked into a single vector:</para>
+        <para id="idm101237886320">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:mi>a</m:mi>
+                <m:mo>=</m:mo>
+                <m:mrow>
+                  <m:mo>[</m:mo>
+                  <m:mtable rowspacing="4pt" columnspacing="1em">
+                    <m:mtr>
+                      <m:mtd>
+                        <m:msub>
+                          <m:mi>α</m:mi>
+                          <m:mn>0</m:mn>
+                        </m:msub>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:msub>
+                          <m:mi>α</m:mi>
+                          <m:mn>1</m:mn>
+                        </m:msub>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:mo>⋮</m:mo>
+                      </m:mtd>
+                    </m:mtr>
+                    <m:mtr>
+                      <m:mtd>
+                        <m:msub>
+                          <m:mi>α</m:mi>
+                          <m:mrow class="MJX-TeXAtom-ORD">
+                            <m:mi>M</m:mi>
+                            <m:mo>−</m:mo>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+                        </m:msub>
+                      </m:mtd>
+                    </m:mtr>
+                  </m:mtable>
+                  <m:mo>]</m:mo>
+                </m:mrow>
+              </m:mrow>
+              <m:annotation encoding="math/tex">a = \begin{bmatrix}\alpha_0 \\ \alpha_1 \\ \vdots \\ \alpha_{M-1} \end{bmatrix}</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+        <para id="idm101237874048">Once those are in place, the linear combination is ultimately expressed as a simple matrix-vector multiplication:<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo>⋯</m:mo><m:mo>+</m:mo><m:msub><m:mi>α</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:munderover><m:msub><m:mi>α</m:mi><m:mi>m</m:mi></m:msub><m:msub><m:mi>x</m:mi><m:mi>m</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>⋯</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mtable rowspacing="4pt" columnspacing="1em"><m:mtr><m:mtd><m:msub><m:mi>α</m:mi><m:mn>0</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>α</m:mi><m:mn>1</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>⋮</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mi>α</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>M</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mtd></m:mtr></m:mtable><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mi>a</m:mi></m:mrow><m:annotation encoding="math/tex">y=\alpha_0 x_0 + \alpha_1 x_1 + \dots + \alpha_{M-1} x_{M-1} = \sum_{m=0}^{M-1} \alpha_m x_m
+= \begin{bmatrix}x_0 | x_1 | \cdots | x_{M-1} \end{bmatrix}\begin{bmatrix}\alpha_0 \\ \alpha_1 \\ \vdots \\ \alpha_{M-1} \end{bmatrix}= X a</m:annotation></m:semantics></m:math>.</para>
+      </section>
+    </section>
+  </content>
+</document>

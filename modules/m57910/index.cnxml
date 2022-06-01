@@ -1,0 +1,101 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Discrete-Time Filtering and Filter Design</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57910</md:content-id>
+  <md:title>Discrete-Time Filtering and Filter Design</md:title>
+  <md:abstract/>
+  <md:uuid>941c71be-ae4a-4f23-8cee-462506b4d564</md:uuid>
+</metadata>
+
+<content>
+    <para id="delete_me">Having considered discrete-time signal types, systems and their properties, and various signal transformations that can assist with analysis, we are ready to put this knowledge to use. After all, signals and systems are not just interesting mathematical entities--they are actually useful! Signals represent real-world information, and systems can perform a variety of important modifications on them.</para>
+    <section id="idm126043232544">
+      <title>Filtering: LTI Systems in the Frequency Domain</title>
+      <para id="idm126043231984">Before we can design a filter to meet some kind of desired specification, we first need to remind ourselves of what LTI systems can do. We will explain filtering from the standpoint of infinite-length signals, but the principles apply similarly to finite-length signals as well. Recall these two important facts: first, that discrete-time signals can be represented as an integral of complex sinusoids, and second, that complex sinusoids are eigenvectors of LTI systems. Putting those facts together, we see that an LTI system can be understood as taking in discrete-time signals as inputs, and then modifying them by scaling their frequency components. The amount the system scales each frequency component <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi></m:mrow><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> is the system's frequency response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">H(\omega)</m:annotation></m:semantics></m:math>. The frequency response is itself simply the DTFT of the system's impulse response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-821">So, LTI systems work by taking in input signals and scaling each input frequency according to the system's frequency response in order to produce the output. In this way, they can be thought of as being (infinitesimally) finely scaled versions of a graphic equalizer, which modifies input music signals according to frequency bands.
+</para>
+      <figure id="graphiceq"><media id="graphiceq-plot" alt="Image">
+          <image mime-type="image/jpg" src="../../media/grapheq.png" width="400"/>
+        </media>
+        
+      <caption>The filtering operation of discrete-time LTI systems is similar to the frequency tuning of musical signals with a graphic equalizer. [https://www.flickr.com/photos/12577725@N05/6103827986] Yamaha EQ-500 by Touho_T, used under [http://creativecommons.org/licenses/by/2.0/] CC BY / cropped from original.</caption></figure><para id="eip-914">Since there is an infinite number of discrete-time frequencies <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>ω</m:mi></m:mrow><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> (as it is a real number between <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">-\pi</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math>), and each one can be scaled in an infinite number of ways (since the scaling factor is any complex number), there are obviously an infinite number of potential filters/systems. That said, filters are usually categorized as being one of four different classes.</para>
+    </section>
+    <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm126043212160"><title>Filter Types</title><para id="idm126043211632">The most common filter types are named according to the signal frequency components they either stop (scale by zero) or allow to pass. For the simplest manifestations of these signal classes, the magnitudes of their frequency response and their corresponding impulse responses are plotted below.</para>
+      <figure id="idm126043210944" orient="vertical"><subfigure id="idm126043210176">
+          <media id="idm126043210048" alt="">
+            <image mime-type="" src="../../media/LPfilter.png"/>
+<image mime-type="application/postscript" src="../../media/LPfilter.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm126043208800">
+          <media id="idm126043208672" alt="">
+            <image mime-type="" src="../../media/hLP.png"/>
+<image mime-type="application/postscript" src="../../media/hLP.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The frequency response magnitude and impulse response of <emphasis>low-pass filter</emphasis>. Note how the lowest frequencies (those near to <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math>) are scaled by a (relatively) constant value, while the highest frequencies (those near <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mo>±</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\omega=\pm\pi</m:annotation></m:semantics></m:math>) are attenuated.</caption></figure><figure id="idm126043199216" orient="vertical"><subfigure id="idm126043198512">
+          <media id="idm126043198384" alt="">
+            <image mime-type="" src="../../media/HPfilter.png"/>
+<image mime-type="application/postscript" src="../../media/HPfilter.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm126043197184">
+          <media id="idm126043197056" alt="">
+            <image mime-type="" src="../../media/hHP.png"/>
+<image mime-type="application/postscript" src="../../media/hHP.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>A <emphasis>high-pass filter</emphasis> does the opposite of a low-pass filter; it attenuates lower frequencies and allows higher frequencies to pass.</caption></figure><figure id="idm126043194704" orient="vertical"><subfigure id="idm126043193952">
+          <media id="idm126043193824" alt="">
+            <image mime-type="" src="../../media/BPfilter.png"/>
+<image mime-type="application/postscript" src="../../media/BPfilter.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm126043192256">
+          <media id="idm126043192128" alt="">
+            <image mime-type="" src="../../media/hBP.png"/>
+<image mime-type="application/postscript" src="../../media/hBP.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>Plotted above are the frequency response magnitude and impulse response of a <emphasis>band-pass filter</emphasis>. These filters allow a narrow (contiguous) band of frequencies to pass (here, those near <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mo>±</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow><m:annotation encoding="math/tex">\omega=\pm\frac{\pi}{2}</m:annotation></m:semantics></m:math>) while attenuating the rest.</caption></figure><figure id="idm126043186288" orient="vertical"><subfigure id="idm126043185536">
+          <media id="idm126043185408" alt="">
+            <image mime-type="" src="../../media/BSfilter.png"/>
+<image mime-type="application/postscript" src="../../media/BSfilter.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm126043184208">
+          <media id="idm126043184080" alt="">
+            <image mime-type="" src="../../media/hBS.png"/>
+<image mime-type="application/postscript" src="../../media/hBS.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>A <emphasis>band-stop filter</emphasis>, like the band-pass filter, also focuses on a narrow band of frequencies. But in this case, it attenuates that band, while allowing other frequencies to pass.</caption></figure><para id="idm126043181296">
+As can be seen in the frequency responses above, the names of the typical filter classes give a straightforward description of the filters' function. Note, though, that there is some level of ambiguity among the filter names. For example, a low-pass filter is also a type of band-pass filter (with low frequencies being the "band" that passes), and for that matter is also a band-stop filter (the high frequencies being the "band" that is stopped). We could say the same thing about high-pass filters, as well. In practice, then, band-pass and band-stop filters typically are understood to pass or stop bands that are not about <m:math><m:semantics><m:mrow><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mrow><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math>, but some other frequency. Additionally, the pass- and stop-bands of these two filters are typically much narrower than those for high-pass or low-pass filters.</para>
+    </section><section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm126043177088"><title>Filter Design</title><para id="idm126043176576">Note the simplicity of the four filters plotted above; their impulse responses have only 2 or 4 non-zero values, and even those are either 1 or -1. In practice, discrete-time filters can have impulse response lengths that are much longer and much more complex. The advantages of such filters is that their frequency pass- and stop-points are much sharper, with more level pass-bands. We can see this trade-off when comparing the frequency and impulse response of the low-pass filter above with the following "ideal" low-pass filter:</para>
+      <figure id="idm126043175776" orient="vertical"><subfigure id="idm126043175024">
+          <media id="idm126043174896" alt="">
+            <image mime-type="" src="../../media/idealLPfilter.png"/>
+<image mime-type="application/postscript" src="../../media/idealLPfilter.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        <subfigure id="idm126043173696">
+          <media id="idm126043173568" alt="">
+            <image mime-type="" src="../../media/sinc1.png"/>
+<image mime-type="application/postscript" src="../../media/sinc1.eps" for="pdf" print-width="343pt"/>
+          </media>
+        </subfigure>
+        
+      <caption>The frequency response magnitude and impulse response of an <emphasis>ideal low-pass filter</emphasis>. Note how the lower frequencies (those whose magnitude are less than the "cutoff frequency" of  <m:math><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub></m:math>) are scaled by a constant value of <m:math><m:mrow><m:mn>1</m:mn></m:mrow></m:math>, while the highest frequencies (those with magnitudes above the cutoff frequency) are completely attenuated.</caption></figure><para id="idm126043169360">We can see why this filter is called "ideal." For all of the frequencies below a certain point <m:math><m:semantics><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">\omega_c</m:annotation></m:semantics></m:math>, the filter scales them by <m:math><m:mrow><m:mn>1</m:mn></m:mrow></m:math>, meaning it does not change their magnitude at all; then, for all frequencies higher than <m:math><m:semantics><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">\omega_c</m:annotation></m:semantics></m:math>, it perfectly zeroes them out. Of course, this comes at a cost: the impulse response of this filter (<m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub><m:mfrac><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub><m:mi>n</m:mi></m:mrow></m:mfrac></m:mrow><m:annotation encoding="math/tex">h[n]=2 \omega_c \frac{\sin(\omega_c n)}{\omega_c n}</m:annotation></m:semantics></m:math>) is infinitely long and is not causal (meaning the system needs to know future values of the input to calculate the current value of the output). Furthermore, because its transfer function is not a rational function of finite order, it has infinite complexity, and thus cannot be perfectly implemented in practice.</para><para id="eip-375">The task of filter design is to work with these two constraints, having a desirable frequency response without having an overly complex impulse response (which affects the complexity and cost of the filter's real-world implementation). The "desirability" of a filter's frequency response is typically expressed by giving certain constraints on its performance:
+</para>
+      <figure id="filterspec" orient="vertical"><media id="filterspec-plot" alt="Image">
+          <image mime-type="image/png" src="../../media/errtol.png" width="400" print-width="300pt"/>
+        </media>
+        
+      <caption>The performance constraints for filters are typically expressed as allowable deviations from <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">|H(\omega)|=1</m:annotation></m:semantics></m:math> in the filter's pass-band (which is indicated by <m:math><m:semantics><m:msub><m:mi>ω</m:mi><m:mi>p</m:mi></m:msub><m:annotation encoding="math/tex">\omega_p</m:annotation></m:semantics></m:math>) and from <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>H</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">|H(\omega)|=0</m:annotation></m:semantics></m:math> in the stop-band (the "cutoff" of which is indicated by <m:math><m:semantics><m:msub><m:mi>ω</m:mi><m:mi>c</m:mi></m:msub><m:annotation encoding="math/tex">\omega_c</m:annotation></m:semantics></m:math>).</caption></figure><para id="idm126043130960">
+Within given filter design parameters, the simplest possible implementation is sought. There are two main approaches towards implementation, IIR and FIR; we will subsequently consider the characteristics, advantages, and disadvantages of each.</para>
+    </section></content>
+</document>

@@ -1,0 +1,90 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Plotting Discrete-Time Signals</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57678</md:content-id>
+  <md:title>Plotting Discrete-Time Signals</md:title>
+  <md:abstract/>
+  <md:uuid>100d968c-b9a5-4969-8d9e-8a591c08c178</md:uuid>
+</metadata>
+
+<content>
+    <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="delete_me">Recall that a <term>discrete-time signal</term> is a <term>function</term> with an integer-valued independent variable <m:math display="inline"><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi>n</m:mi></m:annotation-xml></m:semantics></m:math>.  The variable <m:math display="inline"><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation-xml encoding="MathML-Content"><m:mi>n</m:mi></m:annotation-xml></m:semantics></m:math> marches through time from negative infinity to positive infinity. For each value of <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, we get the value of our function <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. Now, that <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is either going to be a <emphasis>real number</emphasis>, meaning it's going to live in the real number set, or it's going to be a <emphasis>complex number</emphasis> and live in the complex number set.
+
+</para><section id="idm451655335920">
+      <title>Plotting Real Signals</title>
+      <para id="idm451655335376">We're going to see a lot graphs in our study of signal processing:</para><figure id="idm451655334912" orient="vertical"><media id="idm451655334080" alt="">
+          <image mime-type="" src="../../media/sigFunNo.png"/>
+<image mime-type="application/postscript" src="../../media/sigFunNo.eps" for="pdf"/>
+        </media>
+        
+      <caption><span>Example of a discrete-time signal.</span>
+        </caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm451655331648">For each value of one of these <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, we get the value of <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>.
+For clarity, we're often going to color in these circles at the top, but that's really just a matter of taste.  We're either going to label the signal on the y-axis or, more typically, in the title of the graph.</para></section><section id="idm451655321440">
+        <title>Examples of Discrete-Time Signal Plots</title>
+        <para id="idm451655320880">Here are some examples of signals.  The first is a financial time series. It's the daily closing share price of Google for a five-month period:</para>
+        <figure id="idm451655320352" orient="vertical"><media id="idm451655319584" alt="">
+            <image mime-type="" src="../../media/google.png"/>
+<image mime-type="application/postscript" src="../../media/google.eps" for="pdf"/>
+          </media>
+          
+        <caption>A financial series signal.</caption></figure><para id="idm451655317424">You can see here that it's a discrete time signal, where each of these signal points corresponds to one single share price at the end of a day.  There are some fluctuations in the price, and if you were a financial trader or if you were an economist, you would be very interested in the information that this daily closing share price signal conveys. Another example is a temperature signal, the temperature at Houston Intercontinental Airport every day at noon for 365 days that comprise the year 2013 (in degrees Celsius):</para><figure id="idm451655316640" orient="vertical"><media id="idm451655315872" alt="">
+            <image mime-type="" src="../../media/iahtemp.png"/>
+<image mime-type="application/postscript" src="../../media/iahtemp.eps" for="pdf"/>
+          </media>
+          
+        <caption>Daily temperatures over the course of a year.</caption></figure><para id="idm451655313696">
+Again, we can see that there are fluctuations in this signal, and if you were a meteorologist or a climatologist, you'd be very interested in the information that this signal conveys.  Finally, here's an audio signal that is speech from an actor speaking a part in Shakespeare's play, <emphasis effect="italics">Hamlet</emphasis>:</para>
+        <figure id="idm451655312480" orient="vertical"><media id="idm451655311712" alt="">
+            <image mime-type="" src="../../media/hamlet.png"/>
+<image mime-type="application/postscript" src="../../media/hamlet.eps" for="pdf"/>
+          </media>
+          
+        <caption>The discrete-time plot of a speech signal.</caption></figure></section>
+      <section id="idm451655309792">
+        <title>Plotting Discrete-Time Signals Correctly</title>
+        <para id="idm451655309232">We need to remember that with a discrete-time signal, the independent variable is <emphasis effect="italics">integer </emphasis>valued.  This means that when you plot a signal in a program like MATLAB, you must use a discrete-time plotting function
+(like the <code>stem</code> function) that respects the fact that the signal is only defined at discrete, integer time points, rather than a function (like <code>plot</code>) which interpolates between points:</para>
+        <figure id="idm451655307104" orient="vertical"><subfigure id="idm451655306336">
+            <media id="idm451655306208" alt="">
+              <image mime-type="" src="../../media/sigFunNo.png"/>
+<image mime-type="application/postscript" src="../../media/sigFunNo.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm451655304992">
+            <media id="idm451655304864" alt="">
+              <image mime-type="" src="../../media/sigFunBad.png"/>
+<image mime-type="application/postscript" src="../../media/sigFunBad.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          
+        <caption><span>Discrete-time signals are undefined between the integer index values and should be plotted accordingly. The second plot interpolates between the discrete-time integer index values, which is inappropriate for a discrete-time plot.</span>
+          </caption></figure></section>
+      <section id="idm451655302368">
+        <title>Plotting Complex-valued Signals</title>
+        <para id="idm451655301824">Up to this point, we've been talking about real-valued signals.  They comprise a single plot of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> versus <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. But what about complex-valued signals?</para>
+        <para id="eip-941">Recall that a complex number has a real component and an imaginary component. There are two equivalent ways of expressing a given complex number. For some <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>a</m:mi><m:mo>∈</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="double-struck">C</m:mi></m:mrow></m:mrow><m:annotation encoding="math/tex">a\in\mathbb{C}</m:annotation></m:semantics></m:math>, we can express <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>a</m:mi><m:annotation encoding="math/tex">a</m:annotation></m:semantics></m:math> in two different ways:</para>
+        <list id="eip-637" list-type="bulleted">
+          <item>Cartesian/rectangular form: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Re</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Im</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">a=\textrm{Re}(a)+j~\textrm{Im}(a)</m:annotation></m:semantics></m:math></item>
+          <item>Polar form: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>a</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi mathvariant="normal">∠</m:mi><m:mi>a</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">a=|a|e^{j\angle a}</m:annotation></m:semantics></m:math>,</item>
+        </list>
+        <para id="eip-137">where <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>j</m:mi><m:mo>=</m:mo><m:msqrt><m:mo>−</m:mo><m:mn>1</m:mn></m:msqrt></m:mrow><m:annotation encoding="math/tex">j=\sqrt{-1}</m:annotation></m:semantics></m:math> (in engineering contexts the variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>j</m:mi><m:annotation encoding="math/tex">j</m:annotation></m:semantics></m:math> is used to represent this value because <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>i</m:mi><m:annotation encoding="math/tex">i</m:annotation></m:semantics></m:math> represents electrical current).  Just as a complex number can be expressed in two different ways, so can a complex-valued signal:</para>
+        <list id="idm451655267664" list-type="bulleted">
+          <item>Cartesian/rectangular form: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Re</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>j</m:mi><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mtext>Im</m:mtext></m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]=\textrm{Re}(x[n])+j~\textrm{Im}(x[n])</m:annotation></m:semantics></m:math></item>
+          <item>Polar form: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi mathvariant="normal">∠</m:mi><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">x[n]=|x[n]|e^{j\angle x[n]}</m:annotation></m:semantics></m:math></item>
+        </list>
+        <para id="idm451655241440">What this means is that, if we're plotting a complex-valued signal, we actually need <emphasis effect="italics">two </emphasis>plots.  As we have seen, there are two different ways we can plot the same complex-valued signal:</para>
+        <list id="idm451655240336" list-type="bulleted">
+          <item>Cartesian/rectangular form:<figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm451655239552" orient="vertical"><subfigure id="idm451655238784"><media id="idm451655238656" alt=""><image mime-type="" src="../../media/compSigR.png"/>
+<image mime-type="application/postscript" src="../../media/compSigR.eps" for="pdf" print-width="343pt"/>
+</media></subfigure><subfigure id="idm451655237440"><media id="idm451655237312" alt=""><image mime-type="" src="../../media/compSigI.png"/>
+<image mime-type="application/postscript" src="../../media/compSigI.eps" for="pdf" print-width="343pt"/>
+</media></subfigure><caption>Plots of the real and imaginary parts of a complex-valued signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>.</caption></figure></item>
+          <item>Polar form:<figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm451655231792" orient="vertical"><subfigure id="idm451655231024"><media id="idm451655230896" alt=""><image mime-type="" src="../../media/compSigM.png"/>
+<image mime-type="application/postscript" src="../../media/compSigM.eps" for="pdf" print-width="343pt"/>
+</media></subfigure><subfigure id="idm451655229680"><media id="idm451655229552" alt=""><image mime-type="" src="../../media/compSigP.png" print-width="343pt"/>
+<image mime-type="application/postscript" src="../../media/compSigP.eps" for="pdf"/>
+</media></subfigure><caption>Plots of the magnitude and phase of a complex-valued signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>.</caption></figure></item>
+        </list>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,184 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>The Impulse Response of Discrete-Time Systems</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m57527</md:content-id>
+  <md:title>The Impulse Response of Discrete-Time Systems</md:title>
+  <md:abstract/>
+  <md:uuid>8e9c729f-20f2-4ced-842e-6f774282e2e6</md:uuid>
+</metadata>
+
+<content>
+    <section id="idm140947692848">
+      <title>The Impulse Response of Infinite-Length LTI Systems</title>
+      <para id="idm140947692272">Systems are mathematical transformations that take input signals and map them to output signals:
+</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="xHy"><media id="xHy-plot" alt="Image">
+          <image mime-type="image/png" src="../../media/systeminout.png" width="400" print-width="250pt"/>
+        </media>
+        
+      <caption>The system <m:math>
+  <m:mrow class="MJX-TeXAtom-ORD">
+    <m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi>
+  </m:mrow>
+</m:math>  takes an input <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math> and produces an output <m:math><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math>.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm140947682144">Recall that linear systems can be expressed as matrix multiplications, the output <m:math><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math> being the product of the infinitely long matrix <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> and the input vector <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math>: <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:mi>x</m:mi></m:mrow><m:annotation encoding="math/tex">x={\bf H}x</m:annotation></m:semantics></m:math>. Recall also that if a linear system is also time-invariant, the matrix <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> has a special "Toeplitz" structure: each column/row is simply a shifted version of any other column/row.
+</para><figure id="hH"><media id="hH-plot" alt="Image">
+          <image mime-type="image/png" src="../../media/hH.png" print-width="250pt"/>
+        </media>
+      <caption>The system matrix of an LTI system has a Toeplitz structure.</caption></figure><para id="idm140947669744">
+The <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column of the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> matrix for an LTI system has a special interpretation. If we multiply the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> matrix by a delta function, then the result will simply be that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column:
+</para>
+      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="Hddh"><media id="Hddh-plot" alt="Image">
+          <image mime-type="image/png" src="../../media/Hdeltah.png"/>
+        </media>
+        
+      <caption>Note how when the <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> matrix is multiplied by it, the delta function "selects" the <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column.</caption></figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm140947657232">We call the result of this multiplication, i.e. the multiplication of the <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> matrix by delta (impulse) function, the <term>impulse response</term> of the system. It is usually denoted <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>, or if referring to it as a vector, as <m:math><m:semantics><m:mi>h</m:mi><m:annotation encoding="math/tex">h</m:annotation></m:semantics></m:math>. The impulse response <m:math><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math> is the output of a system when the input is <m:math><m:semantics><m:mrow><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">\delta[n]</m:annotation></m:semantics></m:math>. Using the matrix notation from above, <m:math><m:semantics><m:mi>h</m:mi><m:annotation encoding="math/tex">h</m:annotation></m:semantics></m:math> is the <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column of the system matrix <m:math><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math>.</para><para id="eip-468">Because the impulse response is simply a column (specifically, the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column) of the system matrix <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math>, then if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> is an LTI system, the impulse response completely characterizes the system. It tells us absolutely everything we need to know about the system! Why is this? Because we can construct the entire system matrix <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> by simply shifting the impulse response accordingly. The value of the matrix at row <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> and column <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n-m]</m:annotation></m:semantics></m:math>.</para>
+      <para id="eip-341">As a result, we can also express the system input-output matrix multiplication in terms of the impulse response. If we have that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub></m:mrow><m:annotation encoding="math/tex">[{\bf H}]_{n,m}</m:annotation></m:semantics></m:math> is the value of the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> matrix at row <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> and column <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math>, then the matrix multiplication <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:munderover><m:mo movablelimits="false">∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]={\bf H}x=\sum\limits_{m=-\infty}^{\infty}[{\bf H}]_{n,m}x[m]</m:annotation></m:semantics></m:math>. From above we have the matrix values expressed in terms of the impulse response; subbing this in, we see the output is a sum involving the impulse response and the input: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:munderover><m:mo movablelimits="false">∑</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>m</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="normal">∞</m:mi></m:mrow></m:munderover><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]={\bf H}x=\sum\limits_{m=-\infty}^{\infty}h[n-m]x[m]</m:annotation></m:semantics></m:math>. </para>
+      <example id="eip-835">
+        <title id="id_40cd153f-6ce6-b4ac-c7dd-80aafc089ed5">Impulse Response of the Scaling System</title>
+        <para id="eip-335">Let's find the impulse response of a simple scaling system:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=\mathcal{H}\{x[n]\}=2x[n]</m:annotation></m:semantics></m:math>. To find the impulse response <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>, simply calculate the output when the input is a delta function:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]=\mathcal{H}\{\delta[n]\})=2\delta[n]</m:annotation></m:semantics></m:math>.</para>
+        <figure id="idm140947551344"><media id="idm140947550576" alt="">
+            <image mime-type="" src="../../media/deltah.png"/>
+<image mime-type="application/postscript" src="../../media/deltah.eps" for="pdf"/>
+          </media>
+          
+        </figure><para id="idm140947548576">
+If we would like to know what the system matrix <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> is, we use the formula <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">[{\bf H}]_{n,m} = h[n-m] = 2\delta[n-m]</m:annotation></m:semantics></m:math>. Below is a pictorial representation of that matrix:
+</para>
+        <figure id="toeplitzDeltah"><media id="toeplitzDeltah-plot" alt="Image">
+            <image mime-type="image/png" src="../../media/deltasys.png" print-width="250pt"/>
+          </media>
+        <caption>The system matrix of a simple scaling system.</caption></figure></example>
+      <example id="eip-670">
+        <title id="e63b50ed-d32d-2199-7fd7-c1a015ebe23f">Impulse Response of the Shift System</title>
+        <para id="eip-877">Now let's try finding the impulse response of a simple time-shifting system:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=\mathcal{H}\{x[n]\}=x[n-2]</m:annotation></m:semantics></m:math>. Once again, find the impulse response by supplying a delta function as the input:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]=\mathcal{H}\{\delta[n]\}=\delta[n-2]</m:annotation></m:semantics></m:math>.</para>
+        <figure id="idm140947504128"><media id="idm140947503360" alt="">
+            <image mime-type="" src="../../media/deltaS.png"/>
+<image mime-type="application/postscript" src="../../media/deltaS.eps" for="pdf"/>
+          </media>
+          
+        </figure><para id="idm140947501360">
+The system matrix <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="bold">H</m:mi><m:annotation encoding="math/tex">\bf H</m:annotation></m:semantics></m:math> can be found, as before, as <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">[{\bf H}]_{n,m} = h[n-m] = \delta[n-m-2]</m:annotation></m:semantics></m:math>.</para>
+        <figure id="toeplitzDeltaS"><media id="toeplitzDeltaS-plot" alt="Image">
+            <image mime-type="image/png" src="../../media/deltasysshift.png" print-width="250pt"/>
+          </media>
+        <caption>The system matrix of a shift system.</caption></figure></example>
+      <example id="eip-427">
+        <title id="fe1a6b58-75b8-0298-cdb3-55a0c357d0f0">Impulse Response of a Moving Average System</title>
+        <para id="eip-399">Consider now a moving average system:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">y[n] ~=~ {\cal H}\{ x[n] \} ~=~ \frac{1}{2}\left( x[n]+x[n-1]\right)</m:annotation></m:semantics></m:math>. For this system, we find that the impulse response is:
+<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">h[n] ~=~ {\cal H}\{ \delta[n] \} ~=~ \frac{1}{2}\left( \delta[n]+\delta[n-1]\right)</m:annotation></m:semantics></m:math>.</para>
+        <figure id="idm140947444144"><media id="idm140947443376" alt="">
+            <image mime-type="" src="../../media/hMA.png"/>
+<image mime-type="application/postscript" src="../../media/hMA.eps" for="pdf"/>
+          </media>
+          
+        </figure><para id="idm140947441248">
+The system matrix is found to be <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mrow><m:mo>(</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">[{\bf H}]_{n,m} = h[n-m] = \frac{1}{2}\left( \delta[n-m]+\delta[n-m-1]\right)</m:annotation></m:semantics></m:math>.</para>
+        <figure id="toeplitzMA"><media id="toeplitzMA-plot" alt="Image">
+            <image mime-type="image/png" src="../../media/masys.png" print-width="250pt"/>
+          </media>
+        <caption>The system matrix of a moving average system.</caption></figure></example>
+      <example id="eip-222">
+        <title id="c0f4e570-6b35-cde5-33e4-dc9dc7bc7779">Impulse Response of the Recursive Average System</title>
+        <para id="eip-373">A recursive moving average system has the following input-output relationship:<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mspace width="thinmathspace"/><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n] ~=~ {\cal H}\{ x[n] \} ~=~ x[n] + \alpha\, y[n-1]</m:annotation></m:semantics></m:math>.</para>
+        <para id="idm140947400800">To find the impulse response of this system, we first let <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]=\delta[n]</m:annotation></m:semantics></m:math> and find the output: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:mo fence="false" stretchy="false">{</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo fence="false" stretchy="false">}</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mspace width="thinmathspace"/><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]={\cal H}\{ x[n] \}+\alpha\, h[n-1]</m:annotation></m:semantics></m:math>. A bit more work is required if we would like a non-recursively defined impulse response. Assuming that the system  is initially at rest (it has no output in the absence of an input), then we can find the output by computing several values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math>:</para>
+        <para id="idm140947378656"><m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mtable columnalign="right left right left right left right left right left right left" rowspacing="3pt" columnspacing="0em 2em 0em 2em 0em 2em 0em 2em 0em 2em 0em" displaystyle="true"><m:mtr><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mn>0</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mi>α</m:mi><m:mo>⋅</m:mo><m:mn>0</m:mn><m:mo>=</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>α</m:mi><m:mo>⋅</m:mo><m:mn>1</m:mn><m:mo>=</m:mo><m:mi>α</m:mi></m:mtd></m:mtr><m:mtr><m:mtd><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo></m:mtd><m:mtd><m:mi/><m:mo>=</m:mo><m:mi>δ</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mi>α</m:mi><m:mo>⋅</m:mo><m:mi>α</m:mi><m:mo>=</m:mo><m:msup><m:mi>α</m:mi><m:mn>2</m:mn></m:msup></m:mtd></m:mtr></m:mtable><m:annotation encoding="math/tex">\begin{align*}
+h[-1]&amp;=0\\
+h[0]&amp;=\delta[0]+\alpha h[-1]=1+\alpha \cdot 0=1\\
+h[1]&amp;=\delta[1]+\alpha h[0]=0+\alpha\cdot 1=\alpha\\
+h[2]&amp;=\delta[2]+\alpha h[1]=0+\alpha\cdot \alpha=\alpha^2
+\end{align*}</m:annotation></m:semantics></m:math>.</para>
+        <para id="idm140947334240">Having discerned a pattern, we see that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msup><m:mi>α</m:mi><m:mi>n</m:mi></m:msup><m:mi>u</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]=\alpha^n u[n]</m:annotation></m:semantics></m:math> (this may be more rigorously proven by induction, if desired):
+</para>
+        <figure id="idm140947327056"><media id="idm140947326288" alt="">
+            <image mime-type="" src="../../media/hRA.png"/>
+<image mime-type="application/postscript" src="../../media/hRA-2a42.eps" for="pdf"/>
+          </media>
+          
+        </figure><figure id="toeplitzRA"><media id="toeplitzRA-plot" alt="Image">
+            <image mime-type="image/png" src="../../media/rasys.png" print-width="250pt"/>
+          </media>
+          
+        <caption>A pictorial representation of the recursive average system.</caption></figure></example>
+      <section id="idm140947321072">
+        <title>The Impulse Response of Finite-Length LTI Systems</title>
+        <para id="idm140947320496">For a finite-length LTI system, just as with an infinite-length system, each row/column of its system matrix is a shifted version of another row/column. Thus, the system matrix for a finite-length system is also of a Toeplitz structure. However, for a finite-length system, not only are the rows/columns shifted, they are <emphasis effect="italics">circularly</emphasis> shifted; the values in the rows/columns "wrap around" when shifted across the boundary of the matrix.</para>
+        <para id="eip-779">As a result, the entire system matrix can be expressed in terms of the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math>th column of the matrix, which (as with infinite-length systems) is given the mathematical expression <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">h[n]</m:annotation></m:semantics></m:math> and is named the impulse response. For a length-<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> LTI system, the formula to determine the value of the matrix at a particular row <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> and column <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi mathvariant="bold">H</m:mi></m:mrow><m:msub><m:mo stretchy="false">]</m:mo><m:mrow class="MJX-TeXAtom-ORD"><m:mi>n</m:mi><m:mo>,</m:mo><m:mi>m</m:mi></m:mrow></m:msub><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>h</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">[{\bf H}]_{n,m} ~=~ h[(n-m)_N]</m:annotation></m:semantics></m:math>. Note how this is nearly identical to the infinite length formula, except for the modulo-<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> operator.
+</para>
+        <figure id="hHfl"><media id="hHfl-plot" alt="Image">
+            <image mime-type="image/png" src="../../media/hHcirc.png"/>
+          </media>
+          
+        <caption>A pictorial representation of the impulse response and system matrix of a finite-length LTI system.</caption></figure><para id="idm140947293328">
+As with infinite-length systems, being able to express the entire system matrix in terms of the impulse response means that the system's input-output matrix multiplication relationship can be expressed as a sum involving the input and impulse response:</para>
+        <para id="idm140947292816">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+            <m:semantics>
+              <m:mrow>
+                <m:mi>y</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mo>=</m:mo>
+                <m:mrow class="MJX-TeXAtom-ORD">
+                  <m:mi mathvariant="bold">H</m:mi>
+                </m:mrow>
+                <m:mi>x</m:mi>
+                <m:mo>=</m:mo>
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>m</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                  </m:mrow>
+                  <m:mrow class="MJX-TeXAtom-ORD">
+                    <m:mi>N</m:mi>
+                    <m:mo>−</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:munderover>
+                <m:mspace width="mediummathspace"/>
+                <m:mi>h</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mo stretchy="false">(</m:mo>
+                <m:mi>n</m:mi>
+                <m:mo>−</m:mo>
+                <m:mi>m</m:mi>
+                <m:msub>
+                  <m:mo stretchy="false">)</m:mo>
+                  <m:mi>N</m:mi>
+                </m:msub>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mspace width="thinmathspace"/>
+                <m:mi>x</m:mi>
+                <m:mo stretchy="false">[</m:mo>
+                <m:mi>m</m:mi>
+                <m:mo stretchy="false">]</m:mo>
+                <m:mo>.</m:mo>
+              </m:mrow>
+              <m:annotation encoding="math/tex">y[n]={\bf H}x=\sum_{m=0}^{N-1} \: h[(n-m)_N] \, x[m].</m:annotation>
+            </m:semantics>
+          </m:math>
+        </para>
+      </section>
+      <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm140947274512"><title>Impulse Response Length of LTI Systems</title><para id="idm140947273952">For LTI systems, it is often of interest whether its impulse response is of infinite length (i.e., infinite nonzero support) or finite length. Such a distinction is typically made only for infinite-length systems (as the impulse response of finite-length systems is obviously always finite-length!). If a system has an impulse response of infinite length, it is called an <term><emphasis>infinite impulse response</emphasis> (IIR)</term> system; if its impulse response is of finite length, it is called a <term><emphasis>finite impulse response</emphasis> (FIR)</term> system.</para><figure id="idm140947271456" orient="vertical"><subfigure id="idm140947270688">
+            <media id="idm140947270560" alt="">
+              <image mime-type="" src="../../media/hRA.png"/>
+<image mime-type="application/postscript" src="../../media/hRA-2a42.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          <subfigure id="idm140947269344">
+            <media id="idm140947269216" alt="">
+              <image mime-type="" src="../../media/hMA.png"/>
+<image mime-type="application/postscript" src="../../media/hMA.eps" for="pdf" print-width="343pt"/>
+            </media>
+          </subfigure>
+          
+        <caption>A recursive average system (<m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>α</m:mi><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[n]+\alpha y[n-1]</m:annotation></m:semantics></m:math>) is an example of an IIR system, as the impulse response has an infinite number of nonzero values. The impulse response of the moving average system above (<m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=\frac{1}{2}(x[n]+x[n-1])</m:annotation></m:semantics></m:math>) has only <m:math><m:semantics><m:mn>2</m:mn><m:annotation encoding="math/tex">2</m:annotation></m:semantics></m:math> nonzero values, and thus is an example of an FIR system.</caption></figure></section></section>
+  </content>
+</document>
