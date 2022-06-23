@@ -1,5 +1,6 @@
-<document xmlns="http://cnx.rice.edu/cnxml">
-  <title>Signal Properties</title>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Signal Properties</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m57514</md:content-id>
   <md:title>Signal Properties</md:title>
@@ -8,424 +9,160 @@
 </metadata>
 
 <content>
-    <section id="idm179988209904">
-      <title>Signal Classification</title>
-      <para id="idm179988209360">Signals can be broadly classified as discrete-time or continuous-time, depending on whether the independent variable is integer-valued or real-valued.  Signals may also be either real-valued or complex-valued.  We will now consider some of the other ways we can classify signals.</para>
-    </section>
-    <section id="idm179988208816">
-      <title>Signal Length: Finite/Infinite</title>
-      <para id="idm179988208272">This classification is just as it sounds. An <term>infinite-length</term> discrete-time signal takes values for all time indices: all integer values <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> on the number line from <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mo>−</m:mo><m:mi mathvariant="normal">∞</m:mi></m:mrow><m:annotation encoding="math/tex">-\infty</m:annotation></m:semantics></m:math> <span class="MathJax_Preview"/>all the way up to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi mathvariant="normal">∞</m:mi><m:annotation encoding="math/tex">\infty</m:annotation></m:semantics></m:math>. A finite-length signal is defined only for a certain range of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math><span class="MathJax_Preview"/>, from some <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:annotation encoding="math/tex">N_1</m:annotation></m:semantics></m:math> to <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:annotation encoding="math/tex">N_2</m:annotation></m:semantics></m:math>.  The signal is not defined outside of that range.</para></section>
-      <section id="idm179988194672">
-        <title>Signal Periodicity</title>
-        <para id="idm179988194128">As the name suggests, <term>periodic</term> signals are those that repeat themselves.  Mathematically, this means that there exists some integer value <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> for which <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n+N]=x[n]</m:annotation></m:semantics></m:math> , for all values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>. So if we define a fundamental period of this particular signal of length, like <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>8</m:mn></m:mrow><m:annotation encoding="math/tex">N=8</m:annotation></m:semantics></m:math>, then we will see the same signal values shifted by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>8</m:mn><m:annotation encoding="math/tex">8</m:annotation></m:semantics></m:math> time indices,
-by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mn>16</m:mn><m:mo>,</m:mo><m:mo>−</m:mo><m:mn>8</m:mn><m:mo>,</m:mo><m:mo>−</m:mo><m:mn>16</m:mn></m:mrow><m:annotation encoding="math/tex">16, -8, -16</m:annotation></m:semantics></m:math>, etc.  Below is an example of a periodic signal:
-</para>
-        <figure id="idm179988176080" orient="vertical"><media id="idm179988175216" alt="">
-            <image mime-type="" src="../../media/sigFunPer.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunPer.eps" for="pdf" print-width="4.5in"/>
-          </media>
-          
-        <caption>A periodic discrete-time signal. Note how it repeats every 8 time units.</caption></figure><para id="idm179988173296">
+  <para id="eip-890"><title>Signal Classification</title>Signals can be broadly classified as discrete-time or continuous-time, depending on whether the independent variable is integer-valued or real-valued.  Signals may also be either real-valued or complex-valued.  We will now consider some of the other ways we can classify signals.</para><para id="delete_me"><title>Signal Length: Finite/Infinite</title>This classification is just as it sounds. An <term>infinite-length</term> discrete-time signal takes values for all time indices: all integer values <m:math><m:mi>n</m:mi></m:math> on the number line from <m:math><m:mo>-</m:mo><m:infinity/></m:math> all the way up to <m:math><m:infinity/></m:math>.  A <term>finite-length</term> signal is defined only for a certain range of <m:math><m:mi>n</m:mi></m:math>, from some <m:math><m:msub><m:mi>N </m:mi><m:mn>1</m:mn></m:msub></m:math> to <m:math><m:msub><m:mi>N </m:mi><m:mn>2</m:mn></m:msub></m:math>.  The signal is not defined outside of that range.</para><para id="eip-993"><title>Signal Periodicity</title>As the name suggests, <term>periodic</term> signals are those that repeat themselves.  Mathematically, this means that there exists some integer value <m:math><m:mi>N</m:mi></m:math> for which <m:math><m:apply><m:eq/><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:apply><m:plus/><m:ci>n</m:ci><m:ci>N</m:ci></m:apply></m:apply><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:math>, for all values of <m:math><m:mi>n</m:mi></m:math>. So if we define a fundamental period of this particular signal of length, like <m:math><m:apply><m:eq/><m:mi>N</m:mi><m:mn>8</m:mn></m:apply></m:math>, then we will see the same signal values shifted by <m:math><m:mn>8</m:mn></m:math> time indices,
+by <m:math><m:mn>16</m:mn></m:math>, <m:math><m:mn>-8</m:mn></m:math>, <m:math><m:mn>-16</m:mn></m:math>, etc.  Below is an example of a periodic signal:
+<figure id="sigFunPer"><media id="sigFunPerplot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunPer.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunPer.eps" for="pdf"/></media>
+  <caption>A periodic discrete-time signal.  Note how it repeats every 8 time units.</caption></figure>
 So periodic signals repeat, and clearly periodic signals
 are going to be, therefore, infinite in length.
-It's also important to remember that to be periodic in discrete-time, the period <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> <span>must be an integer.  If there is no such integer-valued <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> for </span><span>which <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>N</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n+N]=x[n]</m:annotation></m:semantics></m:math> (fo</span>r all values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>), then we classify the signal as being <term><emphasis>aperiodic</emphasis></term>.
-</para></section>
-        <section xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179988160320"><title>Converting Between Infinite and Finite Length</title><para id="idm179988159808">In different applications, the need will arise to convert a signal from infinite-length to finite-length, and vice versa.  There are many ways this operation can be accomplished, but we will consider the most common.</para>
-          <para id="eip-707">The most straightforward way to create a finite-length signal from an infinite-length one is through the process of <term>windowing</term>.  A windowing operation extracts a contiguous portion of an infinite-length signal, that portion becoming the new finite-length signal.  Sometimes a window will also scale the smaller portion in a particular way.  Below is a mathematical expression of windowing (without any scaling):</para>
-          <para id="idm179988158048">
-            <m:math>
-              <m:semantics>
-                <m:mrow>
-                  <m:mi>y</m:mi>
-                  <m:mo stretchy="false">[</m:mo>
-                  <m:mi>n</m:mi>
-                  <m:mo stretchy="false">]</m:mo>
-                  <m:mo>=</m:mo>
-                  <m:mrow>
-                    <m:mo>{</m:mo>
-                    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
-                      <m:mtr>
-                        <m:mtd>
-                          <m:mi>x</m:mi>
-                          <m:mo stretchy="false">[</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo stretchy="false">]</m:mo>
-                        </m:mtd>
-                        <m:mtd>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>1</m:mn>
-                          </m:msub>
-                          <m:mo>≤</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo>≤</m:mo>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>2</m:mn>
-                          </m:msub>
-                        </m:mtd>
-                      </m:mtr>
-                      <m:mtr>
-                        <m:mtd>
-                          <m:mrow class="MJX-TeXAtom-ORD">
-                            <m:mtext>undefined</m:mtext>
-                          </m:mrow>
-                        </m:mtd>
-                        <m:mtd>
-                          <m:mrow class="MJX-TeXAtom-ORD">
-                            <m:mtext>else</m:mtext>
-                          </m:mrow>
-                        </m:mtd>
-                      </m:mtr>
-                    </m:mtable>
-                    <m:mo fence="true" stretchy="true"/>
-                  </m:mrow>
-                </m:mrow>
-                <m:annotation encoding="math/tex">y[n]=\begin{cases}x[n]&amp;N_1\leq n\leq N_2\\ \textrm{undefined} &amp; \textrm{else}\end{cases}</m:annotation>
-              </m:semantics>
-            </m:math>
-          </para>
-          <para id="idm179988141504">Below is a signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> (assume it is infinite-length, with only a part of it shown), with a portion of it extracted to create <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>:</para>
-          <figure id="idm179988134896" orient="vertical"><subfigure id="idm179988134176">
-              <media id="idm179988134048" alt="">
-                <image mime-type="" src="../../media/sigFun.png"/>
-<image mime-type="application/postscript" src="../../media/sigFun.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179988132832">
-              <media id="idm179988132704" alt="">
-                <image mime-type="" src="../../media/sigFunWin.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunWin.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>An infinite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> (only part of it shown) has a portion extracted via windowing to create a finite-length signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>.</caption></figure><para id="eip-716">There are two ways a signal can be converted from finite-length to infinite-length.  The first is referred to as <term>zero-padding</term>.  It is easy to take a finite-length signal and then make a larger finite-length signal out of it: just extend the time axis.  We then have to decide what values to put in the new time locations, and simply putting <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> at all the new locations is a common approach. Here is how it looks, mathematically, to create a longer signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> from a shorter signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> defined only on <m:math><m:semantics><m:mrow><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:mo>≤</m:mo><m:mi>n</m:mi><m:mo>≤</m:mo><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">N_1\leq n \leq N_2</m:annotation></m:semantics></m:math>:</para><para id="idm179988110352">
-            <m:math>
-              <m:semantics>
-                <m:mrow>
-                  <m:mi>y</m:mi>
-                  <m:mo stretchy="false">[</m:mo>
-                  <m:mi>n</m:mi>
-                  <m:mo stretchy="false">]</m:mo>
-                  <m:mo>=</m:mo>
-                  <m:mrow>
-                    <m:mo>{</m:mo>
-                    <m:mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false">
-                      <m:mtr>
-                        <m:mtd>
-                          <m:mn>0</m:mn>
-                        </m:mtd>
-                        <m:mtd>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>0</m:mn>
-                          </m:msub>
-                          <m:mo>≤</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo>&lt;</m:mo>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>1</m:mn>
-                          </m:msub>
-                        </m:mtd>
-                      </m:mtr>
-                      <m:mtr>
-                        <m:mtd>
-                          <m:mi>x</m:mi>
-                          <m:mo stretchy="false">[</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo stretchy="false">]</m:mo>
-                        </m:mtd>
-                        <m:mtd>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>1</m:mn>
-                          </m:msub>
-                          <m:mo>≤</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo>≤</m:mo>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>2</m:mn>
-                          </m:msub>
-                        </m:mtd>
-                      </m:mtr>
-                      <m:mtr>
-                        <m:mtd>
-                          <m:mn>0</m:mn>
-                        </m:mtd>
-                        <m:mtd>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>2</m:mn>
-                          </m:msub>
-                          <m:mo>&lt;</m:mo>
-                          <m:mi>n</m:mi>
-                          <m:mo>≤</m:mo>
-                          <m:msub>
-                            <m:mi>N</m:mi>
-                            <m:mn>3</m:mn>
-                          </m:msub>
-                        </m:mtd>
-                      </m:mtr>
-                    </m:mtable>
-                    <m:mo fence="true" stretchy="true"/>
-                  </m:mrow>
-                </m:mrow>
-                <m:annotation encoding="math/tex">y[n]=\begin{cases}0 &amp; N_0\leq n \lt N_1\\ x[n] &amp; N_1\leq n \leq N_2 \\ 0 &amp; N_2\lt n \leq N_3 \end{cases}</m:annotation>
-              </m:semantics>
-            </m:math>
-          </para>
+It's also important to remember that to be periodic in discrete-time, the period <m:math><m:mi>N</m:mi></m:math> must be an integer.  If there is no such integer-valued <m:math><m:mi>N</m:mi></m:math> for which <m:math><m:apply><m:eq/><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:apply><m:plus/><m:ci>n</m:ci><m:ci>N</m:ci></m:apply></m:apply><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:apply></m:math> (for all values of <m:math><m:mi>n</m:mi></m:math>), then we classify the signal as being <term>aperiodic</term>.
+</para><para id="eip-96"><title>Converting Between Infinite and Finite Length</title>In different applications, the need will arise to convert a signal from infinite-length to finite-length, and vice versa.  There are many ways this operation can be accomplished, but we will consider the most common.</para><para id="eip-707">The most straightforward way to create a finite-length signal from an infinite-length one is through the process of <term>windowing</term>.  A windowing operation extracts a contiguous portion of an infinite-length signal, that portion becoming the new finite-length signal.  Sometimes a window will also scale the smaller portion in a particular way.  Below is a mathematical expression of windowing (without any scaling):</para><para id="eip-799"><m:math>
+<m:apply><m:eq/>
+     <m:apply><m:ci type="fn" class="discrete">y</m:ci>
+     <m:ci>n</m:ci></m:apply>
+
+     <m:piecewise>
+          <m:piece>
+                <m:apply><m:ci type="fn" class="discrete">x</m:ci>
+     <m:ci>n</m:ci></m:apply>
+                <m:apply><m:leq/><m:apply><m:leq/><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:mi>n</m:mi>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub></m:apply>
+          </m:piece>
+          <m:piece><m:mtext>undefined</m:mtext><m:mtext>else</m:mtext></m:piece>
+     </m:piecewise>
+</m:apply></m:math></para><para id="eip-828">Below is a signal <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math> (assume it is infinite-length, with only a part of it shown), with a portion of it extracted to create <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math>:
+<figure id="sigFunW" orient="vertical"><subfigure id="sigFunW1plot">
+<media id="sigFunW1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunW1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunW1.eps" for="pdf"/></media><caption>Infinite-length signal (only a portion of it is shown)</caption>
+</subfigure>
+<subfigure id="sigFunW2">
+<media id="sigFunW2plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunW2.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunW2.eps" for="pdf"/></media><caption>Finite-length signal</caption>
+</subfigure>
+<caption>(a) an infinite-length signal <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math> (only part of it shown) has a portion extracted via windowing to create (b) a finite-length signal <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math>.</caption></figure></para><para id="eip-716">There are two ways a signal can be converted from a finite-length to infinite-length.  The first is referred to as <term>zero-padding</term>.  It is easy to take a finite-length signal and then make a larger finite-length signal out of it: just extend the time axis.  We have to decide what values to put in the new time locations, and simply putting <m:math><m:mn>0</m:mn></m:math> at all the new locations is a common approach. Here is how it looks, mathematically, to create a longer signal <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math> from a shorter signal <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math> defined only on <m:math><m:apply><m:leq/><m:apply><m:leq/><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:mi>n</m:mi>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub></m:apply></m:math>:</para><para id="eip-563"><m:math>
+<m:apply><m:eq/>
+     <m:apply><m:ci type="fn" class="discrete">y</m:ci>
+     <m:ci>n</m:ci></m:apply>
+
+     <m:piecewise>
+
+<m:piece>
+                <m:mn>0</m:mn>
+                <m:apply><m:lt/><m:apply><m:leq/><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub><m:mi>n</m:mi>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub></m:apply>
+          </m:piece>
+
+          <m:piece>
+                <m:apply><m:ci type="fn" class="discrete">x</m:ci>
+     <m:ci>n</m:ci></m:apply>
+                <m:apply><m:leq/><m:apply><m:leq/><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:mi>n</m:mi>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub></m:apply>
+          </m:piece>
+          
+<m:piece>
+                <m:mn>0</m:mn>
+                <m:apply><m:leq/><m:apply><m:lt/><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>n</m:mi>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>3</m:mn></m:msub></m:apply>
+          </m:piece>
 
 
-<figure id="idm179988134896x" orient="vertical"><subfigure id="idm179988134176x">
-              <media id="idm179988134048x" alt="">
-                <image mime-type="" src="../../media/sigFun.png"/>
-<image mime-type="application/postscript" src="../../media/sigFun.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179988132832x">
-              <media id="idm179988132704x" alt="">
-                <image mime-type="" src="../../media/sigFunzp.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunzp.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>An infinite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> (only part of it shown) has a portion extracted via windowing to create a finite-length signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm179988087056">Here, obviously <m:math><m:semantics><m:mrow><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub><m:mo>&lt;</m:mo><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:mo>&lt;</m:mo><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mo>&lt;</m:mo><m:msub><m:mi>N</m:mi><m:mn>3</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">N_0&lt;N_1&lt;N_2&lt;N_3</m:annotation></m:semantics></m:math>, and if we extend <m:math><m:semantics><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub><m:annotation encoding="math/tex">N_0</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:msub><m:mi>N</m:mi><m:mn>3</m:mn></m:msub><m:annotation encoding="math/tex">N_3</m:annotation></m:semantics></m:math> to negative and positive infinity, respectively, then <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> will end up being infinite-length.</para>
-          <para id="idm179988072224">The other way to make an infinite-length signal from a finite-length one is to <term>periodize</term> it, which means replicating a finite-length signal over and over to create an infinite-length periodic version. Mathematically, that means defining the new infinite-length periodic signal like this:
-          </para><para id="idm179988070624"><m:math>
-              <m:semantics>
-                <m:mtable columnalign="right center left" rowspacing="3pt" columnspacing="thickmathspace" displaystyle="true">
-                  <m:mtr>
-                    <m:mtd>
-                      <m:mi>y</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                    </m:mtd>
-                    <m:mtd>
-                      <m:mi/>
-                      <m:mo>=</m:mo>
-                    </m:mtd>
-                    <m:mtd>
-                      <m:mi/>
-                      <m:munderover>
-                        <m:mo>∑</m:mo>
-                        <m:mrow class="MJX-TeXAtom-ORD">
-                          <m:mi>m</m:mi>
-                          <m:mo>=</m:mo>
-                          <m:mo>−</m:mo>
-                          <m:mi mathvariant="normal">∞</m:mi>
-                        </m:mrow>
-                        <m:mrow class="MJX-TeXAtom-ORD">
-                          <m:mi mathvariant="normal">∞</m:mi>
-                        </m:mrow>
-                      </m:munderover>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo>−</m:mo>
-                      <m:mi>m</m:mi>
-                      <m:mi>N</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>,</m:mo>
-                      <m:mspace width="1em"/>
-                      <m:mi>N</m:mi>
-                      <m:mo>∈</m:mo>
-                      <m:mrow class="MJX-TeXAtom-ORD">
-                        <m:mi mathvariant="double-struck">Z</m:mi>
-                      </m:mrow>
-                    </m:mtd>
-                  </m:mtr>
-                  <m:mtr>
-                    <m:mtd/>
-                    <m:mtd>
-                      <m:mi/>
-                      <m:mo>=</m:mo>
-                    </m:mtd>
-                    <m:mtd>
-                      <m:mi/>
-                      <m:mo>⋯</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo>+</m:mo>
-                      <m:mn>2</m:mn>
-                      <m:mi>N</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo>+</m:mo>
-                      <m:mi>N</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo>−</m:mo>
-                      <m:mi>N</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mi>x</m:mi>
-                      <m:mo stretchy="false">[</m:mo>
-                      <m:mi>n</m:mi>
-                      <m:mo>−</m:mo>
-                      <m:mn>2</m:mn>
-                      <m:mi>N</m:mi>
-                      <m:mo stretchy="false">]</m:mo>
-                      <m:mo>+</m:mo>
-                      <m:mo>⋯</m:mo>
-                    </m:mtd>
-                  </m:mtr>
-                </m:mtable>
-                <m:annotation encoding="math/tex">\begin{eqnarray*} y[n] &amp;=&amp; \sum_{m=-\infty}^{\infty} x[n-mN], \quad n\in\mathbb{Z}\\ &amp;=&amp; \cdots + x[n+2N] + x[n+N] + x[n] + x[n-N] + x[n-2N] + \cdots \end{eqnarray*}</m:annotation>
-              </m:semantics>
-            </m:math>
-          </para><para id="idm179988033520">Graphically, we can see that this amounts to repeating the signal over and over, before and after the original portion:</para>
-          <figure id="idm179988033008" orient="vertical"><subfigure id="idm179988032256">
-              <media id="idm179988032128" alt="">
-                <image mime-type="" src="../../media/sigFunPer1.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunPer1.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179988030928">
-              <media id="idm179988030800" alt="">
-                <image mime-type="" src="../../media/sigFunPer2.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunPer2.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>A finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is periodized to create an infinite-length signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> (only a portion of it is shown).</caption></figure></section><section id="idm179988022128">
-          <title>Periodization and Modular Arithmetic</title>
-          <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179988021568">It turns out that, as we consider periodization and periodic signals, the notion of modular arithmetic will be helpful.  In modular arithmetic, integers do not lie on a line stretching from negative infinity to infinity, but rather on a circle of a defined size <m:math><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>. In modulo-8, for example, the numbers are 8 spaces on a "wheel."  Our convention will be for the numbers to traverse from <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">N-1</m:annotation></m:semantics></m:math>, counter-clockwise:</para><figure id="idm179988015408" orient="vertical"><media id="idm179988014640" alt="">
-              <image mime-type="" src="../../media/clock1.png" width="100pt" print-width="100pt"/>
-            </media>
-            
-          </figure><para id="eip-29">Consider a finite-length signal of size <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>. We can align the time-dependent values of the signal on the modulo circle:</para>
-          <figure id="idm179988010368" orient="vertical"><media id="idm179988009600" alt="">
-              <image mime-type="" src="../../media/clockSig1.png" width="150pt" print-width="150pt"/>
-            </media>
-            
-          </figure><para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179988007472">When we travel around the clock once, from time index <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> to <m:math><m:semantics><m:mn>7</m:mn><m:annotation encoding="math/tex">7</m:annotation></m:semantics></m:math>, we express the finite-length signal.  But if we keep traveling, in one direction or the other, then that amounts to periodizing the signal.  Using our modulo notation, we can periodize a finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> <span>to be an infinite-length periodic signal <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> like this:</span><m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]=x[(n)_N]</m:annotation></m:semantics></m:math>. The modulo operation <m:math><m:semantics><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub></m:mrow><m:annotation encoding="math/tex">(n)_N</m:annotation></m:semantics></m:math> returns the integer remainder after <m:math><m:mi>n</m:mi></m:math> is divided by <m:math><m:mi>N</m:mi></m:math>. For example, <m:math><m:semantics><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>13</m:mn><m:msub><m:mo stretchy="false">)</m:mo><m:mn>8</m:mn></m:msub></m:mrow><m:annotation encoding="math/tex">(13)_8</m:annotation></m:semantics></m:math> is equal to <m:math><m:mn>5</m:mn></m:math>, because <m:math><m:mn>8</m:mn></m:math> goes into <m:math><m:mn>13</m:mn></m:math> once, with a remainder of <m:math><m:mn>5</m:mn></m:math>. For periodization, this would result in <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mn>13</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mn>13</m:mn><m:msub><m:mo stretchy="false">)</m:mo><m:mn>8</m:mn></m:msub><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>5</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[13]=x[(13)_8]=x[5]</m:annotation></m:semantics></m:math>.</para></section>
-        <section id="idm179987989616">
-          <title>Finite/Periodic Signals Relationship</title>
-          <para id="idm179987989056">We have seen that we can take an <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>-length finite-length signal and periodize it to make an infinite-length periodic signal with a period of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>.  By the same token, we can also work in reverse and extract one period worth of signal from any periodic signal to create a finite-length signal. <emphasis>What this means is we can consider periodic signals and finite-length signals to be essentially equivalent</emphasis>: we can consider just one period of a periodic signal (the rest of the signal is redundant, by definition), or periodize a finite-length signal.  They are two ways of looking at the same thing, a phenomenon we will often see in our study of signals and systems, and we will choose the perspective that best suits our needs for particular applications.</para>
-        </section>
-        <section id="idm179987984832">
-          <title>Shifting Infinite-length Signals</title>
-          <para id="idm179987984272">Given some signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, it will often be necessary for us to consider that signal shifted in time.  We denote such a shift mathematically with an expression like <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n-m]</m:annotation></m:semantics></m:math>, where <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is some integer.  If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is greater than zero, then <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n-m]</m:annotation></m:semantics></m:math> will be just like <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, except it will be shifted to the right by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> time units.  If <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is less than zero, it will be shifted to the left.  Here is who that might look for a couple values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math>:</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987962208" orient="vertical"><subfigure id="idm179987961440">
-              <media id="idm179987961312" alt="">
-                <image mime-type="" src="../../media/sigFunS1.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunS1.eps" for="pdf" print-width="4.5in"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987960096">
-              <media id="idm179987959968" alt="">
-                <image mime-type="" src="../../media/sigFunS2.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunS2.eps" for="pdf" print-width="4.5in"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987958752">
-              <media id="idm179987958624" alt="">
-                <image mime-type="" src="../../media/sigFunS3.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunS3.eps" for="pdf" print-width="4.5in"/>
-              </media>
-            </subfigure>
-            
-          <caption>A signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> shifted according to the expression <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n-m]</m:annotation></m:semantics></m:math> where <m:math><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> is positive, and negative.</caption></figure><para id="idm179987947872">
-This type of shifting works the same with periodic signals:</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987947424" orient="vertical"><subfigure id="idm179987946656">
-              <media id="idm179987946528" alt="">
-                <image mime-type="" src="../../media/sigFunPerS0.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunPerS0.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987945312">
-              <media id="idm179987945184" alt="">
-                <image mime-type="" src="../../media/sigFunPerS1.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunPerS1.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>A periodic <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n]</m:annotation></m:semantics></m:math> signal shifted one value in time to the right, <m:math><m:semantics><m:mrow><m:mi>y</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">y[n-1]</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm179987935856">
-Of course, for periodic signals, certain shifts actually do not have any effect on them.  If a signal repeats with a period of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, then shifting that signal by any integer multiple of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math> will yield the original signal.  Take a look at the signal above, which was shifted to the right by a time unit of 1.  If we keep on shifting it until it is shifted 8 time units the result will be identical to the original signal.</para>
-        </section>
-        <section id="idm179987932240">
-          <title>Shifting Finite-Length Signals</title>
-          <para id="idm179987931696">Can finite-length signals be shifted, as well?  There does not seem to be any reason why not.  Suppose we have some finite-length signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> (of length <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>) and we define another finite-length signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[n]</m:annotation></m:semantics></m:math> to be <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[n]=x[n-1]</m:annotation></m:semantics></m:math>. So we have <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[1]=x[0]</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[2]=x[1]</m:annotation></m:semantics></m:math> and so on until <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[N-1]=x[N-2]</m:annotation></m:semantics></m:math>. But what about <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[0]</m:annotation></m:semantics></m:math>, what do we put there?  And how about <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[N-1]</m:annotation></m:semantics></m:math>, where is that supposed to go?  We do not want to invent information to put in <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[0]</m:annotation></m:semantics></m:math>, nor lose the information of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[N-1]</m:annotation></m:semantics></m:math>. An elegant solution is to periodize <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>, and then consider the relation <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[n]=x[n-1]</m:annotation></m:semantics></m:math>.  In this case, we now have a value for <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[0]</m:annotation></m:semantics></m:math>: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>v</m:mi><m:mo stretchy="false">[</m:mo><m:mn>0</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">v[0]=x[-1]</m:annotation></m:semantics></m:math>.  Since <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is periodic with period <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, it also happens that <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>N</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[-1]=x[N-1]</m:annotation></m:semantics></m:math>, so we do not lose that information.</para>
-          <para id="eip-545">This kind of operation, for finite-length signals, is called a <term>circular shift</term>, and we can express it mathematically with the help of our modular arithmetic operator. Circularly shifting a finite-length signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> by <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> time units is expressed as <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mi>m</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[(n-m)_N]</m:annotation></m:semantics></m:math>. It can also be visualized by turning <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> about the circle on which it resides:</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987838784" orient="vertical"><subfigure id="idm179987838016">
-              <media id="idm179987837888" alt="">
-                <image mime-type="" src="../../media/clockSig1.png" width="150pt" print-width="150pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987836672">
-              <media id="idm179987836544" alt="">
-                <image mime-type="" src="../../media/clockSig2.png" width="150pt" print-width="150pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>Circularly shifting a signal by <m:math><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> amounts to turning it counter-clockwise <m:math><m:semantics><m:mi>m</m:mi><m:annotation encoding="math/tex">m</m:annotation></m:semantics></m:math> steps. Here is the original signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> and its shifted version <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>1</m:mn><m:msub><m:mo stretchy="false">)</m:mo><m:mn>8</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[(n-1)_8]</m:annotation></m:semantics></m:math>.</caption></figure></section>
-        <section id="idm179987822560">
-          <title>Time Reversing Finite-Length Signals</title>
-          <para id="idm179987822000">For infinite length signals, the transformation of reversing the time axis <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[−n]</m:annotation></m:semantics></m:math> is obvious: just flip the signal about <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n=0</m:annotation></m:semantics></m:math>. But things are not quite so obvious for finite-length signals; if a signal is defined for, say, <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> between <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> and <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>, then what gets flipped across the <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n=0</m:annotation></m:semantics></m:math> from the negative side? Once again, it turns out the modular arithmetic operator can be called in for help. We reverse the time axis, modulo <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>N</m:mi><m:annotation encoding="math/tex">N</m:annotation></m:semantics></m:math>: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mi>N</m:mi></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[(-n)_N]</m:annotation></m:semantics></m:math>. Below is an image of a finite-length (<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>8</m:mn></m:mrow><m:annotation encoding="math/tex">N=8</m:annotation></m:semantics></m:math>) signal, time-reversed:</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987799488" orient="vertical"><media id="idm179987798720" alt="">
-              <image mime-type="" src="../../media/clockSig4.png" width="150pt" print-width="150pt"/>
-            </media>
-            
-          <caption>We can time reverse a finite-length signal <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> with the mathematical expression <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:msub><m:mo stretchy="false">)</m:mo><m:mn>8</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[(-n)_8]</m:annotation></m:semantics></m:math>. Note here how the signal values are traversing clockwise, i.e., backwards in time.</caption></figure></section>
-        <section id="idm179987786736">
-          <title>Signal Causality</title>
-          <para id="idm179987786192">A signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is <term>causal</term> if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">x[n]=0</m:annotation></m:semantics></m:math> for all <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n \lt 0</m:annotation></m:semantics></m:math>, it is <term>anti-causal</term> if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">x[n]=0</m:annotation></m:semantics></m:math> for all <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n \geq 0</m:annotation></m:semantics></m:math>, and it is <term>acausal</term> if is neither causal nor anti-causal.</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987768752" orient="vertical"><subfigure id="idm179987767984">
-              <media id="idm179987767856" alt="">
-                <image mime-type="" src="../../media/sigFunCaus.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunCaus.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987766640">
-              <media id="idm179987766512" alt="">
-                <image mime-type="" src="../../media/sigFunACaus.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunACaus.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>A causal signal is <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n \lt 0</m:annotation></m:semantics></m:math>, whereas an acausal signal is <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> for all <m:math><m:semantics><m:mrow><m:mi>n</m:mi><m:mo>≥</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">n \geq 0</m:annotation></m:semantics></m:math>.</caption></figure></section>
-        <section id="idm179987756736">
-          <title>Even and Odd Signals</title>
-          <para id="idm179987756192">A signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>is defined as <term>even</term> if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[-n]=x[n]</m:annotation></m:semantics></m:math>, and <term>odd</term> if <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[-n]=-x[n]</m:annotation></m:semantics></m:math>.</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987739440" orient="vertical"><subfigure id="idm179987738672">
-              <media id="idm179987738544" alt="">
-                <image mime-type="" src="../../media/sigFunE1.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunE1.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            <subfigure id="idm179987737328">
-              <media id="idm179987737200" alt="">
-                <image mime-type="" src="../../media/sigFunO1.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunO1.eps" for="pdf" print-width="343pt"/>
-              </media>
-            </subfigure>
-            
-          <caption>For an even signal, <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[-n]=x[n]</m:annotation></m:semantics></m:math>. For an odd signal, <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mo>−</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[-n]=-x[n]</m:annotation></m:semantics></m:math>.</caption></figure></section>
-        <section id="idm179987720896">
-          <title>Digital Signals</title>
-          <para id="idm179987720368"><term>Digital</term> signals are a special sub-class of discrete-time signals.  While the independent time variable for discrete-time signals is integer-valued, the dependent variable (i.e., the value the signal takes at any given time) can take on any value. However, for digital signals, both of these variables are discrete-valued.  Rather than take any value on a continuum, discrete signals take only a limited number of values, or <term>levels</term>. Typically, the number of levels is expressed as <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>D</m:mi><m:mo>=</m:mo><m:msup><m:mn>2</m:mn><m:mi>q</m:mi></m:msup></m:mrow><m:annotation encoding="math/tex">D = 2^q</m:annotation></m:semantics></m:math>, and each possible value of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math> is represented as a digital code with <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>q</m:mi><m:annotation encoding="math/tex">q</m:annotation></m:semantics></m:math> bits.</para>
-          <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm179987711088" orient="vertical"><media id="idm179987710320" alt="">
-              <image mime-type="" src="../../media/sigFunQ.png"/>
-<image mime-type="application/postscript" src="../../media/sigFunQ.eps" for="pdf"/>
-            </media>
-            <caption>A digital signal with <m:math><m:semantics><m:mrow><m:mi>q</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow><m:annotation encoding="math/tex">q = 2</m:annotation></m:semantics></m:math> bits, so <m:math><m:semantics><m:mrow><m:mi>D</m:mi><m:mo>=</m:mo><m:msup><m:mn>2</m:mn><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow><m:annotation encoding="math/tex">D = 2^2= 4</m:annotation></m:semantics></m:math> levels.</caption>
-          </figure></section>
+     </m:piecewise>
+</m:apply></m:math></para><para id="eip-935">Here, obviously <m:math><m:apply><m:lt/><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub>
+<m:apply><m:lt/><m:apply><m:lt/><m:msub><m:mi>N</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub>
+                </m:apply><m:msub><m:mi>N</m:mi><m:mn>3</m:mn></m:msub></m:apply></m:apply></m:math>, and if we extend <m:math><m:msub><m:ci>N</m:ci><m:mn>0</m:mn></m:msub></m:math> and <m:math><m:msub><m:mi>N</m:mi><m:mn>3</m:mn></m:msub></m:math> to negative and positive infinity, respectively, then <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math> will end up being infinite-length.</para><para id="eip-248">The other way to make an infinite-length signal from a finite-length one is to <term>periodize</term> it, which means replicating a finite-length signal over and over to create an infinite-length periodic version.  Mathematically, that means defining the new infinite-length periodic signal like this:<code>\begin{eqnarray*}
+y[n] &amp;=&amp; \sum_{m=-\infty}^{\infty} x[n-mN], \quad n\in\Integers \\
+ &amp;=&amp; \cdots + x[n+2N] + x[n+N] + x[n] + x[n-N] + x[n-2N] + \cdots
+\end{eqnarray*}</code></para><para id="eip-58">Graphically, we can see that this amounts to repeating the signal over and over, before and after the original portion:
+<figure id="sigFunPers" orient="vertical"><subfigure id="sigFunPer1plot">
+<media id="sigFunPer1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunPer1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunPer1.eps" for="pdf"/></media><caption>Finite-length signal</caption>
+</subfigure>
+<subfigure id="sigFunPer2plot">
+<media id="sigFunPer2" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunPer2.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunPer2.eps" for="pdf"/></media><caption>Original signal periodized to create an infinite-length signal.</caption>
+</subfigure>
+<caption>(a) finite-length signal <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math> is periodized to create (b) an infinite-length signal <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math> (only a portion of it is shown).</caption></figure></para><para id="eip-711"><title>Periodization and Modular Arithmetic</title>It turns out that, as we consider periodization and periodic signals, the notion of modular arithmetic will be helpful.  In modular arithetic, integers do not lie on a line stretching from negative infinity to infinity, but rather on a circle of a defined size $N$. In modulo-8, for example, the numbers are 8 "hours" on a "clock."  Our convention will be for the numbers to traverse from 0 to $N-1$, counterclockwise:
+<figure id="clock1"><media id="clock1plot" alt="Image">
+<image mime-type="image/png" src="../../media/clock1.png" width="150"/>
+</media>
+  <caption>CAPTION.</caption></figure></para><para id="eip-29">Consider a finite-length signal of size $N$. We can align the time-dependent values of the signal on the modulo circle:
+<figure id="clockSig1"><media id="clockSig1plot" alt="Image">
+<image mime-type="image/png" src="../../media/clockSig1.png" width="200"/>
+</media><caption>CAPTION.</caption></figure>
+When we travel around the clock once, from time index 0 to 7, we express the finite-length signal.  But if we keep traveling, in one direction or the other, then that amounts to periodizing the signal.  Using our modulo notation, we can periodize a finite-length signal <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math> to be an infinite-length periodic signal <m:math><m:apply><m:ci type="fn" class="discrete">y</m:ci><m:ci>n</m:ci></m:apply></m:math> like this: $y[n]=x[(n)_N]$.</para><para id="eip-783"><title>Finite/Periodic Signals Relationship</title>We have seen that we can take an $N$-length finite-length signal and periodize it to make an infinite-length periodic signal with a period of $N$.  By the same token, we can also work in reverse and extract one period worth of signal from any periodic signal to create a finite-length signal. <emphasis>What this means is we can consider periodic signals and finite-length signals to be essentially equivalent</emphasis>: we can consider just one period of a periodic signal (the rest of the signal is redundant, by definition), or periodize a finite-length signal.  They are two ways of looking at the same thing, a phenomenon we will often see in our study of signals and systems, and we will choose the perspective that best suits our needs for particular applications.</para><para id="eip-677"><title>Shifting Infinite-length Signals</title>Given some signal $x[n]$, it will often be necessary for us to consider that signal shifted in time.  We denote such a shift mathematically with an expression like $x[n-m]$, where $m$ is some integer.  If $m$ is greater than zero, then $x[n-m]$ will be just like $x[n]$, except it will be shifted to the right by $m$ time units.  If $m$ is less than zero, it will be shifted to the left.  Here is who that might look for a couple values of $m$:
+<figure id="sigfunshifts" orient="vertical"><subfigure id="sfs1">
+<media id="sfs1p" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunS1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunS1.eps" for="pdf"/></media><caption>Original signal $x[n]$.</caption>
+</subfigure>
+<subfigure id="sfs2">
+<media id="sfs2p" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunS2.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunS2.eps" for="pdf"/></media><caption>$x[n]$ shifted to the right.</caption>
+</subfigure>
+<subfigure id="sfs3">
+<media id="sfs3p" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunS3.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunS3.eps" for="pdf"/></media><caption>$x[n]$ shifted to the left.</caption>
+</subfigure>
+<caption>A (a) signal $x[n]$ shifted according to the expression $x[n-m]$ where $m$ is (b) positive, and (c) negative.</caption></figure>
+This type of shifting works the same with periodic signals:
+<figure id="perfunshifts" orient="vertical"><subfigure id="sfps0">
+<media id="sfps0p" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunPerS0.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunPerS0.eps" for="pdf"/></media><caption>Original periodic signal $y[n]$.</caption></subfigure>
+<subfigure id="sfps1"><media id="sfps1p" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunPerS1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunPerS1.eps" for="pdf"/></media><caption>$y[n]$ shifted to the right.</caption>
+</subfigure>
+<caption>A periodic signal shifted one value in time.</caption></figure>
+Of course, for periodic signals, certain shifts actually do not have any effect on them.  If a signal repeats with a period of $N$, then shifting that signal by any integer multiple of $N$ will yield the original signal.  Take a look at the signal above, which was shifted to the right by a time unit of 1.  If we keep on shifting it until it is shifted 8 time units the result will be identical to the original signal.</para><para id="eip-192"><title>Shifting Finite-Length Signals</title>Can finite-length signals be shifted, as well?  There does not seem to be any reason why not.  Suppose we have some finite-length signal $x[n]$ (of length $N$) and we define another finite-length signal $v[n]$ to be $v[n]=x[n-1]$. So we have $v[1]=x[0]$ and $v[2]=x[1]$ and so on until $v[N-1]=x[N-2]$. But what about $v[0]$, what do we put there?  And how about $x[N-1]$, where is that supposed to go?  We do not want to invent information to put in $v[0]$, nor lose the information of $x[N-1]$. An elegant solution is to periodize $x[n]$, and then consider the relation $v[n]=x[n-1]$.  In this case, we now have a value for $v[0]$: $v[0]=x[-1]$.  Since $x[n]$ is periodic with period $N$, it also happens that $x[-1]=x[N-1]$, so we do not lose that information.</para><para id="eip-545">This kind of operation, for finite-length signals, is called a <term>circular shift</term>, and we can express it mathematically with the help of our modular arithmetic operator. Circularly shifting a finite-length signal $x[n]$ by $m$ time units is expressed as $x[(n-m)_N]$. It can also be visualized by turning $x[n]$ about the circle on which it resides:
+<figure id="clockshifts" orient="horizontal"><subfigure id="cs1">
+<media id="cs1p" alt="Image">
+<image mime-type="image/png" src="../../media/clockSig1.png" width="150"/>
+</media><caption>Original finite-length signal $x[n]$.</caption></subfigure>
+<subfigure id="cs2"><media id="cs2p" alt="Image">
+<image mime-type="image/png" src="../../media/clockSig2.png" width="150"/>
+</media><caption>$x[(n-3)_8]$</caption>
+</subfigure>
+<caption>Circularly shifting a signal by $m$ amounts to turning it counter-clockwise $m$ steps.</caption></figure></para><para id="eip-753"><title>Time Reversing Finite-Length Signals</title>For infinite length signals, the transformation of reversing the time axis $x[−n]$ is obvious: just flip the signal about $n=0$. But things are not quite so obvious for finite-length signals; if a signal is defined for, say, $n$ between 0 and N, then what gets flipped across the $n=0$ from the negative side? Once again, it turns out the modular arithmetic opererator can be called in for help. We reverse the time axis, modulo N: $x[(-n)_N]$. Below is an image of a finite-length ($N=8$) signal, time-reversed:
+<figure id="clock4"><media id="clock4plot" alt="Image">
+<image mime-type="image/png" src="../../media/clockSig4.png" width="150"/>
+</media>
+  <caption>We can time reverse a finite-length signal $x[n]$ with the mathematical expression $x[(-n)]_8$.</caption></figure></para><para id="eip-641"><title>Signal Causality</title>A signal $x[n]$ is <term>causal</term> if $x[n]=0$ for all $n \lt 0$, it is <term>anti-causal</term> if $x[n]=0$ for all $n \geq 0$, and it is <term>acausal</term> if is neither causal nor anti-causal.
 
-  </content>
+<figure id="sigFunCausal" orient="vertical"><subfigure id="sigFunCausplot">
+<media id="sigFunCaus" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunCaus.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunCaus.eps" for="pdf"/></media><caption>A causal signal.</caption>
+</subfigure>
+<subfigure id="sigFunACausplot">
+<media id="sigFunACaus" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunACaus.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunACaus.eps" for="pdf"/></media><caption>An anti-causal signal.</caption>
+</subfigure>
+</figure></para><para id="eip-560"><title>Even and Odd Signals</title>A signal $x[n]$is defined as <term>even</term> if $x[-n]=x[n]$, and <term>odd</term> if $x[-n]=-x[n]$.
+<figure id="sigevod" orient="vertical"><subfigure id="sigFunE1plot">
+<media id="sigFunE1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunE1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunE1.eps" for="pdf"/></media><caption>An even signal.</caption>
+</subfigure>
+<subfigure id="sigFunO1plot">
+<media id="sigFunO1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunO1.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunO1.eps" for="pdf"/></media><caption>An odd signal.</caption>
+</subfigure>
+</figure></para><para id="eip-215"><title>Even/Odd Signal Decomposition</title>MM: Is it really necessary to include this? Usage of the concept (wavelets?) is outside the scope of the class.</para><para id="eip-988"><title>Digital Signals</title><term>Digital</term> signals are a special sub-class of discrete-time signals.  While the independent time variable for discrete-time signals is integer-valued, the dependent variable (i.e., the value the signal takes at any given time) can take on any value. However, for digital signals, both of these variables are discrete-valued.  Rather than take any value on a continuum, discrete signals take only a limited number of values, or <term>levels</term>. Typically, the number of levels is expressed as $D = 2^q$, and each possible value of $x[n]$ is represented as a digital code with $q$ bits.
+<figure id="sigFunQ"><media id="sigFunQplot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sigFunQ.svg"/>
+<image mime-type="application/postscript" src="../../media/sigFunQ.eps" for="pdf"/></media>
+  <caption>A digital signal with $q = 2$ bits, so $D = 2^2= 4$ levels.</caption></figure></para></content>
+
 </document>

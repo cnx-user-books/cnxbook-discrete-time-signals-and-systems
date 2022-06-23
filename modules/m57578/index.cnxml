@@ -1,5 +1,6 @@
 <document xmlns="http://cnx.rice.edu/cnxml">
-  <title>Real and Complex Sinusoidal Signals</title>
+
+<title>Real and Complex Sinusoidal Signals</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m57578</md:content-id>
   <md:title>Real and Complex Sinusoidal Signals</md:title>
@@ -8,106 +9,84 @@
 </metadata>
 
 <content>
-    <para id="delete_me">Discrete-time real and complex-valued sinusoidal signals are an incredibly important signal class in the study of discrete-time signals and systems. Sinusoidal waves show up in all sorts of science and engineering applications, but they are particularly relevant for signal processing because (as we will see later) they are the foundation of Fourier analysis.</para><section id="idm338761464848">
-      <title>Real Valued Sinusoids</title>
-      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761464304">There are two real-valued discrete-time sinusoidal wave signals: the <emphasis><term>sine</term> wave</emphasis> signal and the <emphasis><term>cosine</term> wave</emphasis> signal. They are represented mathematically as <m:math><m:semantics><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\sin(\omega n +\phi)</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\cos(\omega n +\phi)</m:annotation></m:semantics></m:math>. Let's take a look at those in more detail. First, as we have seen with other discrete-time signals, <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> is the independent variable time index, and it runs from negative infinity to infinity. The variable <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> is known as the <emphasis><term>frequency</term></emphasis> of the sinusoidal signal, and we will see how changing the value of <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> impacts the rate of the signal's oscillation. The variable <m:math><m:semantics><m:mi>ϕ</m:mi><m:annotation encoding="math/tex">\phi</m:annotation></m:semantics></m:math> is the <emphasis><term>phase</term></emphasis> of the signal, and changing it will shift the signal left or right along the time axis. Finally, the terms <m:math><m:semantics><m:mi>sin</m:mi><m:annotation encoding="math/tex">\sin</m:annotation></m:semantics></m:math> or <m:math><m:semantics><m:mi>cos</m:mi><m:annotation encoding="math/tex">\cos</m:annotation></m:semantics></m:math> return the corresponding trigonometric value of <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi></m:mrow><m:annotation encoding="math/tex">\omega n +\phi</m:annotation></m:semantics></m:math> for each value of the time index <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>. Here are a few examples of real sinusoidal waves:
-</para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761438368" orient="vertical"><subfigure id="idm338761437600">
-          <media id="idm338761437408" alt="">
-            <image mime-type="" src="../../media/sinuEx1.png"/>
-<image mime-type="application/postscript" src="../../media/sinuEx1.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761436032">
-          <media id="idm338761435904" alt="">
-            <image mime-type="" src="../../media/sinuEx3.png"/>
-<image mime-type="application/postscript" src="../../media/sinuEx3.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761434688">
-          <media id="idm338761434560" alt="">
-            <image mime-type="" src="../../media/sinuEx2.png"/>
-<image mime-type="application/postscript" src="../../media/sinuEx2.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761433344">
-          <media id="idm338761433216" alt="">
-            <image mime-type="" src="../../media/sinuEx4.png"/>
-<image mime-type="application/postscript" src="../../media/sinuEx4.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        
-      <caption>(a) A plot of <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\cos(0n)</m:annotation></m:semantics></m:math>. At every point in time, this signal takes the value <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">\cos(0)=1</m:annotation></m:semantics></m:math>. (b) A plot of <m:math><m:semantics><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\sin(0n)</m:annotation></m:semantics></m:math>. At every point in time, this signal takes the value <m:math><m:semantics><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\sin(0)=0</m:annotation></m:semantics></m:math>. (c) A plot of <m:math><m:semantics><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>4</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>+</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mn>6</m:mn></m:mfrac><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\sin(\frac{\pi}{4}n+\frac{2\pi}{6})</m:annotation></m:semantics></m:math>. (d) A plot of <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>π</m:mi><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\cos(\pi n)</m:annotation></m:semantics></m:math>. Note how when <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">\omega=\pi</m:annotation></m:semantics></m:math>, as in this example, the signal is oscillating as rapidly as possible, between <m:math><m:semantics><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">-1</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mn>1</m:mn><m:annotation encoding="math/tex">1</m:annotation></m:semantics></m:math> at every single time instance. This phenomenon is the opposite of when <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow><m:annotation encoding="math/tex">\omega=0</m:annotation></m:semantics></m:math>, for which the signal does not oscillate at all. So in some sense we can see that <m:math><m:semantics><m:mn>0</m:mn><m:annotation encoding="math/tex">0</m:annotation></m:semantics></m:math> is the lowest possible frequency <m:math><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math>, and <m:math><m:semantics><m:mi>π</m:mi><m:annotation encoding="math/tex">\pi</m:annotation></m:semantics></m:math> is the highest.</caption></figure><para id="idm338761391184">
-We saw in the figure above how the frequency <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> influences the rate of the wave's oscillation. The other variable in the signal, the phase <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ϕ</m:mi><m:annotation encoding="math/tex">\phi</m:annotation></m:semantics></m:math>, can shift the wave backwards and forwards along the time axis, without affecting the frequency. Below are plots of a cosine wave which all have the same frequency, but with a variety of phase shifts (i.e., different values of <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ϕ</m:mi><m:annotation encoding="math/tex">\phi</m:annotation></m:semantics></m:math>):</para>
-      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761386080" orient="vertical"><subfigure id="idm338761385360">
-          <media id="idm338761385232" alt="">
-            <image mime-type="" src="../../media/cosP1.png"/>
-<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761384016">
-          <media id="idm338761383888" alt="">
-            <image mime-type="" src="../../media/cosP2.png"/>
-<image mime-type="application/postscript" src="../../media/cosP2.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761382672">
-          <media id="idm338761382544" alt="">
-            <image mime-type="" src="../../media/cosP3.png"/>
-<image mime-type="application/postscript" src="../../media/cosP3.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761381328">
-          <media id="idm338761381200" alt="">
-            <image mime-type="" src="../../media/cosP1.png"/>
-<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf"/>
-          </media>
-        </subfigure>
-        
-      <caption>Four cosine waves with the same frequency, but different phases: <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{\pi}{6}n-0\right)</m:annotation></m:semantics></m:math>, <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>−</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>4</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{\pi}{6}n-\frac{\pi}{4}\right)</m:annotation></m:semantics></m:math>, <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>−</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>sin</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{\pi}{6}n-\frac{\pi}{2}\right) = \sin\left(\frac{\pi}{6}n\right)</m:annotation></m:semantics></m:math>, and <m:math><m:semantics><m:mrow><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>−</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>cos</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>π</m:mi><m:mn>6</m:mn></m:mfrac><m:mi>n</m:mi><m:mo>)</m:mo></m:mrow></m:mrow><m:annotation encoding="math/tex">\cos\left(\frac{\pi}{6}n-2\pi\right) = \cos\left(\frac{\pi}{6}n\right)</m:annotation></m:semantics></m:math>. Note how a phase shift of <m:math><m:semantics><m:mfrac><m:mi>π</m:mi><m:mn>2</m:mn></m:mfrac><m:annotation encoding="math/tex">\frac{\pi}{2}</m:annotation></m:semantics></m:math> shifts the cosine to be a sine wave, and a phase shift of <m:math><m:semantics><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:annotation encoding="math/tex">2\pi</m:annotation></m:semantics></m:math> shifts it all the way over to where it was before the phase shift.</caption></figure></section>
-    <section id="idm338761345296">
-      <title>Complex Valued Sinusoids</title>
-      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761344752">So we have reviewed the real sine waves <m:math><m:semantics><m:mi>sin</m:mi><m:annotation encoding="math/tex">\sin</m:annotation></m:semantics></m:math> and <m:math><m:semantics><m:mi>cos</m:mi><m:annotation encoding="math/tex">\cos</m:annotation></m:semantics></m:math>, and perhaps seeing them in proximity brought to mind a very special relationship called <term>Euler's Formula</term>: <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>θ</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>θ</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>θ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">e^{j\theta}=\cos(\theta)+j\sin(\theta)</m:annotation></m:semantics></m:math> (you may remember this from math class with an <m:math><m:semantics><m:mi>i</m:mi><m:annotation encoding="math/tex">i</m:annotation></m:semantics></m:math> instead, but recall engineers use that letter for current, and we call the imaginary number <m:math><m:semantics><m:mi>j</m:mi><m:annotation encoding="math/tex">j</m:annotation></m:semantics></m:math>). That formula works for any particular value of <m:math><m:semantics><m:mi>θ</m:mi><m:annotation encoding="math/tex">\theta</m:annotation></m:semantics></m:math>, so of course it applies when we consider <m:math><m:semantics><m:mrow><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi></m:mrow><m:annotation encoding="math/tex">\omega n+\phi</m:annotation></m:semantics></m:math>, as above, which gives us a complex valued sinusoid: <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">e^{j(\omega n +\phi)}=\cos(\omega n +\phi)+j\sin(\omega n +\phi)</m:annotation></m:semantics></m:math>. Let's look at some plots of complex sinusoids. Unlike two-dimensional real sinusoids (which have a one-dimensional independent time variable <m:math><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> and a take a one-dimensional value at each time value), complex sinusoids are three dimensional: they have the time dimension, a real dimension, and an imaginary dimension. So they can be visualized as a three dimensional helix in space:</para><figure id="idm338761308144" orient="vertical"><media id="idm338761307376" alt="">
-          <image mime-type="" src="../../media/spiral.png"/>
-        </media>
-        
-      <caption><span>A three dimensional visualization of a complex sinusoid. Note that this image is continuous-valued, whereas a discrete valued version would actually appear as points along the line.</span>
-        </caption></figure><para id="idm338761305056">
-If you were to look at this helix from directly above, you would see only the real portion of the helix, and it would appear to be a cosine wave. If you looked at it from the side, you would see the imaginary aspect of it, as a sine wave. The frequency variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>ω</m:mi><m:annotation encoding="math/tex">\omega</m:annotation></m:semantics></m:math> controls how quickly the helix rotates across time <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mi>n</m:mi><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, and also the direction: positive values cause it to rotate in the counterclockwise manner shown, and negative values would result in it rotating clockwise.</para>
-      <para id="eip-462">While it is illuminating to visualize complex simusiods in three dimensions, in practice it is actually most common to view them in two, separately plotting either the real and the imaginary parts with respect to time, or the magnitude and phase across time:
-</para>
-      <figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761300464" orient="vertical"><subfigure id="idm338761299696">
-          <media id="idm338761299568" alt="">
-            <image mime-type="" src="../../media/cexpM.png"/>
-<image mime-type="application/postscript" src="../../media/cexpM.eps" for="pdf" print-width="343pt"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761298352">
-          <media id="idm338761298224" alt="">
-            <image mime-type="" src="../../media/cexpP.png"/>
-<image mime-type="application/postscript" src="../../media/cexpP.eps" for="pdf" print-width="343pt"/>
-          </media>
-        </subfigure>
-        <caption>A complex sinusoid plotted according to its magnitude and phase. Note that the magnitude of a single complex sinusoid is trivial, as <m:math><m:semantics><m:mrow><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>ϕ</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mrow class="MJX-TeXAtom-ORD"><m:mo stretchy="false">|</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:annotation encoding="math/tex">|e^{j(\omega n +\phi)}|=1</m:annotation></m:semantics></m:math>.</caption>
-      </figure><figure id="idm338761287056" orient="vertical"><subfigure id="idm338761286288">
-          <media id="idm338761286160" alt="">
-            <image mime-type="" src="../../media/cexpR.png"/>
-<image mime-type="application/postscript" src="../../media/cexpR.eps" for="pdf" print-width="343pt"/>
-          </media>
-        </subfigure>
-        <subfigure id="idm338761284944">
-          <media id="idm338761284816" alt="">
-            <image mime-type="" src="../../media/cexpI.png"/>
-<image mime-type="application/postscript" src="../../media/cexpI.eps" for="pdf" print-width="343pt"/>
-          </media>
-        </subfigure>
-        
-      <caption>A complex sinusoid plotted according to its real and imaginary parts. These are a cosine, and sine, respectively, which follows from Euler's Formula.</caption></figure><para id="idm338761282400">
+  <para id="delete_me"><!-- Insert module text here -->
+Discrete-time real and complex valued sinusoidal signals are an incredibly important signal class in the study of discrete-time signals and systems. Of course, sinusoidal waves show up in all sorts of science and engineering applications, but they are particularly relevant for signal processing because they are the foundation of Fourier analysis.</para><para id="eip-330"><title>Real Valued Sinusoids</title>There are two real-valued discrete-time sinusoidal wave signals: the <term>sine</term> wave signal and the <term>cosine</term> wave signal. They are represented mathematically as $\sin(\omega n +\phi)$ and $\cos(\omega n +\phi)$. Let's take a look a those in more detail. First, as we have seen with other discrete-time signals, $n$ is the independent variable time index, and it runs from negative infinity to infinity. The variable $\omega$ is known as the <term>frequency</term> of the sinusoidal signal, and we will see how changing the value of $\omega$ impacts the rate of the signal's oscillation. The variable $\phi$ is the <term>phase</term> of the signal, and changing it will shift the signal left along the time axis. Finally, the terms $\sin$ or $\cos$ return the corresponding trigonometric value to $\omega n +\phi$ for each value of the time index $n$. Here are a few examples of real sinusoidal waves:
+<figure id="sines" orient="vertical"><subfigure id="sinuEx1plot">
+<media id="sinuEx1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sinuEx1.svg"/>
+<image mime-type="application/postscript" src="../../media/sinuEx1.eps" for="pdf"/></media>
+</subfigure>
+<subfigure id="sinuEx3">
+<media id="sinuEx3plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sinuEx3.svg"/>
+<image mime-type="application/postscript" src="../../media/sinuEx3.eps" for="pdf"/></media>
+</subfigure>
+<subfigure id="sinuEx2">
+<media id="sinuEx2plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sinuEx2.svg"/>
+<image mime-type="application/postscript" src="../../media/sinuEx2.eps" for="pdf"/></media>
+</subfigure>
+<subfigure id="sinuEx4">
+<media id="sinuEx4plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/sinuEx4.svg"/>
+<image mime-type="application/postscript" src="../../media/sinuEx4.eps" for="pdf"/></media>
+</subfigure>
+<caption>(a) A plot of $\cos(0n)$. At every point in time, this signal takes the value $\cos(0)=1$. (b) A plot of $\sin(0n)$. At every point in time, this signal takes the value $\sin(0)=0$. (c) A plot of $\sin(\frac{\pi}{4}n+\frac{2\pi}{6})$. (d) A plot of $\cos(\pi n)$. Note how when $\omega=\pi$, as in this example, the signal is oscillating as rapidly as possible, between -1 and 1 at every single time instance. This phenomenon is the opposite of when $\omega=0$, for which the signal does not oscillate at all. So in some sense we can see that $0$ is the lowest possible frequency $\omega$, and $\pi$ is the highest.</caption>
+</figure>
+We saw in the figure above how the frequency $\omega$ influences the rate of the wave's oscillation. The other variable in the signal, the phase $\phi$, can shift the wave backwards and forwards along the time axis, without affecting the frequency. Below are plots of a cosine wave which all have the same frequency, but with a variety of phase shifts (i.e., different values of $\phi$):
+<figure id="phases" orient="vertical"><subfigure id="cosP1-plot">
+<media id="cosP1" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cosP1.svg"/>
+<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf"/></media><caption>$\cos\left(\frac{\pi}{6}n-0\right)$.</caption>
+</subfigure>
+<subfigure id="cosP2">
+<media id="cosP2-plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cosP2.svg"/>
+<image mime-type="application/postscript" src="../../media/cosP2.eps" for="pdf"/></media><caption>$\cos\left(\frac{\pi}{6}n-\frac{\pi}{4}\right)$.</caption>
+</subfigure>
+<subfigure id="cosP3">
+<media id="cosP3-plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cosP3.svg"/>
+<image mime-type="application/postscript" src="../../media/cosP3.eps" for="pdf"/></media><caption>$\cos\left(\frac{\pi}{6}n-\frac{\pi}{2}\right) = \sin\left(\frac{\pi}{6}n\right)$.</caption>
+</subfigure>
+<subfigure id="cosP1again">
+<media id="cosP1-plotagain" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cosP1.svg"/>
+<image mime-type="application/postscript" src="../../media/cosP1.eps" for="pdf"/></media><caption>$\cos\left(\frac{\pi}{6}n-2\pi\right) = \cos\left(\frac{\pi}{6}n\right)$.</caption>
+</subfigure>
+<caption>Four cosine waves with the same frequency, but different phases. Note how a phase shift of $\frac{\pi}{2}$ shifts the cosine to be a sine wave, and a phase shift of $2\pi$ shifts it all the way over to where it was without any phase shift (because the cosine is periodic for this frequency).</caption></figure></para><para id="eip-455"><title>Complex Valued Sinusoids</title>So we have reviewed the real sine waves $\sin$ and $\cos$, and perhaps seeing them in proximity brought to mind a very special relationship called <term>Euler's Formula</term>: $e^{j\theta}=\cos(\theta)+j\sin(\theta)$ (you may remember this from math class with an $i$ instead, but recall engineers use that letter for current, and we call the imaginary number $j$). That formula works for any particular value of $\theta$, so of course it applies when we consider $\omega n+\phi$, as above, which gives us a complex valued sinusoid: $e^{j(\omega n +\phi)}=\cos(\omega n +\phi)+j\sin(\omega n +\phi)$. Let's look at some plots of complex sinusoids. Unlike two-dimensional real sinusoids (which have an one-dimensional independent time variable $n$ and a take a one-dimensional value at each time value), complex sinusoids are three dimensional: they have the time dimension, a real dimension, and an imaginary dimension. So they can be visualized as a three dimensional helix in space:
+<figure id="FigureA57"><media id="FigureA57plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/FigureA57.svg"/>
+<image mime-type="application/postscript" src="../../media/FigureA57.eps" for="pdf"/>
+</media><caption>A three dimensional visualization of a complex sinusoid. Note that this image is continuous-valued, whereas a discrete valued version would actually appear as points along the line.</caption></figure>
+If you were to look at this helix from directly above, you would see only the real portion of the helix, and it would appear to be a cosine wave. If you looked at it from the side, you would see the imaginary aspect of it, as a sine wave. The frequency variable $\omega$ controls how quickly the helix rotates across time $n$, and also the direction: positive values cause it to rotate in the counterclockwise manner shown, and negative values would result in it rotating clockwise.</para><para id="eip-462">While it is illuminating to visualize complex simusiods in three dimensions, in practice it is actually most common to view them in two, separately plotting either the real and the imaginary parts with respect to time, or the magnitude and phase across time:
+<figure id="csmpplots" orient="vertical"><subfigure id="cexpMplot">
+<media id="cexpM" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cexpM.svg"/>
+<image mime-type="application/postscript" src="../../media/cexpM.eps" for="pdf"/></media><caption>The magnitude of a complex sinusoid.</caption>
+</subfigure>
+<subfigure id="cexpP">
+<media id="cexpPplot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cexpP.svg"/>
+<image mime-type="application/postscript" src="../../media/cexpP.eps" for="pdf"/></media><caption>The phase, or angle, of a complex sinusoid.</caption>
+</subfigure>
+<caption>A complex sinusoid plotted according to its magnitude and phase. Note that the magnitude of a single complex sinusoid is trivial, as $|e^{j(\omega n +\phi)}|=1$.</caption></figure>
+
+
+<figure id="csriplots" orient="vertical">
+<subfigure id="cexpR">
+<media id="cexpRplot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cexpR.svg"/>
+<image mime-type="application/postscript" src="../../media/cexpR.eps" for="pdf"/></media><caption>The real part of a complex sinusoid.</caption>
+</subfigure>
+<subfigure id="cexpI">
+<media id="cexpI-plot" alt="Image">
+<image mime-type="image/svg+xml" src="../../media/cexpI.svg"/>
+<image mime-type="application/postscript" src="../../media/cexpI.eps" for="pdf"/></media><caption>The imaginary part of a complex sinusoid.</caption>
+</subfigure>
+<caption>A complex sinusoid plotted according to its real and imaginary parts. These are a cosine, and sine, respectively, which follows from Euler's Formula.</caption></figure>
 We'll wrap up our introduction of sinusoids by briefly considering the concept of negative-valued frequencies. It is easiest to see the difference a negative frequency makes, compared to a positive frequency of the same magnitude, by expressing it all mathematically:
-<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mi>j</m:mi><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>ω</m:mi><m:mi>n</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">e^{j (-\omega) n} ~=~ e^{-j\omega n} ~=~ \cos(-\omega n) + j \sin(-\omega n) ~=~ \cos(\omega n) - j \sin(\omega n)</m:annotation></m:semantics></m:math>.
-So negating the frequency of a complex sinusoid has no effect on the real part of the signal (the cosine), but it flips the sign of the imaginary part (the sine). This operation (preserving the real part, but changing the sign of the imaginary part) is also known as taking the <emphasis>complex conjugate</emphasis> of the signal. So negating the frequency of a complex sinusoid is the same thing as taking the complex conjugate of it:<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mo stretchy="false">(</m:mo><m:mo>−</m:mo><m:mi>ω</m:mi><m:mo stretchy="false">)</m:mo><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mo>−</m:mo><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mtext> </m:mtext><m:mo>=</m:mo><m:mtext> </m:mtext><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>j</m:mi><m:mi>ω</m:mi><m:mi>n</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>∗</m:mo></m:msup></m:mrow><m:annotation encoding="math/tex">e^{j (-\omega) n} ~=~ e^{-j \omega n}~=~ \left( e^{j \omega n} \right)^*</m:annotation></m:semantics></m:math>.</para></section>
-      <section id="idm338761240064">
-        <title>Why use imaginary numbers?</title>
-        <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm338761239520">Now perhaps you are wondering the point of using imaginary numbers. After all, aren't all real world signals, well, real-valued? They are indeed, but we can simply consider them as the real-part of a complex-valued signal. And why go to that trouble? There are many good reasons, but here is one to start with: exponential functions are much easier to work with than trigonometric functions. You can easily simplify <m:math><m:semantics><m:mrow><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>a</m:mi></m:mrow></m:msup><m:msup><m:mi>e</m:mi><m:mrow class="MJX-TeXAtom-ORD"><m:mi>b</m:mi></m:mrow></m:msup></m:mrow><m:annotation encoding="math/tex">e^{a} e^{b}</m:annotation></m:semantics></m:math> into a single term, but you very likely would be turning to a table to simplify <m:math><m:semantics><m:mrow><m:mi>sin</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mo stretchy="false">)</m:mo><m:mi>cos</m:mi><m:mo>⁡</m:mo><m:mo stretchy="false">(</m:mo><m:mi>b</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">\sin(a)\cos(b)</m:annotation></m:semantics></m:math>, wouldn't you?</para></section>
-    
-  </content>
+$e^{j (-\omega) n} ~=~ e^{-j\omega n} ~=~ \cos(-\omega n) + j \sin(-\omega n) ~=~ \cos(\omega n) - j \sin(\omega n)$
+So negating the frequency of a complex sinusoid has no effect on the real part of the signal (the cosine), but it flips the sign of the imaginary part (the sine). This operation (preserving the real part, but changing the sign of the imaginary part) is also known as taking the complex conjugate of the signal. So negating the frequency of a complex sinusoid is the same thing as taking the complex conjugate of it:$e^{j (-\omega) n} ~=~ e^{-j \omega n}~=~ \left( e^{j \omega n} \right)^*$.</para><para id="eip-208"><title>Why use imaginary numbers?</title>Now perhaps you are wondering the point of using imaginary numbers. After all, aren't all real world signals, well, real-valued? They are indeed, but we can consider them as the real-part of a complex-valued signal. And why go to that trouble? There are many good reasons, but here is one to start with: exponential functions are much easier to work with than trigonometric functions. You can easily simplify $e^{a} e^{b}$ into a single term, but you very likely would be turning to a table to simplify $\sin(a)\cos(b)$, wouldn't you?</para></content>
+
 </document>

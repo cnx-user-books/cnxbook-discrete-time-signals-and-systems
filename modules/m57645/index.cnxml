@@ -1,5 +1,6 @@
-<document xmlns="http://cnx.rice.edu/cnxml">
-  <title>Discrete-time Signals and Signal Processing</title>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+<title>Discrete-time Signals and Signal Processing</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m57645</md:content-id>
   <md:title>Discrete-time Signals and Signal Processing</md:title>
@@ -8,34 +9,23 @@
 </metadata>
 
 <content>
-    <section id="idm91935063936">
-      <title>A World of Signals and Signal Processing</title>
-      <para id="idm91935063376">Technological innovations have revolutionized the way we view and interact with the world around us. Editing a photo, re-mixing a song, automatically measuring and adjusting chemical concentrations in a tank...each of these tasks requires real-world data to be captured by a computer and then manipulated digitally to extract the salient information. Have you ever wondered how signals from the physical world are sampled, stored, and processed without losing the information required to make predictions and extract meaning from the data? <term><emphasis>Signal processing</emphasis></term> is the study of signals and systems that extract information from the world around us.</para>
-    </section>
-    <section id="idm91935061936">
-      <title>Signals, Defined</title>
-      <para id="idm91935061392">Perhaps the best place to start the study of signal processing is with a dictionary definition:</para><definition id="idm91935060992">
-        <term>Signal*</term>
-        <meaning id="idm91935060592">
-          <para id="idm91935060464">A <emphasis>signal </emphasis>is "is a detectable physical quantity...by which messages or information can be transmitted."</para>
-          <div id="idm91935059712"><sup>*</sup>"Signal." <link url="http://www.merriam-webster.com/dictionary/signal">Merriam-Webster.com</link></div>
-        </meaning>
-      </definition>
-      <para id="idm91935058096">This information aspect is critical to us.  In other words, signals carry information. Signals are all around us;
-we encounter them throughout our day. Speech signals, for example, transmit language from one person to another via acoustic waves.
-If you're interested in looking for airplanes or other targets and sensing them by electromagnetic waves,
-you can use radar signal processing. Electrophysiological signals carry information about processes that are going on inside our bodies; tools like EKGs or MRIs work with those signals. And finally, financial signals transmit information about events in the economy, signals like stock prices over time or other economic markers.
+  <para id="delete_me"><title>A World of Signals and Signal Processing</title><!-- Insert module text here -->
+Technological innovations have revolutionized the way we view and interact with the world around us. Editing a photo, re-mixing a song, automatically measuring and adjusting chemical concentrations in a tank: each of these tasks requires real-world data to be captured by a computer and then manipulated digitally to extract the salient information. Ever wonder how signals from the physical world are sampled, stored, and processed without losing the information required to make predictions and extract meaning from the data? <term>Signal processing</term> is the study of signals and systems that extract information from the world around us.</para><para id="eip-269"><title>Signals, Defined</title>Perhaps the place to start the study of signal processing is the dictionary.  The dictionary definition of a signal will serve us quite well:
+<quote id="signal-quote" url="http://www.merriam-webster.com/dictionary/signal"> 
+ A <term>signal</term> is "is a detectable physical quantity...by which messages or information can be transmitted."</quote>
 
-</para>
-    </section>
-    <section id="idm91935057024">
-      <title>Signals are Functions</title>
-      <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="idm91935056480">A signal is a function that maps an <emphasis effect="italics">independent </emphasis>variable to a <emphasis effect="italics">dependent </emphasis>variable. Mathematically, we're going to think of signals as functions, and a function is simply a mapping from an independent variable that we can change onto a dependent variable that depends on that independent variable.  The terminology <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>
+And this information aspect is very, very critical to us.  In other words, signals carry information. Signals are all around us;
+we encounter them throughout our day. Speech signals, for example, transmit language from one person to another via acoustic waves.
+If you're interested in looking for, for example, airplanes our other targets and sensing them by electromagnetic waves,
+you can use radar signal processing. Electrophysiological signals carry information about processes that are going on inside our bodies, things like EKGs or MRI images. And finally, financial signals transmit information about events in the economy, signals like stock prices over time or other economic markers.
+
+So as you can see, signals are really very common in the world.
+And this course is about signals and the signal processing systems that manipulate signals in order to understand or make transformations on the information in those signals.</para><para id="eip-659"><title>Signals are Functions</title><definition id="signal-def"><term>Signal</term>
+<meaning id="signal-meaning">
+A <term>signal</term> is a function that maps an independent variable to a dependent variable.</meaning></definition>
+Mathematically, we're going to think of signals as functions, and a function is just a mapping from an independent variable that we can change to a dependent variable that depends on that independent variable.  The terminology <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math>
 is how we're going to denote a signal.
-It consists of an independent variable, <m:math><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math>, that for each of its values produces the another value <m:math><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>.</para></section>
-    <section id="idm91935045888">
-      <title>Discrete-Time Signals</title>
-      <para id="idm91935045344">Perhaps you are wondering about the use of brackets--instead of parentheses--in our signal function notation <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">[</m:mo><m:mi>n</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:annotation encoding="math/tex">x[n]</m:annotation></m:semantics></m:math>. This is the typical way to refer to <term>discrete-time</term> signals. A discrete-time signal is a signal where the independent variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>n</m:mi></m:mrow><m:annotation encoding="math/tex">n</m:annotation></m:semantics></m:math> is an integer (as opposed to a continuous-time signal <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>x</m:mi><m:mo stretchy="false">(</m:mo><m:mi>t</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:annotation encoding="math/tex">x(t)</m:annotation></m:semantics></m:math>, whose independent variable <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:mrow><m:mi>t</m:mi></m:mrow><m:annotation encoding="math/tex">t</m:annotation></m:semantics></m:math> is a real number).</para>
-    </section>
-  </content>
+It consists of an independent variable, <m:math><m:mi>n</m:mi></m:math>, that for each different value of <m:math><m:mi>n</m:mi></m:math>,
+it produces the value <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math>.</para><para id="eip-240"><title>Discrete-Time Signals</title>Perhaps you are wondering about the use of brackets--instead of parentheses--in our signal function notation <m:math><m:apply><m:ci type="fn" class="discrete">x</m:ci><m:ci>n</m:ci></m:apply></m:math>. This is the typical way to refer to <term>discrete-time</term> signals. A discrete-time signal is a signal where the independent variable <m:math><m:mi>n</m:mi></m:math> is an integer (as opposed to a continuous-time signal <m:math><m:apply><m:ci type="fn" class="continuous">x</m:ci><m:ci>t</m:ci></m:apply></m:math>, whose independent variable <m:math><m:mi>t</m:mi></m:math> is a real number).</para></content>
+
 </document>
