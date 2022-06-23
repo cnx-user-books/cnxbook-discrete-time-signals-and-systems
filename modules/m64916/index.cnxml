@@ -1,17 +1,17 @@
 <document xmlns="http://cnx.rice.edu/cnxml">
-  <title>Discrete-time Systems</title>
+  <title>Derived copy of Discrete-time Systems</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
-  <md:content-id>m57604</md:content-id>
-  <md:title>Discrete-time Systems</md:title>
+  <md:content-id>m64916</md:content-id>
+  <md:title>Derived copy of Discrete-time Systems</md:title>
   <md:abstract/>
-  <md:uuid>ca0590f6-a180-4540-95f9-db484cac49b5</md:uuid>
+  <md:uuid>e5a01239-e9eb-49e8-afae-2f4e30fbfe88</md:uuid>
 </metadata>
 
 <content>
     <para xmlns:m="http://www.w3.org/1998/Math/MathML" id="delete_me">Discrete-time signals are mathematical entities; in particular, they are functions with an independent time variable and a dependent variable that typically represents some kind of real-world quantity of interest. But as interesting as a signal may be on its own, engineers usually want to <emphasis effect="italics">do</emphasis> something to it. This kind of action is what discrete-time systems are all about. A <term><emphasis>discrete-time system</emphasis></term> is a mathematical transformation that maps a discrete-time input signal (usually designated <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math>) to a discrete-time output signal (usually designated <m:math><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math>). In other words, it takes an input signal and modifies it to produce an output signal:
 </para><figure xmlns:m="http://www.w3.org/1998/Math/MathML" id="NAME"><media id="NAME-plot" alt="Image">
-        <image mime-type="image/png" src="../../media/systeminout.png" width="400"/>
-        <image mime-type="image/png" for="pdf" src="../../media/systeminout.png" print-width="250pt"/>
+        <image mime-type="image/png" src="../../media/image_1.png" width="400"/>
+        <image mime-type="image/png" for="pdf" src="../../media/image_1.png" print-width="250pt"/>
       </media>
       
     <caption>System <m:math><m:semantics><m:mrow class="MJX-TeXAtom-ORD"><m:mi class="MJX-tex-caligraphic" mathvariant="script">H</m:mi></m:mrow><m:annotation encoding="math/tex">\mathcal{H}</m:annotation></m:semantics></m:math> takes takes a discrete time signal <m:math><m:semantics><m:mi>x</m:mi><m:annotation encoding="math/tex">x</m:annotation></m:semantics></m:math> as an input and produces an output <m:math><m:semantics><m:mi>y</m:mi><m:annotation encoding="math/tex">y</m:annotation></m:semantics></m:math>.</caption></figure><para id="idm240799286112">
