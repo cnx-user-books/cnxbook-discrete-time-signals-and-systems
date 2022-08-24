@@ -1,12 +1,13 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" authors="Richard Baraniuk ,Matthew Moravec">
   <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
     <md:content-id>col11868</md:content-id>
     <md:title>Discrete-Time Signals and Systems</md:title>
     <md:language>en</md:language>
     <md:license url="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</md:license>
     <md:uuid>8e3c8b79-7dcc-4ec0-ba6e-0d3443a34180</md:uuid>
-<md:slug>discrete-time-signals-and-systems</md:slug>
-</metadata>
+    <md:slug>discrete-time-signals-and-systems</md:slug>
+  </metadata>
   <col:content>
     <col:subcollection>
       <md:title>Discrete-Time Signals</md:title>
