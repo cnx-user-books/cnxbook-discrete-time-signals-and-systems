@@ -200,7 +200,7 @@ Decimate: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:m
             <item>
               <list id="idm447485915216" list-type="bulleted">
                 <item>
-Identity: <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:semantics><m:annotation encoding="math/tex"/></m:semantics></m:math><emphasis>Linear</emphasis></item>
+Identity: <emphasis>Linear</emphasis></item>
                 <item>Scaling: <emphasis>Linear</emphasis></item>
                 <item>Offset: <emphasis>Nonlinear</emphasis></item>
                 <item>Square signal: <emphasis>Nonlinear</emphasis></item>
